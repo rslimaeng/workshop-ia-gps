@@ -87,7 +87,12 @@
   <section class="section content-section reveal">
     <div class="site-container">
       <p class="eyebrow">O método</p>
-      <h2>PCTFL — Os 5 Elementos de um Prompt Profissional</h2>
+      <h2>PCTFL+CS+N — Os 7 Elementos de um Prompt Profissional</h2>
+      <p>
+        Os primeiros 5 elementos (P+C+T+F+L) montam um prompt estruturado.
+        Os últimos 2 (CS+N) transformam o output em algo <strong>verificável</strong> — você
+        deixa de aceitar "achei bom" e passa a aceitar "atendeu o critério".
+      </p>
 
       <table>
         <thead>
@@ -114,7 +119,7 @@
           <tr>
             <td><strong style="color:var(--accent)">T</strong></td>
             <td>Tarefa</td>
-            <td>O que fazer</td>
+            <td>O que fazer (com verbo claro)</td>
             <td>"Redija o memorial com: área 120m², padrão médio, fiação 2,5mm², eletrodutos PVC rígido."</td>
           </tr>
           <tr>
@@ -129,12 +134,110 @@
             <td>O que não fazer</td>
             <td>"Não invente especificações. Se faltar informação, me pergunte antes de redigir."</td>
           </tr>
+          <tr>
+            <td><strong style="color:var(--accent-warm)">CS</strong></td>
+            <td>Critério de Sucesso</td>
+            <td>Quando a resposta é boa?</td>
+            <td>"A resposta é bem-sucedida se o engenheiro responsável puder usar o memorial sem reescrever nenhuma especificação técnica."</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--accent-warm)">N</strong></td>
+            <td>Negativo</td>
+            <td>Como NÃO deve soar?</td>
+            <td>"NÃO usar linguagem comercial ou marketing. NÃO substituir norma técnica por descrição genérica."</td>
+          </tr>
         </tbody>
       </table>
 
       <div class="callout" style="margin-top:24px">
-        <strong>Regra de ouro:</strong> quanto mais você preenche o PCTFL, menos a IA precisa
-        adivinhar — e menos chance de alucinação ou resultado genérico.
+        <strong>Regra de ouro:</strong> quanto mais você preenche o PCTFL+CS+N, menos a IA
+        precisa adivinhar — e menos chance de alucinação ou resultado genérico. O CS é o
+        ponto que mais sobe a qualidade média: transforma "achei ok" em "atende o critério".
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção — Verbos Cirúrgicos -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Onde a maioria dos prompts falha</p>
+      <h2>O Verbo de Ação é o Núcleo do T</h2>
+      <p>
+        Mesmo com PCTFL bem preenchido, o resultado pode sair vago — e o problema quase
+        sempre está em <strong>um único lugar: o verbo da Tarefa</strong>. Quando o verbo é
+        vago, a IA escolhe uma interpretação por conta própria. Resultado: bullets genéricos.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:48%">❌ Verbo vago</th>
+            <th>✅ Verbo cirúrgico</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>"Me ajude com isso…"</td>
+            <td><strong>Liste</strong> 3 opções para…</td>
+          </tr>
+          <tr>
+            <td>"Pense sobre…"</td>
+            <td><strong>Compare</strong> os prós e contras de…</td>
+          </tr>
+          <tr>
+            <td>"Fale sobre o texto…"</td>
+            <td><strong>Resuma</strong> os pontos principais em…</td>
+          </tr>
+          <tr>
+            <td>"Melhore esse conteúdo"</td>
+            <td><strong>Reescreva</strong> com tom técnico e direto</td>
+          </tr>
+          <tr>
+            <td>"O que você acha de…"</td>
+            <td><strong>Analise</strong> os riscos potenciais de…</td>
+          </tr>
+          <tr>
+            <td>"Me ajude a decidir"</td>
+            <td><strong>Recomende</strong> entre A e B nos critérios X, Y, Z</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin-top:32px">Verbos por tipo de entrega</h3>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:22%">Tipo de entrega</th>
+            <th>Verbos cirúrgicos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Análise</strong></td>
+            <td>Analise · Identifique · Diagnostique · Mapeie · Avalie</td>
+          </tr>
+          <tr>
+            <td><strong>Criação de conteúdo</strong></td>
+            <td>Redija · Escreva · Crie · Estruture · Adapte</td>
+          </tr>
+          <tr>
+            <td><strong>Decisão</strong></td>
+            <td>Compare · Priorize · Recomende · Classifique</td>
+          </tr>
+          <tr>
+            <td><strong>Síntese</strong></td>
+            <td>Resuma · Extraia · Consolide · Destaque</td>
+          </tr>
+          <tr>
+            <td><strong>Plano</strong></td>
+            <td>Monte · Detalhe · Proponha · Defina</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout" style="margin-top:24px">
+        <strong>Teste prático:</strong> se você não consegue substituir o verbo do seu
+        prompt por um da tabela acima, a Tarefa ainda está vaga — refine antes de enviar.
       </div>
     </div>
   </section>
@@ -171,10 +274,22 @@
             "Documento técnico formal. Use subtítulos por sistema. Linguagem técnica, mas clara. Máximo 2 páginas."
           </p>
         </div>
-        <div style="display:flex; align-items:flex-start; gap:8px">
+        <div style="display:flex; align-items:flex-start; gap:8px; margin-bottom:20px">
           <span style="background:var(--ink-soft); color:white; border-radius:4px; padding:3px 8px; font-size:11px; font-weight:600; font-family:var(--sans); letter-spacing:.05em; flex-shrink:0">LIMITAÇÕES</span>
           <p style="margin:0; font-size:14px; color:var(--ink-soft); font-style:italic">
             "Não invente especificações que não foram informadas. Se faltar alguma informação essencial, me pergunte antes de redigir."
+          </p>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:8px; margin-bottom:20px">
+          <span style="background:var(--accent-warm); color:white; border-radius:4px; padding:3px 8px; font-size:11px; font-weight:600; font-family:var(--sans); letter-spacing:.05em; flex-shrink:0">CRITÉRIO DE SUCESSO</span>
+          <p style="margin:0; font-size:14px; color:var(--ink-soft); font-style:italic">
+            "A resposta é bem-sucedida se o engenheiro responsável puder revisar o memorial em menos de 5 minutos e entregá-lo ao cliente sem reescrever nenhuma especificação técnica."
+          </p>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:8px">
+          <span style="background:var(--accent-warm); color:white; border-radius:4px; padding:3px 8px; font-size:11px; font-weight:600; font-family:var(--sans); letter-spacing:.05em; flex-shrink:0">NEGATIVO</span>
+          <p style="margin:0; font-size:14px; color:var(--ink-soft); font-style:italic">
+            "NÃO usar linguagem comercial ou marketing. NÃO substituir norma técnica por descrição genérica. NÃO adicionar disclaimers genéricos do tipo 'consulte um profissional'."
           </p>
         </div>
       </div>
@@ -298,7 +413,7 @@
 
         <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px">
           Escolha uma tarefa real do seu trabalho que você fez na última semana.
-          Monte o prompt nos 5 elementos:
+          Monte o prompt nos 7 elementos (PCTFL+CS+N):
         </p>
 
         <table>
@@ -311,9 +426,11 @@
           <tbody>
             <tr><td><strong>Papel</strong></td><td>Você é um ____</td></tr>
             <tr><td><strong>Contexto</strong></td><td>Estou em ____, o projeto é ____, a situação é ____</td></tr>
-            <tr><td><strong>Tarefa</strong></td><td>Faça ____ com os seguintes dados: ____</td></tr>
+            <tr><td><strong>Tarefa</strong></td><td><strong style="color:var(--accent-warm)">[Verbo cirúrgico]</strong> ____ com os seguintes dados: ____</td></tr>
             <tr><td><strong>Formato</strong></td><td>Entregue como ____ (tabela / lista / documento / e-mail)</td></tr>
             <tr><td><strong>Limitações</strong></td><td>Não ____ · Se faltar ____, me pergunte</td></tr>
+            <tr><td><strong style="color:var(--accent-warm)">Critério de Sucesso</strong></td><td>A resposta é boa se ____ (descreva o que deve acontecer para você considerar pronto)</td></tr>
+            <tr><td><strong style="color:var(--accent-warm)">Negativo</strong></td><td>A resposta NÃO deve ____ (tom, formato ou conteúdo a evitar)</td></tr>
           </tbody>
         </table>
 

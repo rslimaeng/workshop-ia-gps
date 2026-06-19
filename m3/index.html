@@ -242,6 +242,124 @@ Formato: lista numerada com classificação:
     </div>
   </section>
 
+  <!-- Seção — Da Análise à Decisão: OIA + Regra do Headline -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Comunicação executiva</p>
+      <h2>Da Análise à Decisão: OIA + Regra do Headline</h2>
+      <p>
+        Você analisou o orçamento com IA. Tem números, gráficos, planilhas. Agora vem a parte
+        mais difícil: <strong>o cliente lê os títulos dos slides em 30 segundos e decide se
+        confia em você</strong>. Dado sem narrativa não decide nada — e narrativa sem framework
+        cansa quem está lendo.
+      </p>
+
+      <h3 style="margin-top:24px">OIA — Observação → Insight → Ação</h3>
+      <p>Todo dado tem 3 camadas. A maioria dos orçamentos para no primeiro:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:22%">Nível</th>
+            <th style="width:30%">❌ Exemplo ruim</th>
+            <th>✅ Exemplo OIA (orçamento GPS)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>O — Observação</strong><br><span style="font-size:13px; color:var(--ink-muted)">O que os dados mostram?</span></td>
+            <td>"Orçamento total: R$ 280k"</td>
+            <td>"Orçamento total: R$ 280k — 22% acima do similar de 2025"</td>
+          </tr>
+          <tr>
+            <td><strong>I — Insight</strong><br><span style="font-size:13px; color:var(--ink-muted)">O que isso significa?</span></td>
+            <td>—</td>
+            <td>"O aumento vem majoritariamente de insumos (+18% SINAPI no aço CA-50) — fora do controle da equipe"</td>
+          </tr>
+          <tr>
+            <td><strong>A — Ação</strong><br><span style="font-size:13px; color:var(--ink-muted)">O que fazer?</span></td>
+            <td>—</td>
+            <td>"Apresentar 2 cenários: prazo padrão (R$ 280k) e prazo otimizado com lote único de compra (R$ 265k)"</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout" style="margin-top:24px">
+        <strong>Regra de ouro:</strong> entregar só a Observação é deixar o cliente sozinho
+        com a parte mais difícil — ele tem o dado, mas não sabe o que ele significa nem o
+        que fazer. OIA garante que você entrega as três camadas no lugar que importa.
+      </div>
+
+      <h3 style="margin-top:32px">A Regra do Headline de Insight</h3>
+      <p>
+        Cliente e gestor escaneiam os títulos antes de ouvir você falar. Se o título já é o
+        insight, você já ganhou a atenção antes da primeira palavra. Se é só um rótulo
+        ("Análise do Orçamento"), eles esperam você explicar — e podem perder o fio.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>❌ Título de dado (rótulo)</th>
+            <th>✅ Título de insight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Resultados do Orçamento</td>
+            <td>Aumento de 22% vem de insumos SINAPI — não de mão de obra</td>
+          </tr>
+          <tr>
+            <td>Análise por Categoria</td>
+            <td>Estrutural pesa 41% do total — única alavanca real de negociação</td>
+          </tr>
+          <tr>
+            <td>Comparativo com 2025</td>
+            <td>Mão de obra está em linha; o aço CA-50 puxou R$ 38k</td>
+          </tr>
+          <tr>
+            <td>Próximos Passos</td>
+            <td>Cotar 3 fornecedores de aço antes de fechar — economia potencial R$ 15k</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout" style="margin-top:24px">
+        <strong>Teste prático:</strong> leia só os títulos do seu deck em sequência, sem
+        abrir nenhum slide. Se problema, causa e o que fazer ficam claros só pelos títulos,
+        você acertou. Se você precisa abrir o slide pra entender, ainda é rótulo.
+      </div>
+
+      <p style="font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-muted); margin:28px 0 8px">
+        Prompt base — Narrativa OIA para Orçamento
+      </p>
+      <pre style="background:var(--bg-warm); border:1px solid var(--border); border-radius:8px; padding:20px; font-family:'Menlo','Monaco',monospace; font-size:13px; line-height:1.7; color:var(--ink); overflow-x:auto; white-space:pre-wrap; margin:0">
+Papel: Você é um engenheiro especialista em comunicação executiva de
+orçamentos para clientes não-técnicos.
+
+Contexto: Estou preparando a apresentação de um orçamento de [tipo de
+obra, valor total, comparação com referência] para [cliente / gestor].
+Os dados estão abaixo:
+[cole o resumo do orçamento — itens principais, valores, comparativos]
+
+Tarefa: Estruture uma narrativa executiva seguindo o framework OIA
+(Observação → Insight → Ação) para 5 a 7 pontos do orçamento. Cada
+ponto deve ter um título que já é um insight — não um rótulo.
+
+Formato: tabela com 3 colunas — Título do slide | Observação (dado) |
+Ação recomendada (decisão). Máximo 7 pontos.
+
+Limitações: Não use linguagem comercial. Não invente dados que não
+estão no resumo. Se faltar contexto pra concluir um insight, sinalize.
+
+Critério de Sucesso: o cliente lê só os títulos em sequência e entende
+onde estão os maiores valores, por que estão lá e o que fazer.
+
+Negativo: NÃO use títulos genéricos como "Resultados" ou
+"Próximos Passos" sem conteúdo no próprio título.</pre>
+    </div>
+  </section>
+
   <!-- Seção 4 — Exercício: Planilha de Orçamento -->
   <section class="section content-section reveal">
     <div class="site-container">
