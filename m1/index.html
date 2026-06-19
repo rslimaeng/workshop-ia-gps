@@ -8,6 +8,97 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    /* === Componente 7 Níveis === */
+    .niveis-component { margin-top: 24px; }
+    .niveis-nav {
+      display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap;
+    }
+    .niveis-nav button {
+      flex: 1; min-width: 44px; height: 44px;
+      border-radius: 8px; border: 1px solid var(--border);
+      background: transparent; color: var(--ink-muted);
+      font-size: 12px; font-weight: 700; letter-spacing: .04em;
+      cursor: pointer; font-family: inherit; transition: all .12s;
+    }
+    .niveis-nav button:hover { background: var(--bg-warm); color: var(--ink-soft); }
+    /* Fases — ativo */
+    .niveis-nav button.ph-d { background:#f3f4f6; color:#6b7280; border-color:#d1d5db; }
+    .niveis-nav button.ph-t { background:#fdf3ec; color:#c2916b; border-color:#e8c4a8; }
+    .niveis-nav button.ph-m { background:#eef4f6; color:#2c5f70; border-color:#b0cfd8; }
+    .niveis-nav button.ph-a { background:#ecf0f1; color:#1a3a4a; border-color:#8fb5c0; }
+    /* Card */
+    .niveis-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px;
+    }
+    .niveis-card-head {
+      display: flex; align-items: flex-start; gap: 16px; margin-bottom: 18px;
+    }
+    .niveis-badge {
+      width: 52px; height: 52px; flex-shrink: 0; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; font-weight: 700; font-family: 'Playfair Display', serif;
+    }
+    .niveis-badge.ph-d { background:#f3f4f6; color:#6b7280; border:1px solid #d1d5db; }
+    .niveis-badge.ph-t { background:#fdf3ec; color:#c2916b; border:1px solid #e8c4a8; }
+    .niveis-badge.ph-m { background:#eef4f6; color:#2c5f70; border:1px solid #b0cfd8; }
+    .niveis-badge.ph-a { background:#ecf0f1; color:#1a3a4a; border:1px solid #8fb5c0; }
+    /* Tags de fase */
+    .niveis-phase-tag {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .08em;
+      padding: 2px 8px; border-radius: 4px; margin-bottom: 6px;
+    }
+    .niveis-phase-tag.ph-d { background:#f3f4f6; color:#6b7280; border:1px solid #d1d5db; }
+    .niveis-phase-tag.ph-t { background:#fdf3ec; color:#c2916b; border:1px solid #e8c4a8; }
+    .niveis-phase-tag.ph-m { background:#eef4f6; color:#2c5f70; border:1px solid #b0cfd8; }
+    .niveis-phase-tag.ph-a { background:#ecf0f1; color:#1a3a4a; border:1px solid #8fb5c0; }
+    /* Textos */
+    .niveis-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; color: var(--ink); margin: 0 0 3px;
+    }
+    .niveis-ol { font-size: 13px; color: var(--ink-muted); line-height: 1.5; }
+    .niveis-sep { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+    .niveis-lbl {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .08em; color: var(--accent-warm); margin: 0 0 6px;
+    }
+    .niveis-txt { font-size: 14px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 14px; }
+    .niveis-txt.em { color: var(--ink); }
+    /* Ferramentas */
+    .niveis-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .niveis-tool {
+      font-size: 12px; padding: 3px 10px; border-radius: 4px;
+      background: var(--bg-warm); border: 1px solid var(--border); color: var(--ink-soft);
+    }
+    /* Próximo passo */
+    .niveis-next {
+      background: var(--bg-warm); border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0; padding: 14px 16px; margin-bottom: 16px;
+    }
+    .niveis-next-lbl {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .08em; margin-bottom: 6px;
+    }
+    .niveis-next-lbl.ph-d { color: #6b7280; }
+    .niveis-next-lbl.ph-t { color: #c2916b; }
+    .niveis-next-lbl.ph-m { color: #2c5f70; }
+    .niveis-next-lbl.ph-a { color: #1a3a4a; }
+    /* Rodapé do card */
+    .niveis-foot {
+      display: flex; justify-content: flex-end; gap: 8px;
+      padding-top: 14px; border-top: 1px solid var(--border);
+    }
+    .niveis-foot-btn {
+      padding: 7px 16px; font-size: 13px; cursor: pointer;
+      font-family: inherit; background: transparent;
+      border: 1px solid var(--border); border-radius: 6px;
+      color: var(--ink-soft); transition: all .12s;
+    }
+    .niveis-foot-btn:hover { background: var(--bg-warm); color: var(--ink); }
+  </style>
 </head>
 <body>
 
@@ -118,64 +209,14 @@
       <p class="eyebrow">Framework</p>
       <h2>Os 7 Níveis de Uso de IA</h2>
       <p>
-        Onde você está hoje? Onde quer chegar? Use esta escala para se posicionar
-        e definir sua meta de desenvolvimento.
+        Onde você está hoje? Onde quer chegar? Navegue pelos níveis para se identificar
+        e ver o próximo passo concreto.
       </p>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Nível</th>
-            <th>Nome</th>
-            <th>O que faz</th>
-            <th>Onde a GPS está</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>N1</strong></td>
-            <td>Curioso</td>
-            <td>Testou uma vez, não voltou mais</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><strong>N2</strong></td>
-            <td>Casual</td>
-            <td>Usa esporadicamente para tarefas simples</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><strong>N3</strong></td>
-            <td>Frequente Amador</td>
-            <td>Usa todo dia, mas sem método — resultados inconsistentes</td>
-            <td>← maioria da turma</td>
-          </tr>
-          <tr>
-            <td><strong>N4</strong></td>
-            <td>Frequente Profissional</td>
-            <td>Usa com framework (PCTFL), tem banco de prompts, replica resultados</td>
-            <td>← meta do workshop</td>
-          </tr>
-          <tr>
-            <td><strong>N5</strong></td>
-            <td>Integrador</td>
-            <td>Conecta IA com ferramentas da empresa (planilhas, e-mails, fluxos)</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><strong>N6</strong></td>
-            <td>Construtor</td>
-            <td>Cria assistentes e automações personalizadas para o time</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><strong>N7</strong></td>
-            <td>Arquiteto</td>
-            <td>Projeta sistemas de IA para a empresa inteira (IA Global)</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="niveis-component">
+        <nav class="niveis-nav" id="niveisNav" aria-label="Selecione um nível"></nav>
+        <div class="niveis-card" id="niveisCard"></div>
+      </div>
 
       <div class="callout" style="margin-top:24px">
         <strong>Meta realista deste workshop:</strong> sair do N3 (frequente amador) e chegar ao N4
@@ -245,5 +286,123 @@
   </footer>
 
   <script src="../assets/script.js"></script>
+  <script>
+    var niveisGPS = [
+      {
+        n:'N1', p:'d', fase:'Descoberta', t:'O Curioso',
+        ol:'Testou uma vez — ainda não integrou ao trabalho real',
+        sig:'Você abriu o ChatGPT alguma vez para ver como funciona, mas ainda não usou numa tarefa real do trabalho. O que não falta é curiosidade. O que falta é o primeiro caso de uso concreto do seu dia a dia.',
+        desc:'A maioria dos N1 na GPS conhece a ferramenta mas acha que "não é pra mim" ou "não tenho tempo de aprender". A verdade: você não precisa aprender — precisa experimentar com uma tarefa real que já teria que fazer de qualquer jeito.',
+        tools:['ChatGPT Free','Gemini'],
+        next:'Esta semana: use IA para redigir um e-mail profissional que você já teria que escrever de qualquer jeito. Sem pressão — só para sentir o que é possível com um caso real do seu trabalho.'
+      },
+      {
+        n:'N2', p:'d', fase:'Descoberta', t:'O Casual',
+        ol:'Usa quando lembra — resultado inconsistente, sem prompts salvos',
+        sig:'Você já usou algumas vezes e sabe que funciona. Às vezes o resultado surpreende, às vezes decepciona — sem saber exatamente por quê. Não tem nenhum prompt salvo.',
+        desc:'A inconsistência é o sinal clássico do N2: a ferramenta é a mesma, mas os resultados variam muito. Isso não é problema da IA — é ausência de método. Você começa do zero toda vez e confia na sorte.',
+        tools:['ChatGPT Free','Gemini'],
+        next:'Da próxima vez que um resultado for bom, salve o prompt antes de fechar a aba. Uma nota no celular já vale — esse é o embrião do seu banco pessoal.'
+      },
+      {
+        n:'N3', p:'t', fase:'Transição', t:'O Frequente Amador',
+        ol:'Usa todo dia — mas sem método. Maioria da turma GPS está aqui',
+        sig:'Você usa IA quase todo dia. O resultado às vezes é ótimo, às vezes é medíocre, e você não sabe o que fez diferente. Sensação de que depende da "sorte" da IA.',
+        desc:'Este é o ponto exato onde o workshop faz diferença. Uso frequente sem método = resultados inconsistentes. A IA não mudou — o prompt não tem estrutura. É o default de 95% dos usuários sem treinamento específico.',
+        tools:['ChatGPT Free','Gemini','Copilot'],
+        next:'No M4 deste workshop você aprende o framework PCTFL — Papel, Contexto, Tarefa, Formato, Limitações. É o que transforma cada prompt em algo replicável. Nunca mais começar do zero.'
+      },
+      {
+        n:'N4', p:'m', fase:'Método', t:'O Frequente Profissional',
+        ol:'Usa com framework, tem banco de prompts, replica resultados — meta do workshop',
+        sig:'Você tem prompts salvos que funcionam de verdade. Consegue explicar o que mudou quando um resultado melhorou. Já indicou IA para algum colega ou foi consultado sobre isso.',
+        desc:'O N4 não usa mais IA por instinto — aplica método. Cada prompt segue uma estrutura. Cada resultado bom vai para o banco. Cada resultado ruim vira aprendizado sobre o que faltou. A IA começa a parecer consistente porque o input passou a ser consistente.',
+        tools:['ChatGPT','Claude','Banco de prompts pessoal'],
+        next:'Organize seus 3 melhores prompts e compartilhe com pelo menos 1 colega esta semana. Esse é o começo do banco institucional GPS.'
+      },
+      {
+        n:'N5', p:'m', fase:'Método', t:'O Integrador',
+        ol:'Conecta IA com as ferramentas do trabalho — Excel, e-mail, documentos',
+        sig:'Você usa IA junto com outras ferramentas: manda dados do Excel para a IA, usa IA para estruturar documentos, já pediu à IA para analisar planilhas ou contratos reais do trabalho.',
+        desc:'O N5 entende que a IA não é uma ilha — é um processador que se encaixa no meio de outros fluxos. Você sabe quando usar o ChatGPT, o NotebookLM ou o Copilot do Excel. E sabe como copiar/colar da forma certa para cada ferramenta.',
+        tools:['NotebookLM','Copilot Excel','ChatGPT com upload'],
+        next:'Identifique 1 fluxo repetitivo e mapeie onde a IA já entra e onde ainda é manual. Esse mapa é o ponto de partida para a próxima integração.'
+      },
+      {
+        n:'N6', p:'a', fase:'Avançado', t:'O Construtor',
+        ol:'Cria assistentes, automações e ferramentas para o time',
+        sig:'Você tem pelo menos uma automação rodando sem precisar tocar. Já criou algum assistente personalizado para uso próprio ou do time. Começa a ver oportunidades de automação em todo processo.',
+        desc:'O N6 não só usa IA — constrói com ela. Ferramentas que outros usam. Fluxos que rodam sem intervenção. GPTs com instruções e arquivos da empresa. Aqui começa a IA Global: o conhecimento sai da cabeça individual e entra em sistemas.',
+        tools:['n8n','Zapier + AI','GPTs personalizados'],
+        next:'Documente 1 assistente ou fluxo que você criou de forma que outra pessoa possa manter sem te consultar. Documentação é o que transforma habilidade individual em ativo da empresa.'
+      },
+      {
+        n:'N7', p:'a', fase:'Avançado', t:'O Arquiteto',
+        ol:'Projeta sistemas de IA para a empresa inteira — IA Global',
+        sig:'Você projeta fluxos que operam sem intervenção constante, integra IA à infraestrutura da empresa e pensa em IA como sistema — não como ferramenta individual.',
+        desc:'O N7 é o destino da jornada de IA Global. A velocidade da empresa passa a ser a velocidade dos sistemas — não do humano mais lento na cadeia de informação. Pré-requisito crítico: documentação, processos e dados organizados.',
+        tools:['Claude Code','n8n avançado','APIs'],
+        next:'Veja M5 — "O que a GPS pode fazer esta semana" — para os primeiros passos em direção à IA Global. O N7 começa com documentação e processos, não com tecnologia.'
+      }
+    ];
+
+    var curN = 2; /* abre no N3 por padrão — maioria da turma */
+
+    function buildNiveisNav() {
+      var nav = document.getElementById('niveisNav');
+      nav.innerHTML = '';
+      niveisGPS.forEach(function(l, i) {
+        var btn = document.createElement('button');
+        btn.textContent = l.n;
+        btn.title = l.t;
+        btn.setAttribute('aria-selected', i === curN ? 'true' : 'false');
+        if (i === curN) btn.className = 'ph-' + l.p;
+        btn.addEventListener('click', function() { curN = i; buildNiveisNav(); buildNiveisCard(); });
+        nav.appendChild(btn);
+      });
+    }
+
+    function buildNiveisCard() {
+      var l = niveisGPS[curN], p = l.p;
+      var el = document.getElementById('niveisCard');
+      var tools = l.tools.map(function(t) {
+        return '<span class="niveis-tool">' + t + '</span>';
+      }).join('');
+      var prev = curN > 0
+        ? '<button class="niveis-foot-btn" onclick="goNivel(-1)">← anterior</button>' : '';
+      var nxt = curN < 6
+        ? '<button class="niveis-foot-btn" onclick="goNivel(1)">próximo →</button>' : '';
+      el.innerHTML =
+        '<div class="niveis-card-head">'
+          + '<div class="niveis-badge ph-' + p + '">' + l.n + '</div>'
+          + '<div>'
+            + '<span class="niveis-phase-tag ph-' + p + '">' + l.fase + '</span>'
+            + '<p class="niveis-title">' + l.t + '</p>'
+            + '<p class="niveis-ol">' + l.ol + '</p>'
+          + '</div>'
+        + '</div>'
+        + '<hr class="niveis-sep">'
+        + '<p class="niveis-lbl">Você está aqui se…</p>'
+        + '<p class="niveis-txt">' + l.sig + '</p>'
+        + '<p class="niveis-lbl">O que define este nível</p>'
+        + '<p class="niveis-txt em">' + l.desc + '</p>'
+        + '<p class="niveis-lbl">Ferramentas típicas</p>'
+        + '<div class="niveis-tools">' + tools + '</div>'
+        + '<div class="niveis-next">'
+          + '<p class="niveis-next-lbl ph-' + p + '">Próximo passo concreto</p>'
+          + '<p class="niveis-txt em" style="margin-bottom:0">' + l.next + '</p>'
+        + '</div>'
+        + '<div class="niveis-foot">' + prev + nxt + '</div>';
+    }
+
+    function goNivel(d) {
+      curN = Math.max(0, Math.min(6, curN + d));
+      buildNiveisNav();
+      buildNiveisCard();
+    }
+
+    buildNiveisNav();
+    buildNiveisCard();
+  </script>
 </body>
 </html>

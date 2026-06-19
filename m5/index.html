@@ -255,6 +255,32 @@
         Anote o prompt que funcionou. Compartilhe o resultado com o time.
       </p>
 
+      <div style="max-width:480px; margin:0 auto 32px; text-align:left">
+        <label style="display:block; font-size:13px; font-weight:600;
+               text-transform:uppercase; letter-spacing:.08em;
+               color:var(--ink-muted); margin-bottom:8px">
+          Qual tarefa você vai executar com IA esta semana?
+        </label>
+        <textarea id="compromissoTexto"
+          placeholder="Ex: Usar o Prompt 2 para estruturar a ata da reunião de obra de quarta-feira."
+          rows="3"
+          style="width:100%; box-sizing:border-box; padding:14px 16px;
+                 border:1.5px solid var(--border); border-radius:8px;
+                 background:var(--bg); font-family:inherit; font-size:14px;
+                 color:var(--ink); resize:vertical; outline:none;
+                 transition:border-color .2s;"></textarea>
+        <button id="registrarCompromisso"
+          style="margin-top:10px; padding:10px 24px; background:var(--accent);
+                 color:#fff; border:none; border-radius:6px; font-size:13px;
+                 font-weight:600; cursor:pointer; transition:opacity .2s;">
+          Registrar compromisso
+        </button>
+        <p id="compromissoConfirm" style="display:none; margin-top:10px;
+           font-size:14px; color:var(--accent); font-weight:500;">
+          ✓ Compromisso anotado. Guarde esse texto — ele é o seu ponto de partida.
+        </p>
+      </div>
+
       <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:32px">
         <a href="../banco-de-prompts/index.html" class="btn">
           Ver Banco de Prompts →
@@ -285,5 +311,29 @@
   </footer>
 
   <script src="../assets/script.js"></script>
+  <script>
+    (function() {
+      var textarea = document.getElementById('compromissoTexto');
+      var btn = document.getElementById('registrarCompromisso');
+      var confirm = document.getElementById('compromissoConfirm');
+      if (!textarea || !btn) return;
+      textarea.addEventListener('focus', function() {
+        textarea.style.borderColor = 'var(--accent)';
+      });
+      textarea.addEventListener('blur', function() {
+        textarea.style.borderColor = 'var(--border)';
+      });
+      btn.addEventListener('click', function() {
+        if (textarea.value.trim().length < 10) {
+          textarea.style.borderColor = 'var(--accent-warm)';
+          textarea.focus();
+          return;
+        }
+        confirm.style.display = 'block';
+        btn.style.opacity = '.5';
+        btn.disabled = true;
+      });
+    })();
+  </script>
 </body>
 </html>
