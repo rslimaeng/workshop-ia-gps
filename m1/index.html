@@ -136,10 +136,10 @@
 
       <div class="ia-aninhada-block">
         <svg class="ia-aninhada-svg" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" aria-label="Diagrama IA aninhada: IA contém Machine Learning, que contém Deep Learning, que contém IA Generativa">
-          <circle class="ia-aninhada-ring r1" cx="140" cy="140" r="135"/>
-          <circle class="ia-aninhada-ring r2" cx="140" cy="140" r="105"/>
-          <circle class="ia-aninhada-ring r3" cx="140" cy="140" r="75"/>
-          <circle class="ia-aninhada-ring r4" cx="140" cy="140" r="45"/>
+          <circle id="ring-r1" class="ia-aninhada-ring r1" cx="140" cy="140" r="135" data-ring="r1"/>
+          <circle id="ring-r2" class="ia-aninhada-ring r2" cx="140" cy="140" r="105" data-ring="r2"/>
+          <circle id="ring-r3" class="ia-aninhada-ring r3" cx="140" cy="140" r="75" data-ring="r3"/>
+          <circle id="ring-r4" class="ia-aninhada-ring r4" cx="140" cy="140" r="45" data-ring="r4"/>
           <!-- Labels -->
           <text class="ia-aninhada-label dark" x="140" y="22">IA</text>
           <text class="ia-aninhada-sub" x="140" y="34">tarefas inteligentes</text>
@@ -151,15 +151,16 @@
           <text class="ia-aninhada-label light" x="140" y="155" style="font-size:9px; opacity:.85">você está aqui</text>
         </svg>
 
-        <div class="ia-aninhada-text">
-          <p class="ia-aninhada-frase">
+        <div id="ia-aninhada-text" class="ia-aninhada-text">
+          <p id="ia-aninhada-frase" class="ia-aninhada-frase">
             <strong>IA generativa é um auto-completar treinado em quase tudo que a humanidade já escreveu.</strong> Ela não pensa — ela prevê qual palavra vem em seguida.
           </p>
-          <ol class="ia-aninhada-implicacoes">
+          <ol id="ia-aninhada-list" class="ia-aninhada-implicacoes">
             <li><strong>Por que ela inventa norma técnica com confiança total</strong> — continuar o texto de forma plausível é o que ela foi treinada pra fazer. Inventar não é bug; é como ela funciona.</li>
             <li><strong>Por que prompts vagos geram respostas vagas</strong> — sem contexto, ela auto-completa pra média estatística da internet.</li>
             <li><strong>Por que ela melhora com papel + contexto + tarefa</strong> — você restringe o universo de "próximas palavras prováveis" pro espaço certo.</li>
           </ol>
+          <p id="ia-aninhada-hint" class="ia-aninhada-hint">↑ Passe o mouse sobre cada camada para explorar</p>
         </div>
       </div>
     </div>
@@ -284,32 +285,32 @@
           <p class="hbar-graph-title">O que o mundo espera da IA</p>
           <p class="hbar-graph-source">Top 6 categorias · Anthropic 81k Interviews · 2025</p>
           <div class="hbar-row">
-            <span class="hbar-label">Professional excellence</span>
+            <span class="hbar-label">Excelência profissional</span>
             <div class="hbar-track"><div class="hbar-fill" style="width:100%"></div></div>
             <span class="hbar-pct">18,8%</span>
           </div>
           <div class="hbar-row">
-            <span class="hbar-label">Personal transformation</span>
+            <span class="hbar-label">Transformação pessoal</span>
             <div class="hbar-track"><div class="hbar-fill" style="width:73%"></div></div>
             <span class="hbar-pct">13,7%</span>
           </div>
           <div class="hbar-row">
-            <span class="hbar-label">Life management</span>
+            <span class="hbar-label">Gestão da vida</span>
             <div class="hbar-track"><div class="hbar-fill" style="width:72%"></div></div>
             <span class="hbar-pct">13,5%</span>
           </div>
           <div class="hbar-row">
-            <span class="hbar-label">Time freedom</span>
+            <span class="hbar-label">Liberdade de tempo</span>
             <div class="hbar-track"><div class="hbar-fill" style="width:59%"></div></div>
             <span class="hbar-pct">11,1%</span>
           </div>
           <div class="hbar-row">
-            <span class="hbar-label">Financial independence</span>
+            <span class="hbar-label">Independência financeira</span>
             <div class="hbar-track"><div class="hbar-fill" style="width:51%"></div></div>
             <span class="hbar-pct">9,7%</span>
           </div>
           <div class="hbar-row">
-            <span class="hbar-label">Societal transformation</span>
+            <span class="hbar-label">Transformação social</span>
             <div class="hbar-track"><div class="hbar-fill" style="width:50%"></div></div>
             <span class="hbar-pct">9,4%</span>
           </div>
@@ -791,6 +792,83 @@
 
     buildNiveisNav();
     buildNiveisCard();
+  </script>
+
+  <script>
+    /* ── IA Aninhada — hover/click interativo ── */
+    (function () {
+      var layers = {
+        r1: {
+          frase: '<strong>Inteligência Artificial</strong> — capacidade de máquinas realizarem tarefas que antes exigiam inteligência humana.',
+          items: [
+            '<strong>IA não é novidade</strong> — existe desde os anos 1950. O que mudou foi a escala: petabytes de dados + poder computacional acessível.',
+            '<strong>GPS inteligente, recomendações do Spotify, filtro de spam</strong> — tudo é IA. A generativa é a camada mais recente dessa história de 70 anos.',
+            '<strong>Saber que IA é ampla</strong> ajuda a não confundir a ferramenta (ChatGPT) com a tecnologia (IA). A ferramenta muda todo ano; a lógica, não.'
+          ]
+        },
+        r2: {
+          frase: '<strong>Machine Learning</strong> — a máquina aprende com dados, sem precisar de regras escritas à mão.',
+          items: [
+            '<strong>Em vez de programar regras</strong>, você mostra exemplos. A máquina descobre padrões sozinha — é daí que vem a capacidade de generalizar para casos novos.',
+            '<strong>Quanto mais dados, melhor aprende</strong> — por isso o ChatGPT foi treinado em bilhões de páginas de texto. Volume de dados é vantagem competitiva.',
+            '<strong>Só sabe o que estava no treinamento</strong> — se o dado era enviesado ou incompleto, o modelo reflete isso. Daí vêm os limites e as alucinações.'
+          ]
+        },
+        r3: {
+          frase: '<strong>Deep Learning</strong> — redes neurais profundas que aprendem padrões complexos em camadas, inspiradas no funcionamento do cérebro humano.',
+          items: [
+            '<strong>Camadas de abstração</strong>: a 1ª camada reconhece palavras, a 2ª frases, a 3ª conceitos. É o que permite ao modelo "entender" contexto e intenção.',
+            '<strong>Por que a IA parece coerente</strong> — as camadas capturam relações de longo alcance entre palavras. Sem deep learning, era só previsão palavra por palavra.',
+            '<strong>O custo é treinamento pesado</strong> — treinar um modelo como o GPT-4 levou semanas e centenas de milhões de dólares. O que você usa hoje é o resultado desse investimento.'
+          ]
+        },
+        r4: {
+          frase: '<strong>IA Generativa</strong> — um auto-completar treinado em quase tudo que a humanidade já escreveu. Ela não pensa — ela prevê qual palavra vem em seguida.',
+          items: [
+            '<strong>Por que ela inventa norma técnica com confiança total</strong> — continuar o texto de forma plausível é o que ela foi treinada pra fazer. Inventar não é bug; é como ela funciona.',
+            '<strong>Por que prompts vagos geram respostas vagas</strong> — sem contexto, ela auto-completa pra média estatística da internet.',
+            '<strong>Por que ela melhora com papel + contexto + tarefa</strong> — você restringe o universo de "próximas palavras prováveis" pro espaço certo.'
+          ]
+        }
+      };
+
+      var rings = ['r1', 'r2', 'r3', 'r4'];
+      var active = null;
+
+      function activate(ring) {
+        if (ring === active) return;
+        active = ring;
+
+        var textEl = document.getElementById('ia-aninhada-text');
+        textEl.classList.add('fading');
+
+        setTimeout(function () {
+          document.getElementById('ia-aninhada-frase').innerHTML = layers[ring].frase;
+          var list = document.getElementById('ia-aninhada-list');
+          list.innerHTML = layers[ring].items
+            .map(function (item) { return '<li>' + item + '</li>'; })
+            .join('');
+          textEl.classList.remove('fading');
+        }, 200);
+
+        rings.forEach(function (r) {
+          var el = document.getElementById('ring-' + r);
+          if (!el) return;
+          el.classList.toggle('active', r === ring);
+          el.classList.toggle('dimmed', r !== ring);
+        });
+
+        var hint = document.getElementById('ia-aninhada-hint');
+        if (hint) hint.style.display = 'none';
+      }
+
+      rings.forEach(function (r) {
+        var el = document.getElementById('ring-' + r);
+        if (!el) return;
+        el.addEventListener('mouseenter', function () { activate(r); });
+        el.addEventListener('click', function () { activate(r); });
+      });
+    })();
   </script>
 </body>
 </html>
