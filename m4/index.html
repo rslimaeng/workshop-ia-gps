@@ -172,6 +172,112 @@
     </div>
   </section>
 
+  <!-- Seção — Banco de Prompts GPS por Função -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Mapa por função</p>
+      <h2>Banco de Prompts GPS por Função</h2>
+      <p>
+        Você já entendeu o PCTFL. Antes de montar o seu, veja quais prompts do
+        <a href="../banco-de-prompts/index.html">Banco de Prompts GPS</a> servem direto
+        para o seu papel. Todos já estão no formato PCTFL — só copiar, adaptar os campos
+        entre colchetes e usar.
+      </p>
+
+      <h3 style="margin-top:32px">⚙️ Engenharia / Sala Técnica</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Tarefa</th>
+            <th>Onde encontrar o prompt</th>
+            <th>Arquivo de apoio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ata de reunião de obra</td>
+            <td>Prompt 2 · ver M2 Exercício 1</td>
+            <td>A4_Eng_Ata_Reuniao_Obra.md</td>
+          </tr>
+          <tr>
+            <td>Memorial descritivo</td>
+            <td>Prompt 1 · ver M2 Exercício 2</td>
+            <td>A4_Eng_Memorial_Descritivo_Residencia.md</td>
+          </tr>
+          <tr>
+            <td>Revisão de orçamento</td>
+            <td>Prompt 4 · ver M3 Exercício</td>
+            <td>A3_Eng_Orcamento_Simplificado.csv</td>
+          </tr>
+          <tr>
+            <td>Interpretação de norma ABNT</td>
+            <td>Prompt 3</td>
+            <td>Cole o trecho da norma direto no prompt</td>
+          </tr>
+          <tr>
+            <td>Especificação técnica de material</td>
+            <td>Prompt 5</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Análise de proposta comercial / licitação</td>
+            <td>Prompt 8</td>
+            <td>A4_Adm_Proposta_Comercial_Licitacao.md</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout danger" style="margin-top:20px">
+        <strong>Regra para engenheiros:</strong> nunca peça à IA para "buscar a norma". Cole o
+        trecho exato e peça interpretação. Você assina — você verifica.
+      </div>
+
+      <h3 style="margin-top:40px">💼 Administrativo / Financeiro</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Tarefa</th>
+            <th>Prompt base</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Relatório executivo para diretoria</td><td>Prompt 6</td></tr>
+          <tr><td>Pauta de reunião estruturada</td><td>Prompt 7</td></tr>
+          <tr><td>Análise de proposta de fornecedor</td><td>Prompt 8</td></tr>
+          <tr><td>Comunicado interno para equipe</td><td>Prompt 9</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin-top:40px">👥 RH / DP</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Tarefa</th>
+            <th>Prompt base</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Comunicado interno (mudança, aviso, convocação)</td><td>Prompt 9</td></tr>
+          <tr><td>Resumo de documento trabalhista em linguagem simples</td><td>Prompt 10</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin-top:40px">🎓 Estagiários / Jovem Aprendiz</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Tarefa</th>
+            <th>Prompt base</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Aprender habilidade nova (AutoCAD, SINAPI, quantitativo)</td><td>Prompt 11</td></tr>
+          <tr><td>Revisar e-mail ou texto antes de enviar</td><td>Prompt 12</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <!-- Seção 4 — Exercício: Monte seu prompt PCTFL -->
   <section class="section content-section reveal">
     <div class="site-container">
@@ -205,6 +311,9 @@
         <div class="callout" style="margin-top:20px; margin-bottom:0">
           <strong>Depois de escrever:</strong> teste no ChatGPT ou Claude. Compare o resultado
           com o que você obteria com um prompt simples. A diferença é o valor do método.
+          <br><br>
+          <strong>Critério de sucesso:</strong> o resultado precisa de menos de 5 minutos de
+          revisão para estar pronto pra usar. Se demorar mais, o prompt precisa de mais contexto.
         </div>
       </div>
 
@@ -213,6 +322,142 @@
         <a href="../banco-de-prompts/index.html">Banco de Prompts GPS</a> —
         todos já no formato PCTFL, organizados por função.
       </p>
+    </div>
+  </section>
+
+  <!-- Seção — Padrões Internos de Uso -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Do individual para o coletivo</p>
+      <h2>Padrões Internos de Uso</h2>
+      <p>
+        Um prompt que funciona é <strong>ativo da empresa</strong> — não só do engenheiro
+        que criou. A diferença entre "tenho um prompt bom" e "a GPS tem um padrão de prompt"
+        é uma página de documentação.
+      </p>
+
+      <h3 style="margin-top:24px">Template para documentar um prompt</h3>
+      <table style="margin-top:12px">
+        <thead>
+          <tr>
+            <th style="width:30%">Campo</th>
+            <th>O que preencher</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Nome do prompt</strong></td>
+            <td>Ex: "Memorial Descritivo — Obras Urbanas"</td>
+          </tr>
+          <tr>
+            <td><strong>Tipo de tarefa</strong></td>
+            <td>Ex: Geração de documento técnico</td>
+          </tr>
+          <tr>
+            <td><strong>Prompt PCTFL completo</strong></td>
+            <td>Cole o prompt que funcionou — exatamente como você escreveu</td>
+          </tr>
+          <tr>
+            <td><strong>Resultado esperado</strong></td>
+            <td>Ex: Memorial de 1-2 páginas, tom formal, subtítulos por sistema</td>
+          </tr>
+          <tr>
+            <td><strong>Revisão necessária</strong></td>
+            <td>Ex: Verificar especificações técnicas, ajustar dados reais do projeto</td>
+          </tr>
+          <tr>
+            <td><strong>Quem criou / quando</strong></td>
+            <td>Responsabilidade e rastreabilidade — sem isso, prompt vira lenda urbana</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout" style="margin-top:24px">
+        <strong>Onde guardar:</strong> pasta compartilhada da empresa (Google Drive, OneDrive),
+        Notion da GPS, ou um Google Docs com os prompts do time. O que importa é estar
+        <strong>acessível para quem precisar</strong> — não na cabeça ou no chat individual.
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção — Bônus: Do Prompt ao Assistente Persistente -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Bônus · Próximo nível</p>
+      <h2>🚀 Do Prompt ao Assistente Persistente</h2>
+      <p>
+        Você criou um prompt PCTFL. O próximo passo é transformá-lo em um
+        <strong>assistente persistente</strong> — um parceiro especializado que já sabe quem
+        você é e o que você precisa, sem você re-explicar a cada sessão nova.
+      </p>
+      <p>
+        Isso é o salto concreto para os níveis mais altos dos
+        <a href="../m1/index.html">7 Níveis de Uso de IA</a> que vimos no M1 — sair do prompt
+        isolado e operar com contexto persistente.
+      </p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; margin-top:32px">
+
+        <div style="background:var(--bg-warm); border:1px solid var(--border); border-radius:12px; padding:24px">
+          <p style="font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--accent); margin:0 0 8px">
+            Caminho 1
+          </p>
+          <h3 style="margin:0 0 16px">No Claude (gratuito)</h3>
+          <ol style="font-size:14px; line-height:1.8; color:var(--ink-soft); padding-left:20px; margin:0 0 16px">
+            <li>Abra Claude → menu lateral → <strong>Projects</strong> → <strong>New Project</strong></li>
+            <li>Em <strong>Project Instructions</strong>, cole o contexto da GPS e o padrão que você criou neste M4</li>
+            <li>Teste numa nova conversa: a IA já sabe quem você é, sem reexplicar</li>
+          </ol>
+          <p style="font-size:13px; color:var(--ink-muted); font-style:italic; margin:0; padding:12px; background:var(--bg); border-radius:6px; border-left:3px solid var(--accent)">
+            "Sou engenheiro na GPS Engenharia, Fortaleza/CE. Trabalhamos com projetos
+            residenciais, comerciais e licitações municipais. Tom padrão: técnico e objetivo."
+          </p>
+        </div>
+
+        <div style="background:var(--bg-warm); border:1px solid var(--border); border-radius:12px; padding:24px">
+          <p style="font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--accent-warm); margin:0 0 8px">
+            Caminho 2
+          </p>
+          <h3 style="margin:0 0 16px">No ChatGPT (gratuito)</h3>
+          <ol style="font-size:14px; line-height:1.8; color:var(--ink-soft); padding-left:20px; margin:0 0 16px">
+            <li>Menu → <strong>Personalizar ChatGPT</strong> → <strong>Instruções personalizadas</strong></li>
+            <li>Em <em>"O que devo saber sobre você"</em>: cole o contexto da sua função na GPS</li>
+            <li>Em <em>"Como deve responder"</em>: cole o padrão de formato que funcionou neste M4</li>
+          </ol>
+          <p style="font-size:13px; color:var(--ink-muted); margin:0; padding:12px; background:var(--bg); border-radius:6px; border-left:3px solid var(--accent-warm)">
+            Pronto. Toda conversa nova já começa com o ChatGPT sabendo seu papel, seu
+            contexto técnico e o tom que você espera.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="callout" style="margin-top:32px">
+        <strong>O que muda na prática:</strong> você não re-explica mais quem é e o que faz.
+        A IA já sabe. É como ter um colega que está sempre em dia com seus projetos — sem
+        onboarding a cada sessão nova.
+        <br><br>
+        <strong>Conexão com os 7 Níveis:</strong> isso é o salto do N4 (Frequente Profissional)
+        para o <strong>N5 (Integrador)</strong> — você passa a operar com assistentes
+        especializados, não com prompts isolados. Quando você compartilhar esse assistente
+        com o time, entra no território do <strong>N6 (Construtor)</strong>.
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção — Entregável do módulo -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Antes de seguir para o M5</p>
+      <h2>Entregável deste módulo</h2>
+      <p>Você só deve avançar quando conseguir marcar todos:</p>
+
+      <ul style="font-size:15px; line-height:2; color:var(--ink-soft); padding-left:20px; margin-top:16px">
+        <li>1 prompt PCTFL completo construído para uma tarefa real do seu trabalho</li>
+        <li>Testado no ChatGPT ou Claude e ajustado em sala</li>
+        <li>Pronto para reusar na semana que vem</li>
+        <li>Documentado no formato de Padrão Interno (Nome + Tipo + Prompt + Resultado esperado)</li>
+      </ul>
     </div>
   </section>
 
