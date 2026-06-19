@@ -130,12 +130,12 @@
 
   <!-- Header da página -->
   <div class="module-header site-container">
-    <p class="eyebrow">Referência · 12 prompts</p>
+    <p class="eyebrow">Referência · 30 prompts</p>
     <h1>Banco de Prompts GPS</h1>
     <div class="module-header-meta">
-      <span>Todos no formato PCTFL</span>
+      <span>P1–P12 em PCTFL · P13–P30 em PCTFL+CS+N</span>
       <span>·</span>
-      <span>Prontos para copiar e adaptar</span>
+      <span>6 funções · prontos para copiar e adaptar</span>
     </div>
   </div>
 
@@ -152,10 +152,12 @@
   <!-- Filtro por função -->
   <section class="site-container" style="padding: 0 0 32px">
     <div class="filter-bar">
-      <button class="filter-btn active" data-filter="all">Todos (12)</button>
-      <button class="filter-btn" data-filter="engenharia">⚙️ Engenharia (5)</button>
-      <button class="filter-btn" data-filter="adm">💼 Administrativo (3)</button>
-      <button class="filter-btn" data-filter="rh">👥 RH / DP (2)</button>
+      <button class="filter-btn active" data-filter="all">Todos (30)</button>
+      <button class="filter-btn" data-filter="engenharia">⚙️ Engenharia (10)</button>
+      <button class="filter-btn" data-filter="adm">💼 Administrativo (6)</button>
+      <button class="filter-btn" data-filter="rh">👥 RH / DP (4)</button>
+      <button class="filter-btn" data-filter="comercial">📊 Comercial (3)</button>
+      <button class="filter-btn" data-filter="lideranca">👔 Liderança (5)</button>
       <button class="filter-btn" data-filter="estagiarios">🎓 Estagiários (2)</button>
     </div>
   </section>
@@ -549,6 +551,613 @@ Texto original:
 Formato: Me dê a versão revisada + uma lista rápida do que você mudou e por quê.
 
 Limitações: Não mude o sentido do que estou dizendo. Se não entender a intenção de algum trecho, me pergunte.</pre>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         P13–P30 · Prompts evoluídos em PCTFL+CS+N
+         Patamar avançado: estruturado + verificável
+         ============================================================ -->
+
+    <!-- P13 -->
+    <div class="prompt-card reveal" data-function="engenharia">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P13 — Extrair Cláusulas Críticas de Contrato</h3>
+          <span class="prompt-card-function">⚙️ Engenharia</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P13" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para identificar riscos e responsabilidades em contrato de licitação ou cliente B2B antes de assinar.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P13')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P13">Papel: Você é um consultor jurídico-técnico especializado em contratos de obras e serviços de engenharia para o setor público e privado no Brasil.
+
+Contexto: A GPS Engenharia recebeu um contrato de [licitação / cliente privado] para [tipo de obra]. Preciso identificar cláusulas críticas antes de assinar.
+
+Trecho do contrato:
+[cole o contrato ou os trechos relevantes]
+
+Tarefa: Extraia cláusulas críticas em 5 categorias: (1) prazo e marcos contratuais, (2) responsabilidade técnica (CREA, ART), (3) pagamentos e penalidades, (4) garantias e seguros, (5) rescisão e força maior.
+
+Formato: tabela com 4 colunas — Categoria | Cláusula (resumo) | Risco para GPS | Mitigação recomendada. Máximo 12 linhas.
+
+Limitações: Use apenas o texto fornecido. Não invente cláusulas. Se algo for ambíguo, sinalize "verificar com jurídico".
+
+Critério de Sucesso: o engenheiro responsável decide assinar / negociar / rejeitar em menos de 15 minutos lendo só a tabela.
+
+Negativo: NÃO emitir parecer jurídico definitivo. NÃO usar latim. NÃO ignorar cláusulas que parecem "padrão" mas mascaram riscos.</pre>
+      </div>
+    </div>
+
+    <!-- P14 -->
+    <div class="prompt-card reveal" data-function="engenharia">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P14 — Cronograma de Obra a partir de Escopo</h3>
+          <span class="prompt-card-function">⚙️ Engenharia</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P14" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para transformar escopo de obra em cronograma com fases, dependências e caminho crítico — pronto para Gantt.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P14')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P14">Papel: Você é um engenheiro de planejamento especializado em obras de construção civil de pequeno e médio porte em Fortaleza/CE.
+
+Contexto: A GPS Engenharia vai iniciar uma obra de [tipo: residencial / comercial / reforma] de [área m²], padrão [popular / médio / alto]. Tenho o escopo geral e preciso transformar em cronograma estruturado.
+
+Escopo:
+[cole o escopo: itens principais, prazo total estimado, recursos disponíveis]
+
+Tarefa: Monte um cronograma em fases (preparação, execução, finalização). Para cada fase, liste atividades-chave com duração estimada e dependências.
+
+Formato: tabela com 5 colunas — Fase | Atividade | Duração (dias úteis) | Depende de | Recursos críticos. Agrupar por fase. Indicar caminho crítico ao final em 1 parágrafo.
+
+Limitações: Não estime custos — só prazo e dependências. Se faltar info essencial (área, padrão), pergunte antes. Use produtividade SINAPI como referência quando aplicável.
+
+Critério de Sucesso: o cronograma pode ser jogado direto em planilha de Gantt sem reorganizar atividades ou dependências.
+
+Negativo: NÃO incluir atividades genéricas tipo "início" ou "encerramento" vazias. NÃO criar dependências artificiais.</pre>
+      </div>
+    </div>
+
+    <!-- P15 -->
+    <div class="prompt-card reveal" data-function="engenharia">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P15 — Diagnóstico de Falha com 5 Porquês</h3>
+          <span class="prompt-card-function">⚙️ Engenharia</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P15" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para investigar a causa raiz de problema recorrente em obra (infiltração, rachadura, atraso) com framework 5 Porquês.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P15')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P15">Papel: Você é um engenheiro consultor especializado em diagnóstico de patologias da construção e análise de causa raiz em obras.
+
+Contexto: A GPS Engenharia identificou um problema recorrente: [descreva — ex: infiltração em laje, rachaduras em alvenaria, prazo estourado]. Preciso aplicar causa raiz para evitar repetição.
+
+Dados do problema:
+[quando ocorre, em qual fase da obra, sintomas observados, ações já tentadas]
+
+Tarefa: Aplique 5 Porquês validando cada nível com os dados fornecidos. Termine com 3 ações concretas para endereçar a causa raiz.
+
+Formato:
+- Problema observado (1 linha)
+- Por quê 1 a 5: [resposta + evidência nos dados]
+- Causa raiz (1 frase)
+- 3 ações de mitigação com responsável sugerido e prazo
+
+Limitações: Em cada nível, valide com os dados — não pule etapas. Se faltar dado, sinalize "verificar X".
+
+Critério de Sucesso: o líder de obra consegue executar pelo menos 1 das 3 ações na semana seguinte sem mais investigação.
+
+Negativo: NÃO terminar em "falta de treinamento" ou "comunicação" sem evidência. NÃO atribuir causa a pessoas — atribuir a processo ou condição técnica.</pre>
+      </div>
+    </div>
+
+    <!-- P16 -->
+    <div class="prompt-card reveal" data-function="engenharia">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P16 — Análise de Norma com Citação</h3>
+          <span class="prompt-card-function">⚙️ Engenharia</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P16" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para extrair exigências objetivas de uma norma técnica (NBR, NR, SINAPI) com citação do item e armadilhas comuns.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P16')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P16">Papel: Você é um consultor técnico em normas brasileiras (ABNT, SINAPI, NR) com especialização em construção civil.
+
+Contexto: A GPS Engenharia precisa aplicar uma norma em projeto/obra. O texto foi carregado no NotebookLM ou colado abaixo.
+
+Norma: [NBR XXXX / NR-XX / SINAPI tabela X]
+Trecho:
+[cole o trecho da norma OU indique que está no notebook]
+
+Tarefa: Responda 4 perguntas usando APENAS o texto fornecido:
+(1) o que a norma exige objetivamente — em linguagem prática?
+(2) qual o critério mensurável de conformidade (números, tolerâncias)?
+(3) onde estão as armadilhas comuns que geram não-conformidade?
+(4) o que NÃO está coberto e exige consulta a outra fonte?
+
+Formato: 4 seções numeradas. Cada resposta cita o item/seção da norma entre parênteses. Termine com 1 frase de alerta sobre o que mais gera não-conformidade em obras de pequeno/médio porte.
+
+Limitações: Use apenas o texto carregado. Se exigir info fora, diga "não consta no trecho fornecido". Não interprete obrigações legais sem ressalva.
+
+Critério de Sucesso: o engenheiro aplica a norma em campo na mesma semana sem precisar ler o documento inteiro.
+
+Negativo: NÃO inventar números, tolerâncias ou seções inexistentes. NÃO usar "consulte um especialista" como muleta — diga exatamente o que verificar e onde.</pre>
+      </div>
+    </div>
+
+    <!-- P17 -->
+    <div class="prompt-card reveal" data-function="engenharia">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P17 — Análise Crítica em 3 Rodadas</h3>
+          <span class="prompt-card-function">⚙️ Engenharia</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P17" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para análise de decisão complexa em 3 rodadas: estrutura → contexto interno → antecipação de objeções da diretoria.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P17')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P17">Papel: Você é um engenheiro sênior parceiro de análise crítica para a GPS.
+
+Contexto: Tenho [projeto / decisão crítica] em análise. Vou rodar 3 rodadas com você — uma de cada vez, usando o output da anterior.
+
+═══ RODADA 1 — Esqueleto sem conclusão ═══
+Tarefa: Liste os critérios técnicos a avaliar nesta decisão. Sem conclusões ainda — só a estrutura do que precisa ser analisado.
+Formato: lista numerada (critério + 1 linha de descrição).
+Negativo: não emitir recomendação ainda.
+
+═══ RODADA 2 — Contexto interno + reanálise ═══
+Contexto que só eu tenho:
+- Prioridade GPS atual: [X]
+- Histórico relevante: [Y]
+- Restrições operacionais: [Z]
+Tarefa: Refine a análise da Rodada 1. Quais critérios ganham peso? Onde surgem riscos com este contexto?
+Formato: mantém estrutura + nota de impacto em cada critério.
+
+═══ RODADA 3 — Antecipação de objeções ═══
+Tarefa: Liste as 5 perguntas difíceis que a diretoria vai fazer. Para cada uma, dê a resposta recomendada.
+Formato: lista numerada (pergunta + resposta em bullets).
+
+Limitações: cada rodada usa o output da anterior. Não pular rodadas.
+
+Critério de Sucesso: chego à reunião com diretoria sem surpresas e com argumento estruturado.
+
+Negativo: NÃO emitir recomendação final na Rodada 1. NÃO fazer perguntas genéricas na Rodada 3.</pre>
+      </div>
+    </div>
+
+    <!-- P18 -->
+    <div class="prompt-card reveal" data-function="adm">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P18 — Análise de Variância Orçado × Realizado</h3>
+          <span class="prompt-card-function">💼 Administrativo</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P18" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para identificar desvios entre orçado e realizado por categoria com causa provável e ação corretiva.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P18')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P18">Papel: Você é um analista financeiro especializado em controladoria de empresas de engenharia e construção civil.
+
+Contexto: A GPS Engenharia fechou o mês [mês/ano] e preciso analisar a variância orçado × realizado para apresentar à diretoria.
+
+Dados:
+[cole tabela com categorias × valores orçado, realizado]
+
+Tarefa: Identifique os 5 maiores desvios (positivos e negativos), proponha causa provável de cada um e sugira 1 ação corretiva por desvio crítico.
+
+Formato: tabela com 5 colunas — Categoria | Orçado (R$) | Realizado (R$) | Variância (% e R$) | Causa provável + Ação. Ordenar por magnitude do desvio.
+
+Limitações: Use apenas os dados fornecidos. Não invente categorias. Se faltar contexto para sugerir causa, sinalize "verificar com responsável da área".
+
+Critério de Sucesso: o diretor consegue tomar decisão de revisar orçamento ou cobrar área específica em menos de 10 minutos com a tabela.
+
+Negativo: NÃO atribuir causa a "mercado" ou "imprevistos" sem dado. NÃO listar 20 desvios menores — foco nos 5 que importam.</pre>
+      </div>
+    </div>
+
+    <!-- P19 -->
+    <div class="prompt-card reveal" data-function="adm">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P19 — Matriz Multicritério de Fornecedores</h3>
+          <span class="prompt-card-function">💼 Administrativo</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P19" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para comparar 3+ fornecedores em critérios ponderados, gerar ranking e justificativa documentada para auditoria.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P19')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P19">Papel: Você é um especialista em compras e gestão de fornecedores para o setor de construção civil.
+
+Contexto: A GPS Engenharia precisa selecionar fornecedor para [tipo de insumo/serviço]. Recebi 3+ propostas e preciso decidir com critérios documentados.
+
+Critérios e propostas:
+[liste critérios com pesos e dados de cada fornecedor]
+
+Tarefa: Estruture uma matriz multicritério com scoring ponderado. Calcule a nota final de cada fornecedor, identifique o vencedor e documente a justificativa.
+
+Formato:
+- Aba 1: tabela Critérios (peso somando 100%)
+- Aba 2: tabela Fornecedores × Critérios com notas (1-5) e score ponderado
+- Aba 3: ranking final + fornecedor recomendado + 2º colocado como backup + justificativa narrativa em 1 parágrafo
+
+Limitações: Use apenas os dados fornecidos. Se faltar nota de algum critério, marque "—" e penalize o score na proporção. Não invente notas.
+
+Critério de Sucesso: a decisão pode ser apresentada em auditoria com rastreabilidade total — peso, nota, score e justificativa documentados.
+
+Negativo: NÃO escolher por critério único (só preço). NÃO usar pesos hardcoded — explicite cada peso na matriz.</pre>
+      </div>
+    </div>
+
+    <!-- P20 -->
+    <div class="prompt-card reveal" data-function="adm">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P20 — Estratégia de Negociação com Fornecedor</h3>
+          <span class="prompt-card-function">💼 Administrativo</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P20" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para preparar argumentos, BATNA e alternativas antes de negociação com fornecedor estratégico.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P20')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P20">Papel: Você é um consultor especializado em negociação B2B no setor de construção civil.
+
+Contexto: A GPS Engenharia precisa negociar com fornecedor estratégico de [insumo/serviço]. Quero preparar a reunião antes de entrar.
+
+Situação:
+- Histórico com este fornecedor: [bom / neutro / ruim]
+- O que queremos obter: [redução de preço X% / prazo / condição de pagamento]
+- BATNA conhecido (alternativa se não fechar): [descreva]
+- Restrições do nosso lado: [prazo, volume mínimo, etc]
+
+Tarefa: Construa uma estratégia de negociação em 4 blocos: (1) abertura recomendada, (2) 3 argumentos de leverage (preço de mercado, volume, prazo, parceria), (3) concessões aceitáveis em troca de quê, (4) ponto de saída claro (quando levantar e ir pro BATNA).
+
+Formato: 4 seções numeradas. Cada argumento com 1 frase de uso direto na reunião. Termine com "Frase de saída" — o que dizer se não chegar no mínimo aceitável.
+
+Limitações: Use apenas o contexto fornecido. Não suponha posição emocional do outro lado sem dado.
+
+Critério de Sucesso: saio da reunião com o resultado esperado OU saio sem queimar a relação.
+
+Negativo: NÃO recomendar pressão agressiva sem dado. NÃO criar argumentos baseados em "achismo" de mercado — explicite quando é hipótese.</pre>
+      </div>
+    </div>
+
+    <!-- P21 -->
+    <div class="prompt-card reveal" data-function="rh">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P21 — Análise Cruzada de Avaliação de Desempenho</h3>
+          <span class="prompt-card-function">👥 RH / DP</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P21" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para cruzar formulário de avaliação com política da empresa e decidir elegibilidade à promoção com evidência.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P21')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P21">Papel: Você é um analista de RH sênior especializado em ciclos de avaliação de desempenho em empresas técnicas.
+
+Contexto: A GPS Engenharia está fechando o ciclo de avaliação. Preciso decidir se o colaborador [nome/função] está elegível à promoção. A política RH e o formulário foram carregados no NotebookLM (ou colados abaixo).
+
+Documentos:
+[cole política + formulário preenchido OU referencie no notebook]
+
+Tarefa: Cruze os dois documentos. Liste cada critério da política, mostre a situação do colaborador no formulário e classifique como Atende / Não Atende / Parcial. Termine com recomendação documentada.
+
+Formato: tabela com 4 colunas — Critério (com seção da política) | Requisito | Situação (com campo do formulário) | Status. Seguida de parágrafo com recomendação para a calibração.
+
+Limitações: Use apenas os dois documentos. Cite seção da política E campo do formulário em cada conclusão. Não emita juízo de valor sobre a pessoa.
+
+Critério de Sucesso: o gestor apresenta a decisão na calibração com evidências documentadas — sem opinião pessoal.
+
+Negativo: NÃO usar expressões como "merece" ou "deveria ser promovido". NÃO concluir sem evidência citável nos documentos.</pre>
+      </div>
+    </div>
+
+    <!-- P22 -->
+    <div class="prompt-card reveal" data-function="rh">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P22 — Plano de Onboarding Estruturado</h3>
+          <span class="prompt-card-function">👥 RH / DP</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P22" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para estruturar a primeira semana de novo colaborador com trilha de aprendizado, marcos e responsáveis por etapa.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P22')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P22">Papel: Você é um especialista em onboarding e gestão de pessoas em empresas técnicas de pequeno e médio porte.
+
+Contexto: A GPS Engenharia vai receber um novo colaborador para a função de [função], senioridade [júnior / pleno / sênior]. Preciso estruturar a primeira semana.
+
+Dados:
+- Função: [descreva responsabilidades-chave]
+- Equipe: [tamanho, principais interlocutores]
+- Ferramentas que o colaborador vai usar: [AutoCAD, planilhas SINAPI, software de gestão, etc]
+- Padrinho/mentor designado: [nome ou "definir"]
+
+Tarefa: Monte um plano de onboarding de 5 dias úteis com marcos diários, atividades, responsáveis e critério de "pronto" para cada marco.
+
+Formato: tabela com 5 colunas — Dia | Marco | Atividades | Responsável | Critério de pronto. Termine com 3 perguntas de check-in para a sexta-feira (avaliar como foi a semana).
+
+Limitações: Use apenas o contexto fornecido. Se faltar info (ex: ferramentas específicas), pergunte antes de detalhar. Plano focado em integração — não em treinamento técnico profundo.
+
+Critério de Sucesso: o colaborador termina a semana sabendo: para quem ele reporta, quais ferramentas precisa dominar, qual o primeiro entregável real.
+
+Negativo: NÃO criar dia genérico de "ambientação". NÃO listar 20 itens por dia — máximo 4 atividades por dia para não sobrecarregar.</pre>
+      </div>
+    </div>
+
+    <!-- P23 -->
+    <div class="prompt-card reveal" data-function="comercial">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P23 — Proposta Comercial Personalizada B2B</h3>
+          <span class="prompt-card-function">📊 Comercial</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P23" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para redigir proposta de serviço de engenharia para cliente B2B com diferencial técnico e condições adaptadas ao perfil.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P23')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P23">Papel: Você é um especialista em redação de propostas comerciais B2B para empresas de engenharia.
+
+Contexto: A GPS Engenharia vai enviar proposta para [tipo de cliente: rede de farmácias / hospital / construtora / órgão público]. Tenho briefing técnico e preciso transformar em proposta que vende.
+
+Briefing:
+- Cliente: [nome e setor]
+- Necessidade: [o que ele precisa]
+- Escopo proposto: [resumo técnico]
+- Valor estimado: [R$]
+- Prazo: [duração estimada]
+- Concorrência conhecida: [descreva ou "desconhecida"]
+
+Tarefa: Redija proposta comercial em 6 seções: (1) entendimento do problema (mostra que entendemos), (2) solução proposta (escopo técnico claro), (3) por que GPS (3 diferenciais concretos), (4) entregáveis e prazo, (5) condições comerciais, (6) próximos passos.
+
+Formato: documento estruturado com subtítulos em negrito. Tom: técnico-comercial, sem "linguagem de vendas" exagerada. Máximo 3 páginas.
+
+Limitações: Use apenas o briefing. Não invente diferenciais que a GPS não tem. Se faltar info crítica (ex: setor do cliente), pergunte antes de redigir.
+
+Critério de Sucesso: o cliente lê a proposta e entende em menos de 5 minutos o que vai receber, em quanto tempo, por quanto e por que escolher a GPS.
+
+Negativo: NÃO usar bordões tipo "líderes de mercado" ou "excelência". NÃO inflar diferencial sem fato. NÃO esconder condição comercial em letra miúda.</pre>
+      </div>
+    </div>
+
+    <!-- P24 -->
+    <div class="prompt-card reveal" data-function="comercial">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P24 — Diagnóstico de Funil com SCQA</h3>
+          <span class="prompt-card-function">📊 Comercial</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P24" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para analisar funil comercial e construir recomendação executiva no formato SCQA (Situação–Complicação–Questão–Resposta).</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P24')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P24">Papel: Você é um especialista em inteligência comercial e storytelling executivo para empresas de serviços técnicos.
+
+Contexto: A GPS Engenharia precisa entender onde leads estão sumindo no funil. Tenho dados do período e quero apresentar recomendação à diretoria.
+
+Dados do funil:
+[cole os números por etapa: leads, qualificados, propostas, fechamentos, motivos de perda]
+
+Tarefa: Diagnostique o funil e estruture uma recomendação executiva no framework SCQA: (S) situação atual com números, (C) complicação — onde está o gargalo, (Q) questão crítica que isso levanta, (A) resposta com 2-3 ações priorizadas.
+
+Formato: 4 seções nomeadas (Situação / Complicação / Questão / Resposta). Cada uma com 2-3 frases. Máximo 1 página. Recomendação principal já no título do documento.
+
+Limitações: Use apenas os dados fornecidos. Não invente motivos de perda. Se um dado parecer inconsistente, sinalize.
+
+Critério de Sucesso: o diretor lê e sabe onde investir esforço comercial na próxima quinzena.
+
+Negativo: NÃO começar com "Visão Geral do Funil". NÃO terminar sem ação concreta. NÃO recomendar sem ligar a recomendação ao gargalo real.</pre>
+      </div>
+    </div>
+
+    <!-- P25 -->
+    <div class="prompt-card reveal" data-function="comercial">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P25 — E-mail de Follow-up de Cliente</h3>
+          <span class="prompt-card-function">📊 Comercial</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P25" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para escrever follow-up pós-reunião comercial com contexto da proposta e próximos passos claros.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P25')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P25">Papel: Você é um redator de comunicação comercial B2B no setor técnico.
+
+Contexto: A GPS Engenharia teve reunião com [cliente] sobre [tema]. Preciso enviar follow-up que mantenha o cliente quente e mova para o próximo passo.
+
+Anotações da reunião:
+[cole anotações: pontos discutidos, dúvidas levantadas, compromissos]
+
+Tarefa: Redija o e-mail de follow-up em 4 partes: (1) abertura cordial fazendo referência ao que foi discutido, (2) resumo dos 3 pontos-chave da conversa, (3) respostas para as dúvidas levantadas (ou compromisso de enviar até quando), (4) próximo passo concreto com data sugerida.
+
+Formato: e-mail pronto para enviar. Máximo 200 palavras. Assunto sugerido no topo. Tom: profissional, direto, sem formalismo excessivo.
+
+Limitações: Use apenas as anotações. Não invente compromissos. Se faltar contexto (nome do interlocutor, próximo passo), pergunte antes.
+
+Critério de Sucesso: o cliente lê e responde com data confirmada para o próximo passo em menos de 48 horas.
+
+Negativo: NÃO usar "venho por meio deste". NÃO incluir saudações longas. NÃO terminar com "fico à disposição" — terminar com pergunta ou proposta concreta.</pre>
+      </div>
+    </div>
+
+    <!-- P26 -->
+    <div class="prompt-card reveal" data-function="lideranca">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P26 — Briefing Executivo OIA para Diretoria</h3>
+          <span class="prompt-card-function">👔 Liderança / Gestão</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P26" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para transformar análise técnica em briefing executivo no framework OIA (Observação-Insight-Ação) em menos de 1 página.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P26')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P26">Papel: Você é um consultor executivo especializado em comunicação de resultados para diretoria.
+
+Contexto: A GPS Engenharia tem [análise / relatório / diagnóstico] sobre [tema]. Preciso transformar em briefing executivo para apresentar à diretoria.
+
+Análise:
+[cole o resumo da análise técnica ou cole o documento completo]
+
+Tarefa: Estruture briefing executivo seguindo OIA — para cada um dos 3-5 pontos principais: Observação (o dado), Insight (o que significa), Ação (o que fazer). Termine com 1 decisão que precisa ser tomada agora.
+
+Formato: máximo 1 página. Cada ponto em 3 linhas (1 por camada OIA). Decisão final em destaque ao fim. Título do briefing já é o insight principal — não apenas o tema.
+
+Limitações: Use apenas a análise fornecida. Não invente números. Se a análise não suportar um insight, sinalize "verificar".
+
+Critério de Sucesso: o diretor lê em menos de 3 minutos, entende a situação e sabe que decisão tomar.
+
+Negativo: NÃO entregar só Observação (dado sem interpretação). NÃO usar título genérico tipo "Análise de Resultados". NÃO terminar sem decisão concreta a tomar.</pre>
+      </div>
+    </div>
+
+    <!-- P27 -->
+    <div class="prompt-card reveal" data-function="lideranca">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P27 — Pré-Mortem de Projeto Crítico</h3>
+          <span class="prompt-card-function">👔 Liderança / Gestão</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P27" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para listar 10 cenários de falha de um projeto antes de iniciar e definir mitigação para os 3 mais críticos.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P27')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P27">Papel: Você é um consultor de gestão de riscos especializado em projetos de engenharia e construção.
+
+Contexto: A GPS Engenharia vai iniciar projeto crítico de [tipo: obra de grande porte / contrato de licitação importante / expansão]. Quero aplicar Pré-Mortem — imaginar que o projeto falhou e identificar por quê.
+
+Descrição do projeto:
+[escopo, prazo, valor, principais stakeholders, restrições conhecidas]
+
+Tarefa: Imagine que daqui a [prazo do projeto] o projeto fracassou completamente. Liste 10 razões plausíveis para essa falha. Depois priorize os 3 cenários mais críticos (alta probabilidade × alto impacto) e proponha mitigação para cada um.
+
+Formato:
+- 10 cenários de falha (lista numerada, 1 frase cada)
+- Top 3 críticos com: probabilidade (Alta/Média/Baixa) | impacto (R$ ou tempo) | sinal de alerta antecipado | ação de mitigação
+
+Limitações: Cenários devem ser baseados na descrição do projeto, não em "riscos genéricos de obra". Se faltar contexto, sinalize "verificar com líder de obra".
+
+Critério de Sucesso: o líder de projeto sai da sessão sabendo o que monitorar nas primeiras 3 semanas para detectar os riscos críticos cedo.
+
+Negativo: NÃO listar riscos abstratos como "falta de comunicação". NÃO copiar checklists genéricos — adaptar ao projeto descrito.</pre>
+      </div>
+    </div>
+
+    <!-- P28 -->
+    <div class="prompt-card reveal" data-function="lideranca">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P28 — Diagnóstico de Time com Indicadores</h3>
+          <span class="prompt-card-function">👔 Liderança / Gestão</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P28" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para investigar queda de produtividade do time com hipóteses ranqueadas e plano de investigação por hipótese.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P28')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P28">Papel: Você é um consultor sênior em gestão de equipes técnicas de alta performance.
+
+Contexto: O time de [área: engenharia de projetos / sala técnica / obras] da GPS apresentou queda de [indicador: produtividade / entregas no prazo / qualidade] nos últimos [período]. Quero investigar antes de agir.
+
+Dados:
+[indicador antes e depois, mudanças recentes na equipe ou processo, sinais qualitativos observados]
+
+Tarefa: Liste 5 hipóteses para a causa da queda, ordenadas da mais provável à menos provável com base nos dados. Para cada hipótese, indique: (1) sinal que confirma, (2) como investigar em menos de 1 semana, (3) ação se confirmada.
+
+Formato: 5 blocos numerados. Cada bloco com 3 sub-itens (sinal / investigação / ação).
+
+Limitações: Use apenas os dados fornecidos. Não suponha que é falta de motivação sem evidência. Se faltar dado, sinalize "verificar X com líder direto".
+
+Critério de Sucesso: o líder investiga as 2 hipóteses mais prováveis na semana seguinte e toma decisão com dado.
+
+Negativo: NÃO atribuir queda a "geração" ou "remoto" sem dado. NÃO recomendar treinamento como ação default. NÃO listar hipóteses sem caminho de validação.</pre>
+      </div>
+    </div>
+
+    <!-- P29 -->
+    <div class="prompt-card reveal" data-function="lideranca">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P29 — Outline de Apresentação SCQA</h3>
+          <span class="prompt-card-function">👔 Liderança / Gestão</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P29" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para estruturar outline de slides quando o objetivo é convencer a diretoria a aprovar uma decisão (não só informar).</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P29')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P29">Papel: Você é um consultor de comunicação executiva especializado em apresentações de aprovação para diretoria.
+
+Contexto: A GPS Engenharia precisa apresentar [decisão a ser aprovada — ex: investir em equipamento, mudar fornecedor estratégico, aceitar contrato de risco] para a diretoria.
+
+Briefing:
+- Situação atual (o que já existe e todos sabem): [S]
+- Complicação (o que mudou ou está errado): [C]
+- Questão crítica (pergunta que isso levanta): [Q]
+- Resposta proposta (recomendação): [R]
+- Restrições/objeções esperadas: [liste]
+
+Tarefa: Estruture outline de até 10 slides usando SCQA. Primeiro slide já é a Resposta (recomendação direta). Slides seguintes constroem o argumento. Título de cada slide já é um insight, não um rótulo.
+
+Formato: separadores --- entre slides (padrão Gamma). Cada slide com: título de insight + 2-3 bullets + visual sugerido. Máximo 10 slides.
+
+Limitações: Use apenas o briefing. Não enterrar a recomendação no último slide.
+
+Critério de Sucesso: o diretor lê o primeiro slide e já sabe o que está sendo proposto. Lê os títulos em sequência e entende o argumento.
+
+Negativo: NÃO começar com "Panorama Geral". NÃO terminar com "Obrigado" ou "Dúvidas?" como slide. NÃO usar título genérico tipo "Análise" ou "Próximos Passos".</pre>
+      </div>
+    </div>
+
+    <!-- P30 -->
+    <div class="prompt-card reveal" data-function="lideranca">
+      <div class="prompt-card-header">
+        <div>
+          <h3>P30 — Mapeamento IPO de Processo</h3>
+          <span class="prompt-card-function">👔 Liderança / Gestão</span>
+        </div>
+        <button class="btn btn-outline btn-copy" data-copy="prompt-P30" style="flex-shrink:0">Copiar</button>
+      </div>
+      <p class="prompt-card-desc">Para mapear processo repetitivo no formato Input-Process-Output como passo prévio para criar Assistente Persistente.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P30')">Ver prompt →</button>
+      <div class="prompt-body">
+<pre id="prompt-P30">Papel: Você é um consultor de processos especializado em sistematização de tarefas repetitivas para automação ou criação de assistentes especializados.
+
+Contexto: Eu (gestor na GPS Engenharia) tenho um processo que executo recorrentemente: [descreva — ex: análise semanal de obras, fechamento mensal de medições, briefing de fornecedores]. Quero mapear no formato IPO para depois transformar em Assistente Persistente.
+
+Descrição do processo:
+[passos que executo hoje, ferramentas que uso, quanto tempo gasto, frequência]
+
+Tarefa: Mapeie o processo em IPO completo:
+- INPUTS: o que precisa estar disponível antes de começar (dados, arquivos, contexto)
+- PROCESS: passos sequenciais (com critério de "pronto" em cada um)
+- OUTPUTS: o que sai pronto para usar (formato, destinatário, critério de qualidade)
+
+Termine com 3 perguntas para definir qual parte vale automatizar com Assistente (Autopiloto), qual vale Colaboração e qual deve continuar Manual.
+
+Formato: 3 seções (Inputs / Process / Outputs) seguidas das 3 perguntas. Cada passo do Process em 1 linha clara.
+
+Limitações: Use apenas a descrição. Não invente passos que não foram mencionados. Se um passo estiver vago, peça detalhe antes de mapear.
+
+Critério de Sucesso: posso pegar o output e usar diretamente como Instrução de Sistema para um Claude Project ou Custom GPT na semana seguinte.
+
+Negativo: NÃO listar "etapa 1: planejar" sem conteúdo. NÃO confundir Input com Output. NÃO recomendar automatizar tudo — manter Manual o que exige julgamento.</pre>
       </div>
     </div>
 
