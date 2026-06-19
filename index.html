@@ -31,19 +31,140 @@
         Material de referência do workshop. Acesse os módulos na ordem,
         pratique com os artefatos e leve os prompts para o dia a dia.
       </p>
-      <div class="hero-meta">
-        <span class="badge">21 participantes</span>
-        <span class="badge">4 horas de conteúdo</span>
-        <span class="badge">5 módulos práticos</span>
-        <span class="badge">30 prompts prontos</span>
+      <div class="bignum-grid" style="margin-top:32px; max-width:720px; margin-left:auto; margin-right:auto">
+        <div class="bignum">
+          <p class="bignum-value">21</p>
+          <p class="bignum-label">Participantes</p>
+          <p class="bignum-desc">Sondagem real anterior ao workshop</p>
+        </div>
+        <div class="bignum">
+          <p class="bignum-value">62%</p>
+          <p class="bignum-label">Usa IA todo dia</p>
+          <p class="bignum-desc">71% usa ao menos 1× por semana</p>
+        </div>
+        <div class="bignum">
+          <p class="bignum-value">5</p>
+          <p class="bignum-label">Módulos práticos</p>
+          <p class="bignum-desc">4 horas presenciais com hands-on</p>
+        </div>
+        <div class="bignum">
+          <p class="bignum-value">30</p>
+          <p class="bignum-label">Prompts prontos</p>
+          <p class="bignum-desc">PCTFL e PCTFL+CS+N por função</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Grid de módulos -->
+  <!-- Nova seção: Quem é a turma -->
   <main>
     <div class="site-container" style="max-width:960px">
-      <div style="padding: 40px 0 20px">
+
+      <section class="reveal" style="padding-top:32px">
+        <p class="eyebrow">Diagnóstico</p>
+        <h2 style="font-size:22px; margin:0 0 6px">Quem é a turma da GPS</h2>
+        <p style="font-size:14.5px; color:var(--ink-soft); margin:0 0 18px">Dados reais da sondagem aplicada antes do workshop. O conteúdo foi calibrado a partir destes números.</p>
+
+        <div class="turma-section">
+          <!-- Donut: distribuição por função -->
+          <div class="turma-col">
+            <p class="eyebrow">Distribuição por função</p>
+            <h3>21 pessoas · 5 setores</h3>
+            <div class="donut-box">
+              <svg class="donut-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Distribuição da turma por função">
+                <!-- Donut segments. Stroke-dasharray sums to 502.4 (= 2*PI*80). Order: Eng 52%, Adm 19%, RH 14%, Estag 10%, Com 5% -->
+                <circle cx="100" cy="100" r="80" fill="none" stroke="#e6dfd2" stroke-width="32"/>
+                <!-- Eng 52% -->
+                <circle cx="100" cy="100" r="80" fill="none" stroke="#2c5f70" stroke-width="32"
+                        stroke-dasharray="261.25 502.4" stroke-dashoffset="0"
+                        transform="rotate(-90 100 100)"/>
+                <!-- Adm 19% -->
+                <circle cx="100" cy="100" r="80" fill="none" stroke="#c2916b" stroke-width="32"
+                        stroke-dasharray="95.46 502.4" stroke-dashoffset="-261.25"
+                        transform="rotate(-90 100 100)"/>
+                <!-- RH 14% -->
+                <circle cx="100" cy="100" r="80" fill="none" stroke="#8a7ba8" stroke-width="32"
+                        stroke-dasharray="70.34 502.4" stroke-dashoffset="-356.71"
+                        transform="rotate(-90 100 100)"/>
+                <!-- Estag 10% -->
+                <circle cx="100" cy="100" r="80" fill="none" stroke="#1d4250" stroke-width="32"
+                        stroke-dasharray="50.24 502.4" stroke-dashoffset="-427.05"
+                        transform="rotate(-90 100 100)"/>
+                <!-- Com 5% -->
+                <circle cx="100" cy="100" r="80" fill="none" stroke="#8f6a4d" stroke-width="32"
+                        stroke-dasharray="25.12 502.4" stroke-dashoffset="-477.29"
+                        transform="rotate(-90 100 100)"/>
+                <!-- Centro -->
+                <text x="100" y="96" text-anchor="middle" font-family="Playfair Display, serif" font-size="28" font-weight="700" fill="#1f1d1a">21</text>
+                <text x="100" y="116" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#8f8678" letter-spacing="1">PESSOAS</text>
+              </svg>
+              <div class="donut-legend">
+                <div class="donut-legend-row">
+                  <span class="donut-legend-dot" style="background:#2c5f70"></span>
+                  <span class="donut-legend-count">52%</span>
+                  <span class="donut-legend-lbl"><strong>⚙️ Engenharia / Sala Técnica</strong></span>
+                </div>
+                <div class="donut-legend-row">
+                  <span class="donut-legend-dot" style="background:#c2916b"></span>
+                  <span class="donut-legend-count">19%</span>
+                  <span class="donut-legend-lbl"><strong>💼 Administrativo / Financeiro</strong></span>
+                </div>
+                <div class="donut-legend-row">
+                  <span class="donut-legend-dot" style="background:#8a7ba8"></span>
+                  <span class="donut-legend-count">14%</span>
+                  <span class="donut-legend-lbl"><strong>👥 DP / RH</strong></span>
+                </div>
+                <div class="donut-legend-row">
+                  <span class="donut-legend-dot" style="background:#1d4250"></span>
+                  <span class="donut-legend-count">10%</span>
+                  <span class="donut-legend-lbl"><strong>🎓 Estagiários / Outros</strong></span>
+                </div>
+                <div class="donut-legend-row">
+                  <span class="donut-legend-dot" style="background:#8f6a4d"></span>
+                  <span class="donut-legend-count">5%</span>
+                  <span class="donut-legend-lbl"><strong>📊 Comercial</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sector Bars: top 5 dores -->
+          <div class="turma-col">
+            <p class="eyebrow">Top 5 dores citadas</p>
+            <h3>O que mais consome tempo hoje</h3>
+            <div class="hbar-graph">
+              <div class="hbar-row">
+                <span class="hbar-label">Análise de planilhas</span>
+                <div class="hbar-track"><div class="hbar-fill" style="width:100%"></div></div>
+                <span class="hbar-pct">13</span>
+              </div>
+              <div class="hbar-row">
+                <span class="hbar-label">Resumo de documentos</span>
+                <div class="hbar-track"><div class="hbar-fill" style="width:92%"></div></div>
+                <span class="hbar-pct">12</span>
+              </div>
+              <div class="hbar-row">
+                <span class="hbar-label">Contratos / normas</span>
+                <div class="hbar-track"><div class="hbar-fill" style="width:77%"></div></div>
+                <span class="hbar-pct">10</span>
+              </div>
+              <div class="hbar-row">
+                <span class="hbar-label">Tarefas repetitivas</span>
+                <div class="hbar-track"><div class="hbar-fill" style="width:69%"></div></div>
+                <span class="hbar-pct">9</span>
+              </div>
+              <div class="hbar-row">
+                <span class="hbar-label">Orçamentos / quantitativos</span>
+                <div class="hbar-track"><div class="hbar-fill" style="width:46%"></div></div>
+                <span class="hbar-pct">6</span>
+              </div>
+            </div>
+            <p style="font-size:12px; color:var(--ink-muted); margin:12px 0 0">Número de pessoas que citaram cada dor na sondagem.</p>
+          </div>
+        </div>
+      </section>
+
+      <div style="padding: 16px 0 20px">
         <p class="eyebrow">Jornada do Workshop</p>
         <h2 style="font-size:22px; margin:0">Siga a ordem dos módulos</h2>
       </div>

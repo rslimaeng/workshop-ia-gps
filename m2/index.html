@@ -43,6 +43,29 @@
     </div>
   </section>
 
+  <!-- Bignum: dimensão da audiência deste módulo -->
+  <section class="reveal" style="padding: 24px 0 0">
+    <div class="site-container">
+      <div class="bignum-grid">
+        <div class="bignum">
+          <p class="bignum-value">52%</p>
+          <p class="bignum-label">Da turma</p>
+          <p class="bignum-desc">É Engenharia ou Sala Técnica — esta seção fala diretamente com vocês</p>
+        </div>
+        <div class="bignum">
+          <p class="bignum-value">13</p>
+          <p class="bignum-label">Citaram análise de planilhas</p>
+          <p class="bignum-desc">Dor #1 da sondagem — endereçada no M3 com exercício real</p>
+        </div>
+        <div class="bignum">
+          <p class="bignum-value">12</p>
+          <p class="bignum-label">Citaram resumo de documentos</p>
+          <p class="bignum-desc">Dor #2 — atas, memoriais e relatórios técnicos da GPS</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Seção 1 — O que a engenharia tem a ganhar -->
   <section class="section content-section reveal">
     <div class="site-container">
@@ -76,75 +99,73 @@
 
       <p>Nem toda tarefa vale o esforço. A tabela abaixo mostra onde o retorno é maior no contexto GPS — e classifica cada uma pelo <strong>modo</strong> em que a IA deve operar:</p>
 
-      <table style="margin-top:16px">
+      <div class="modo-legend">
+        <div class="modo-legend-item"><span class="modo-badge auto">Autopiloto</span> Tarefa repetitiva e bem definida; você revisa por cima</div>
+        <div class="modo-legend-item"><span class="modo-badge colab">Colaboração</span> Exige seu contexto e julgamento; você itera com a IA</div>
+        <div class="modo-legend-item"><span class="modo-badge manual">Manual</span> Risco alto ou responsabilidade legal; IA só inspira</div>
+      </div>
+
+      <table style="margin-top:8px">
         <thead>
           <tr>
             <th>Documento GPS</th>
-            <th>Modo</th>
-            <th>Retorno</th>
+            <th style="width:140px">Modo</th>
+            <th style="width:100px">Retorno</th>
             <th>Observação</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Ata de reunião de obra</td>
-            <td>Autopiloto</td>
+            <td><span class="modo-badge auto">Autopiloto</span></td>
             <td>Alto</td>
             <td>Você dá as anotações brutas, IA estrutura</td>
           </tr>
           <tr>
             <td>E-mail técnico padrão</td>
-            <td>Autopiloto</td>
+            <td><span class="modo-badge auto">Autopiloto</span></td>
             <td>Alto</td>
             <td>Funciona no plano gratuito</td>
           </tr>
           <tr>
             <td>Memorial descritivo (base)</td>
-            <td>Colaboração</td>
+            <td><span class="modo-badge colab">Colaboração</span></td>
             <td>Alto</td>
             <td>Você fornece especificações, IA redige</td>
           </tr>
           <tr>
             <td>Relatório de visita técnica</td>
-            <td>Autopiloto</td>
+            <td><span class="modo-badge auto">Autopiloto</span></td>
             <td>Alto</td>
             <td>Substitui 30-45 min de trabalho</td>
           </tr>
           <tr>
             <td>Análise de norma (com trecho)</td>
-            <td>Colaboração</td>
+            <td><span class="modo-badge colab">Colaboração</span></td>
             <td>Alto</td>
             <td>Você fornece o texto, IA interpreta</td>
           </tr>
           <tr>
             <td>Proposta comercial para licitação</td>
-            <td>Colaboração</td>
+            <td><span class="modo-badge colab">Colaboração</span></td>
             <td>Médio</td>
             <td>IA estrutura e melhora linguagem</td>
           </tr>
           <tr>
             <td>Laudo técnico com responsabilidade legal</td>
-            <td>Manual (IA apoia rascunho)</td>
+            <td><span class="modo-badge manual">Manual</span></td>
             <td>Médio</td>
             <td>Revisão rigorosa obrigatória</td>
           </tr>
           <tr>
             <td>ART</td>
-            <td>Manual — IA não entra no doc final</td>
+            <td><span class="modo-badge manual">Manual</span></td>
             <td>—</td>
-            <td>Responsabilidade do CREA</td>
+            <td>IA não entra no doc final · CREA</td>
           </tr>
         </tbody>
       </table>
 
-      <div class="callout" style="margin-top:28px">
-        <strong>Regra dos 3 modos:</strong>
-        <ul style="margin:12px 0 0; padding-left:20px; font-size:14.5px; line-height:1.9; color:var(--ink-soft)">
-          <li><strong>Autopiloto</strong> — tarefa repetitiva e bem definida; você revisa por cima.</li>
-          <li><strong>Colaboração</strong> — exige seu contexto e julgamento; você itera com a IA.</li>
-          <li><strong>Manual</strong> — risco alto ou responsabilidade legal; IA só inspira ou apoia rascunho que você reescreve.</li>
-        </ul>
-      </div>
     </div>
   </section>
 

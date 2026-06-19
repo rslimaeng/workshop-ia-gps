@@ -1037,3 +1037,353 @@ footer p {
   opacity: .55;
   cursor: not-allowed;
 }
+
+/* ============================================================
+   PROMPT 19 — Dashboard Executivo + Dados Anthropic
+   ============================================================ */
+
+/* ── Bignum (estatística-âncora) ──────────────────────────── */
+.bignum-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.bignum {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 22px 22px;
+  text-align: left;
+  overflow: hidden;
+}
+.bignum::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-warm), var(--accent));
+}
+.bignum-value {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 1.05;
+  color: var(--ink);
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+.bignum-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-warm-dark);
+  margin: 0 0 4px;
+}
+.bignum-desc {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin: 0;
+}
+.bignum.compact .bignum-value { font-size: 32px; }
+@media (max-width: 640px) {
+  .bignum-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .bignum { padding: 18px 16px 16px; }
+  .bignum-value { font-size: 32px; }
+}
+
+/* ── HorizontalBarGraph (barras horizontais com %) ────────── */
+.hbar-graph {
+  margin: 20px 0 8px;
+}
+.hbar-graph-title {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.hbar-graph-source {
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin: 0 0 16px;
+}
+.hbar-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 60px;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--border);
+}
+.hbar-row:last-child { border-bottom: none; }
+.hbar-label {
+  font-size: 13.5px;
+  color: var(--ink);
+  font-weight: 500;
+}
+.hbar-track {
+  background: var(--bg-warm);
+  border-radius: 4px;
+  height: 22px;
+  overflow: hidden;
+  position: relative;
+}
+.hbar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 4px;
+  transition: width .6s ease;
+  min-width: 4px;
+}
+.hbar-fill.warn { background: var(--accent-warm); }
+.hbar-fill.muted { background: var(--ink-muted); }
+.hbar-pct {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: right;
+}
+@media (max-width: 640px) {
+  .hbar-row {
+    grid-template-columns: 1fr 50px;
+    gap: 6px 10px;
+  }
+  .hbar-label { grid-column: 1 / 3; font-size: 13px; }
+  .hbar-track { grid-column: 1 / 2; height: 14px; }
+  .hbar-pct { grid-column: 2 / 3; font-size: 13px; }
+}
+
+/* ── Donut SVG (distribuição categórica) ──────────────────── */
+.donut-box {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 28px;
+  align-items: center;
+  padding: 20px 0;
+}
+.donut-svg {
+  width: 200px;
+  height: 200px;
+  display: block;
+}
+.donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.donut-legend-row {
+  display: grid;
+  grid-template-columns: 14px 48px 1fr;
+  align-items: baseline;
+  gap: 10px;
+}
+.donut-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  position: relative;
+  top: 2px;
+}
+.donut-legend-count {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--ink);
+  line-height: 1;
+}
+.donut-legend-lbl {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+.donut-legend-lbl strong { color: var(--ink); font-weight: 600; }
+@media (max-width: 720px) {
+  .donut-box { grid-template-columns: 1fr; justify-items: center; gap: 18px; }
+  .donut-legend { width: 100%; max-width: 360px; }
+}
+
+/* ── Score Tiles (4 categorias com cor semântica) ─────────── */
+.score-bands {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+.score-tile {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 10px;
+  padding: 16px 18px;
+  text-align: left;
+}
+.score-tile.eng     { border-left-color: var(--accent); }
+.score-tile.adm     { border-left-color: var(--accent-warm); }
+.score-tile.rh      { border-left-color: #8a7ba8; }
+.score-tile.com-lid { border-left-color: var(--accent-dark); }
+.score-tile-emoji {
+  font-size: 22px;
+  margin: 0 0 6px;
+}
+.score-tile-value {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1;
+}
+.score-tile-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 6px 0 2px;
+}
+.score-tile-desc {
+  font-size: 11.5px;
+  color: var(--ink-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* ── Bloco Anthropic 81k (M1) ─────────────────────────────── */
+.anthropic-block {
+  background: linear-gradient(135deg, #f3f8fa 0%, #e8f0f4 100%);
+  border: 1px solid rgba(44, 95, 112, .22);
+  border-radius: 14px;
+  padding: 32px 28px;
+  margin-top: 28px;
+}
+.anthropic-block .eyebrow { color: var(--accent); margin-bottom: 8px; }
+.anthropic-block h2 { margin-bottom: 14px; }
+.anthropic-block .bignum-grid { margin: 24px 0; }
+.anthropic-block .bignum { background: rgba(255, 255, 255, .65); }
+.anthropic-quote {
+  margin-top: 22px;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, .55);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+}
+.anthropic-quote-pt {
+  font-size: 16px;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+.anthropic-quote-en {
+  font-size: 13px;
+  color: var(--ink-muted);
+  font-style: italic;
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+.anthropic-quote-attr {
+  font-size: 12px;
+  color: var(--ink-muted);
+  font-weight: 500;
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .anthropic-block { padding: 24px 20px; }
+}
+
+/* ── Seção home "Quem é a turma" ───────────────────────────── */
+.turma-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  margin: 32px 0;
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.turma-col h3 {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--ink);
+  margin: 0 0 18px;
+}
+.turma-col .eyebrow { margin-bottom: 6px; }
+@media (max-width: 720px) {
+  .turma-section { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* ── Badges de Modo (M2 — IA na Sala de Projetos) ─────────── */
+.modo-badge {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 10px;
+  border-radius: 4px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+.modo-badge.auto {
+  background: #eef6ef;
+  color: #4a7d50;
+  border-color: #c5dac8;
+}
+.modo-badge.colab {
+  background: #fef6e6;
+  color: #8f6a4d;
+  border-color: #e8c4a8;
+}
+.modo-badge.manual {
+  background: #fdf1ee;
+  color: #b54a3a;
+  border-color: #f0c9c0;
+}
+.modo-legend {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 12px 0 16px;
+  padding: 12px 16px;
+  background: var(--bg-warm);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.modo-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+/* ── Callouts semanticos gradient (upgrade visual) ────────── */
+.callout.warning,
+.callout.warn {
+  background: linear-gradient(135deg, #fef6e6 0%, #fae8c8 100%);
+  border-color: rgba(192, 138, 42, 0.32);
+  border-left: 4px solid #c2916b;
+}
+.callout.danger,
+.callout.risk {
+  background: linear-gradient(135deg, #fdf1ee 0%, #f9e2dc 100%);
+  border-color: rgba(181, 74, 58, 0.32);
+  border-left: 4px solid #b54a3a;
+}
+.callout.cool {
+  background: linear-gradient(135deg, #f3f8fa 0%, #e8f0f4 100%);
+  border-color: rgba(44, 95, 112, 0.28);
+  border-left: 4px solid var(--accent);
+}
+.callout.success {
+  background: linear-gradient(135deg, #eef6ef 0%, #dde9de 100%);
+  border-color: rgba(74, 125, 80, 0.30);
+  border-left: 4px solid #5c7d5f;
+}
