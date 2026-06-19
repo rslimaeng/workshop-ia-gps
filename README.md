@@ -5,7 +5,7 @@ realizado via IEL. Contém os módulos, banco de prompts e artefatos de exercíc
 
 ## Acesso
 
-[Abrir site →](https://[usuario].github.io/workshop-ia-gps/)
+[Abrir site →](https://rslimaeng.github.io/workshop-ia-gps/)
 
 ## Estrutura
 
@@ -22,4 +22,4 @@ realizado via IEL. Contém os módulos, banco de prompts e artefatos de exercíc
 
 ## Facilitador
 
-Rafael Lima · [iacomrafael] · via IEL
+Rafael Lima · @iacomrafael · via IEL
