@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M4 · Engenharia de Prompt — Workshop IA · GPS Engenharia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="../index.html" class="topbar-logo">Workshop IA · GPS Engenharia</a>
+      <nav class="topbar-nav">
+        <a href="../index.html">Início</a>
+        <a href="../banco-de-prompts/index.html">Banco de Prompts</a>
+        <a href="../artefatos/index.html">Artefatos</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Header do módulo -->
+  <div class="module-header site-container">
+    <p class="eyebrow">M4 · Prompts · 55 min</p>
+    <h1>Engenharia de Prompt</h1>
+    <div class="module-header-meta">
+      <span>Framework PCTFL</span>
+      <span>·</span>
+      <span>Exemplos reais de engenharia GPS</span>
+    </div>
+  </div>
+
+  <!-- Seção 1 — Por que seus prompts não funcionam -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">O problema</p>
+      <h2>Um Prompt Ruim é Sempre Culpa do Humano</h2>
+      <p>
+        A IA é previsível: ela gera saídas proporcionais à qualidade da entrada.
+        Um prompt vago gera resposta vaga. Um prompt preciso gera resposta precisa.
+        A engenharia de prompt é a habilidade de escrever a entrada certa.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Prompt</th>
+            <th>Problema</th>
+            <th>Resultado provável</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>"Faz um memorial descritivo"</td>
+            <td>Sem contexto, sem especificações, sem formato</td>
+            <td>Genérico, inútil, precisa refazer tudo</td>
+          </tr>
+          <tr>
+            <td>"Melhora esse texto"</td>
+            <td>Sem critério de qualidade, sem destinatário</td>
+            <td>Versão levemente diferente do original</td>
+          </tr>
+          <tr>
+            <td>"Explica a NBR 5410"</td>
+            <td>Norma extensa, sem recorte de aplicação</td>
+            <td>Resumo genérico de 10 parágrafos</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Seção 2 — O Framework PCTFL -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">O método</p>
+      <h2>PCTFL — Os 5 Elementos de um Prompt Profissional</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Letra</th>
+            <th>Elemento</th>
+            <th>O que define</th>
+            <th>Exemplo (engenharia GPS)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--accent)">P</strong></td>
+            <td>Papel</td>
+            <td>Quem a IA deve ser</td>
+            <td>"Você é um redator técnico especialista em documentação de engenharia civil"</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--accent)">C</strong></td>
+            <td>Contexto</td>
+            <td>A situação real</td>
+            <td>"Estou preparando um memorial descritivo para projeto elétrico residencial em Fortaleza/CE. Norma: NBR 5410."</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--accent)">T</strong></td>
+            <td>Tarefa</td>
+            <td>O que fazer</td>
+            <td>"Redija o memorial com: área 120m², padrão médio, fiação 2,5mm², eletrodutos PVC rígido."</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--accent)">F</strong></td>
+            <td>Formato</td>
+            <td>Como entregar</td>
+            <td>"Documento técnico formal. Subtítulos por sistema. Máximo 2 páginas."</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--accent)">L</strong></td>
+            <td>Limitações</td>
+            <td>O que não fazer</td>
+            <td>"Não invente especificações. Se faltar informação, me pergunte antes de redigir."</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout" style="margin-top:24px">
+        <strong>Regra de ouro:</strong> quanto mais você preenche o PCTFL, menos a IA precisa
+        adivinhar — e menos chance de alucinação ou resultado genérico.
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 3 — Prompt PCTFL completo (exemplo GPS) -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Exemplo completo</p>
+      <h2>Prompt Real: Memorial Descritivo Elétrico</h2>
+      <p>Este é exatamente o Prompt 1 do Banco de Prompts GPS — com o PCTFL desmontado para você ver cada parte:</p>
+
+      <div style="background:var(--bg-warm); border-radius:8px; padding:28px; margin-top:24px">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:20px">
+          <span style="background:var(--accent); color:white; border-radius:4px; padding:3px 8px; font-size:11px; font-weight:600; font-family:var(--sans); letter-spacing:.05em">PAPEL</span>
+          <p style="margin:0; font-size:14px; color:var(--ink-soft); font-style:italic">
+            "Você é um redator técnico especialista em documentação de engenharia civil."
+          </p>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:8px; margin-bottom:20px">
+          <span style="background:var(--accent-warm); color:white; border-radius:4px; padding:3px 8px; font-size:11px; font-weight:600; font-family:var(--sans); letter-spacing:.05em; flex-shrink:0">CONTEXTO</span>
+          <p style="margin:0; font-size:14px; color:var(--ink-soft); font-style:italic">
+            "Estou preparando um memorial descritivo para um projeto elétrico residencial unifamiliar em Fortaleza/CE. A norma aplicável é NBR 5410."
+          </p>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:8px; margin-bottom:20px">
+          <span style="background:var(--accent); color:white; border-radius:4px; padding:3px 8px; font-size:11px; font-weight:600; font-family:var(--sans); letter-spacing:.05em; flex-shrink:0">TAREFA</span>
+          <p style="margin:0; font-size:14px; color:var(--ink-soft); font-style:italic">
+            "Redija o memorial descritivo com: nome 'Residência Família Silva', área 120m², padrão médio, fiação 2,5mm², eletrodutos PVC rígido, quadro de distribuição da marca Schneider. Responsável técnico: Eng. João Araújo."
+          </p>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:8px; margin-bottom:20px">
+          <span style="background:var(--accent-warm-dark, #8f6a4d); color:white; border-radius:4px; padding:3px 8px; font-size:11px; font-weight:600; font-family:var(--sans); letter-spacing:.05em; flex-shrink:0">FORMATO</span>
+          <p style="margin:0; font-size:14px; color:var(--ink-soft); font-style:italic">
+            "Documento técnico formal. Use subtítulos por sistema. Linguagem técnica, mas clara. Máximo 2 páginas."
+          </p>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:8px">
+          <span style="background:var(--ink-soft); color:white; border-radius:4px; padding:3px 8px; font-size:11px; font-weight:600; font-family:var(--sans); letter-spacing:.05em; flex-shrink:0">LIMITAÇÕES</span>
+          <p style="margin:0; font-size:14px; color:var(--ink-soft); font-style:italic">
+            "Não invente especificações que não foram informadas. Se faltar alguma informação essencial, me pergunte antes de redigir."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 4 — Exercício: Monte seu prompt PCTFL -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <div class="exercise-box">
+        <div class="exercise-box-header">
+          <span class="exercise-box-badge">EXERCÍCIO</span>
+          <h3>Monte um Prompt PCTFL para sua Função</h3>
+        </div>
+
+        <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px">
+          Escolha uma tarefa real do seu trabalho que você fez na última semana.
+          Monte o prompt nos 5 elementos:
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Sua resposta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Papel</strong></td><td>Você é um ____</td></tr>
+            <tr><td><strong>Contexto</strong></td><td>Estou em ____, o projeto é ____, a situação é ____</td></tr>
+            <tr><td><strong>Tarefa</strong></td><td>Faça ____ com os seguintes dados: ____</td></tr>
+            <tr><td><strong>Formato</strong></td><td>Entregue como ____ (tabela / lista / documento / e-mail)</td></tr>
+            <tr><td><strong>Limitações</strong></td><td>Não ____ · Se faltar ____, me pergunte</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout" style="margin-top:20px; margin-bottom:0">
+          <strong>Depois de escrever:</strong> teste no ChatGPT ou Claude. Compare o resultado
+          com o que você obteria com um prompt simples. A diferença é o valor do método.
+        </div>
+      </div>
+
+      <p style="margin-top:24px; font-size:14px; color:var(--ink-soft)">
+        Precisa de inspiração? Veja os 12 prompts prontos no
+        <a href="../banco-de-prompts/index.html">Banco de Prompts GPS</a> —
+        todos já no formato PCTFL, organizados por função.
+      </p>
+    </div>
+  </section>
+
+  <!-- Navegação entre módulos -->
+  <nav class="module-nav site-container">
+    <a href="../m3/index.html">
+      <span class="module-nav-label">Módulo anterior</span>
+      ← M3 · Planejamento e Orçamento
+    </a>
+    <a href="../m5/index.html" class="next">
+      <span class="module-nav-label">Próximo módulo</span>
+      M5 · Plano de Ação →
+    </a>
+  </nav>
+
+  <!-- Footer -->
+  <footer>
+    <p>Workshop IA · GPS Engenharia · Facilitador: Rafael Lima · via IEL</p>
+  </footer>
+
+  <script src="../assets/script.js"></script>
+</body>
+</html>

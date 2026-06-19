@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M3 · Planejamento e Orçamento — Workshop IA · GPS Engenharia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="../index.html" class="topbar-logo">Workshop IA · GPS Engenharia</a>
+      <nav class="topbar-nav">
+        <a href="../index.html">Início</a>
+        <a href="../banco-de-prompts/index.html">Banco de Prompts</a>
+        <a href="../artefatos/index.html">Artefatos</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Header do módulo -->
+  <div class="module-header site-container">
+    <p class="eyebrow">M3 · Orçamentos · 40 min</p>
+    <h1>Planejamento e Orçamento</h1>
+    <div class="module-header-meta">
+      <span>IA como co-piloto — não calculadora</span>
+      <span>·</span>
+      <span>Exercício com planilha de obra</span>
+    </div>
+  </div>
+
+  <!-- Seção 1 — O que a IA pode (e não pode) fazer com planilhas -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Limitações importantes</p>
+      <h2>ChatGPT Gratuito e Planilhas: A Verdade</h2>
+
+      <div class="callout warning">
+        <strong>Atenção:</strong> o ChatGPT gratuito <strong>não lê arquivos Excel</strong>.
+        Para usar IA com sua planilha de orçamento no plano free, você precisa
+        copiar os dados como texto e colar no chat.
+      </div>
+
+      <table style="margin-top:24px">
+        <thead>
+          <tr>
+            <th>Recurso</th>
+            <th>ChatGPT Gratuito</th>
+            <th>ChatGPT Plus / Claude Pro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Upload de arquivo Excel</td>
+            <td>❌ Não disponível</td>
+            <td>✓ Disponível</td>
+          </tr>
+          <tr>
+            <td>Leitura de texto colado</td>
+            <td>✓ Funciona bem</td>
+            <td>✓ Funciona bem</td>
+          </tr>
+          <tr>
+            <td>Análise de orçamento (texto)</td>
+            <td>✓ Funciona bem</td>
+            <td>✓ Funciona melhor</td>
+          </tr>
+          <tr>
+            <td>Cálculo de BDI</td>
+            <td>✓ Se você der os dados</td>
+            <td>✓ Se você der os dados</td>
+          </tr>
+          <tr>
+            <td>Verificar itens faltantes</td>
+            <td>✓ Funciona bem</td>
+            <td>✓ Funciona bem</td>
+          </tr>
+          <tr>
+            <td>Preços SINAPI</td>
+            <td>⚠️ Dados podem estar desatualizados — sempre verificar</td>
+            <td>⚠️ Mesmo risco</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin-top:32px">Como usar com o plano gratuito</h3>
+      <ol style="font-size:15px; line-height:2; color:var(--ink-soft); padding-left:20px">
+        <li>Abra sua planilha no Excel/Sheets</li>
+        <li>Selecione os dados principais (itens, quantidades, unidades)</li>
+        <li>Copie como texto (Ctrl+C)</li>
+        <li>Cole diretamente no chat com seu prompt PCTFL</li>
+        <li>Peça à IA para analisar, verificar ou completar</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Seção 2 — IA como co-piloto no orçamento -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Casos de uso</p>
+      <h2>O que a IA faz bem no orçamento</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tarefa</th>
+            <th>Como usar a IA</th>
+            <th>Você verifica</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Verificar itens faltantes</td>
+            <td>Cole os itens e peça: "Quais categorias típicas de obra residencial estão faltando?"</td>
+            <td>Se os itens sugeridos fazem sentido para o projeto</td>
+          </tr>
+          <tr>
+            <td>Calcular BDI</td>
+            <td>Forneça os percentuais e peça para calcular o total</td>
+            <td>Os percentuais de entrada (TDI, lucro, impostos)</td>
+          </tr>
+          <tr>
+            <td>Estruturar planilha do zero</td>
+            <td>Peça um template com categorias SINAPI para o tipo de obra</td>
+            <td>Adequação ao escopo real do projeto</td>
+          </tr>
+          <tr>
+            <td>Criar justificativa técnica</td>
+            <td>Forneça o contexto e peça justificativa para substituição de material</td>
+            <td>Norma citada, adequação técnica</td>
+          </tr>
+          <tr>
+            <td>Resumir para apresentação</td>
+            <td>Cole o orçamento e peça um resumo executivo para o cliente</td>
+            <td>Valores e itens críticos</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Seção 3 — Como explicar decisão de IA para o gestor -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Comunicação com gestores</p>
+      <h2>Quando o Gestor Pergunta: "IA Fez Isso?"</h2>
+
+      <p>
+        76% da turma reconhece que poderia ser mais ágil ao comunicar para gestores e clientes.
+        Usar IA acelera a produção — mas pode gerar desconfiança se não for comunicado bem.
+      </p>
+
+      <div class="callout">
+        <strong>A postura certa:</strong> "Eu usei IA para estruturar e redigir o rascunho.
+        Revisão técnica, verificação de normas e validação dos dados foi feita por mim."
+        <br><br>
+        Isso é honesto, profissional e mostra que você domina a ferramenta — não que depende dela.
+      </div>
+
+      <h3>Roteiro de comunicação por situação</h3>
+      <table style="margin-top:16px">
+        <thead>
+          <tr>
+            <th>Situação</th>
+            <th>O que dizer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Entregou documento muito rápido</td>
+            <td>"Usei IA para o rascunho e revisei todos os dados técnicos. Posso explicar cada item."</td>
+          </tr>
+          <tr>
+            <td>Gestor desconfia da qualidade</td>
+            <td>"Aqui está a parte que a IA gerou e aqui o que eu validei e corrigi."</td>
+          </tr>
+          <tr>
+            <td>Cliente pergunta sobre a norma citada</td>
+            <td>"Peço um momento para confirmar a versão vigente" — e confirme.</td>
+          </tr>
+          <tr>
+            <td>Apresentação de orçamento</td>
+            <td>"Usei IA para estruturar e verificar categorias. Os quantitativos e preços são meus."</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Seção 4 — Exercício: Planilha de Orçamento -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <div class="exercise-box">
+        <div class="exercise-box-header">
+          <span class="exercise-box-badge">EXERCÍCIO</span>
+          <h3>Completar Planilha de Orçamento com IA</h3>
+        </div>
+
+        <p style="font-size:14px; color:var(--ink-soft); margin-bottom:20px">
+          O arquivo <strong>A3_Eng_Orcamento_Simplificado.csv</strong> é uma planilha de orçamento
+          de obra com itens e quantitativos. Algumas linhas estão incompletas intencionalmente.
+        </p>
+
+        <ol style="font-size:14px; line-height:2; color:var(--ink-soft); padding-left:20px; margin-bottom:20px">
+          <li>Baixe o arquivo CSV na página de <a href="../artefatos/index.html">Artefatos</a></li>
+          <li>Abra no Excel ou Google Sheets e copie os dados como texto</li>
+          <li>Abra o ChatGPT ou Claude</li>
+          <li>Cole o Prompt 4 do <a href="../banco-de-prompts/index.html">Banco de Prompts</a> (Revisar Orçamento)</li>
+          <li>Cole os dados da planilha no campo indicado no prompt</li>
+          <li>Avalie: quais itens a IA identificou como faltantes ou inconsistentes?</li>
+        </ol>
+
+        <div class="callout" style="margin:0">
+          <strong>O que observar:</strong> a IA sugeriu categorias que fazem sentido para
+          o tipo de obra? Ela inventou algum item que não existe no projeto?
+          Compare com o que você veria sem IA — quanto tempo você economizou?
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navegação entre módulos -->
+  <nav class="module-nav site-container">
+    <a href="../m2/index.html">
+      <span class="module-nav-label">Módulo anterior</span>
+      ← M2 · IA na Sala de Projetos
+    </a>
+    <a href="../m4/index.html" class="next">
+      <span class="module-nav-label">Próximo módulo</span>
+      M4 · Engenharia de Prompt →
+    </a>
+  </nav>
+
+  <!-- Footer -->
+  <footer>
+    <p>Workshop IA · GPS Engenharia · Facilitador: Rafael Lima · via IEL</p>
+  </footer>
+
+  <script src="../assets/script.js"></script>
+</body>
+</html>

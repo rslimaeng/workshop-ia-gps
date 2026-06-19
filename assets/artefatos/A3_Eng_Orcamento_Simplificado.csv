@@ -1,0 +1,52 @@
+Item,Descrição,Unidade,Quantidade,Preço Unitário (R$),Preço Total (R$),Código SINAPI,Observação
+1,FUNDAÇÕES E ESTRUTURA,,,,,,
+1.1,Locação da obra com gabarito,m²,120,8.50,,94964,
+1.2,Escavação manual de valas para fundação (prof. até 1,5m),m³,18,65.00,,72951,
+1.3,Concreto fck=20MPa - fundação corrida,m³,6.5,380.00,,94971,Traço 1:2:3
+1.4,Armação com aço CA-50,kg,320,12.80,,94208,Peso calculado pelo engenheiro
+1.5,Forma de madeira para fundação - montagem e desmontagem,m²,45,55.00,,73762,
+2,ALVENARIA,,,,,,
+2.1,Alvenaria de bloco cerâmico 9x19x19cm - parede simples,m²,310,82.00,,87457,
+2.2,Alvenaria de bloco cerâmico 9x19x19cm - parede dupla,m²,45,145.00,,87462,
+2.3,Vergas e contravergas de concreto armado,m,85,38.00,,94962,
+3,COBERTURA,,,,,,
+3.1,Estrutura de madeira para telhado - tesoura simples,m²,145,88.00,,73905,Madeira eucalipto tratado
+3.2,Telha cerâmica - tipo colonial,m²,145,62.00,,72048,Incluindo cumeeira
+3.3,Calha de PVC 125mm,m,32,45.00,,86895,
+3.4,Rufos de alumínio,m,18,38.50,,73927,
+4,INSTALAÇÕES ELÉTRICAS,,,,,,
+4.1,Eletroduto PVC rígido 3/4" - fornecimento e instalação,m,280,18.50,,91922,
+4.2,Fiação 2,5mm² - fase,m,420,4.20,,91920,Cabo flexível
+4.3,Fiação 6mm² - retorno,m,180,7.80,,91921,
+4.4,Tomada 2P+T 10A - padrão NBR 14136,un,22,45.00,,91885,
+4.5,Interruptor simples 10A,un,14,32.00,,91886,
+4.6,Ponto de luz completo,un,18,155.00,,91884,
+4.7,Quadro de distribuição 12 disjuntores (com disjuntores),un,1,680.00,,91880,
+5,INSTALAÇÕES HIDROSSANITÁRIAS,,,,,,
+5.1,Tubo PVC esgoto 100mm - fornecimento e instalação,m,45,32.00,,88484,
+5.2,Tubo PVC água fria 3/4" - fornecimento e instalação,m,85,18.00,,89669,
+5.3,Caixa d'água polietileno 1000L com tampa - instalada,un,1,890.00,,87882,
+5.4,Ponto de água fria,un,12,185.00,,73852,
+5.5,Ponto de esgoto,un,8,220.00,,73855,
+6,REVESTIMENTOS,,,,,,
+6.1,Reboco externo com argamassa - parede,m²,310,35.00,,87529,
+6.2,Reboco interno com argamassa - parede,m²,580,28.00,,87528,
+6.3,Chapisco em substrato cerâmico (paredes),m²,580,12.00,,87525,
+6.4,Contrapiso de concreto simples 5cm,m²,120,45.00,,95286,
+6.5,Cerâmica 45x45cm - piso área molhada,m²,28,95.00,,87262,Material incluído
+7,ESQUADRIAS,,,,,,
+7.1,Janela alumínio 1,20x1,00m - correr 2 folhas,un,6,620.00,,72250,Com vidro 4mm
+7.2,Porta madeira 80cm completa com batente,un,8,580.00,,73931,Pinus tratado
+7.3,Porta madeira 70cm completa com batente - banheiro,un,2,510.00,,73931,
+7.4,Portão metálico 2 folhas 2,50x2,10m - fabricação e instalação,un,1,2850.00,,83764,
+8,PINTURA,,,,,,
+8.1,Massa acrílica em paredes internas - 2 demãos,m²,580,22.00,,88496,
+8.2,Tinta acrílica em paredes externas - 2 demãos,m²,310,28.00,,88498,
+8.3,Esmalte sintético em esquadrias metálicas,m²,25,35.00,,88484,
+9,SERVIÇOS COMPLEMENTARES,,,,,,
+9.1,Limpeza final de obra,m²,120,18.00,,96618,
+9.2,Ligação definitiva energia elétrica (DUC),vb,1,850.00,,95658,
+9.3,Ligação definitiva água potável,vb,1,680.00,,,Conforme Cagece
+SUBTOTAL CUSTO DIRETO,,,,,,0.00,,Somar todos os Preços Total
+BDI (%),Bonificações e Despesas Indiretas,,,25.00%,0.00,,Incide sobre subtotal
+TOTAL GERAL,,,,,,0.00,,Subtotal + BDI

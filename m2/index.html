@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M2 · IA na Sala de Projetos — Workshop IA · GPS Engenharia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="../index.html" class="topbar-logo">Workshop IA · GPS Engenharia</a>
+      <nav class="topbar-nav">
+        <a href="../index.html">Início</a>
+        <a href="../banco-de-prompts/index.html">Banco de Prompts</a>
+        <a href="../artefatos/index.html">Artefatos</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Header do módulo -->
+  <div class="module-header site-container">
+    <p class="eyebrow">M2 · Sala de Projetos · 40 min</p>
+    <h1>IA na Sala de Projetos</h1>
+    <div class="module-header-meta">
+      <span>52% da turma é Engenharia/Sala Técnica</span>
+      <span>·</span>
+      <span>Documentos técnicos, normas e obras</span>
+    </div>
+  </div>
+
+  <!-- Seção 1 — O que a engenharia tem a ganhar -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Contexto</p>
+      <h2>IA como redatora técnica — não como engenheira</h2>
+      <p>
+        A IA não substitui o cálculo de engenharia. Ela não assina ART, não verifica
+        dimensionamento estrutural e não substitui seu julgamento técnico.
+      </p>
+      <p>
+        O que ela faz muito bem: <strong>estruturar, redigir e revisar</strong> documentos
+        técnicos a partir das informações que você fornece. Isso resolve as dores mais
+        citadas pela turma: memoriais descritivos, atas de obra, relatórios de visita,
+        especificações técnicas.
+      </p>
+
+      <div class="callout">
+        <strong>Citação real da sondagem:</strong> "Montar um modelo de documento com a IA"
+        — Participante da Sala Técnica GPS
+        <br><br>
+        Esse é o caso de uso central deste módulo. Vamos criar esses modelos agora.
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 2 — Casos de uso prioritários GPS -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Casos de uso</p>
+      <h2>O que a IA faz pela Sala Técnica</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tarefa</th>
+            <th>Como a IA entra</th>
+            <th>Você valida</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Memorial descritivo</td>
+            <td>Rascunha a partir das especificações que você fornece</td>
+            <td>Dados técnicos, normas, coerência</td>
+          </tr>
+          <tr>
+            <td>Ata de reunião de obra</td>
+            <td>Estrutura a ata a partir das suas anotações brutas</td>
+            <td>Completude, pendências, prazos</td>
+          </tr>
+          <tr>
+            <td>Interpretação de norma ABNT</td>
+            <td>Explica o trecho em linguagem prática com exemplo</td>
+            <td>Número e versão da norma (anti-alucinação)</td>
+          </tr>
+          <tr>
+            <td>Relatório de visita técnica</td>
+            <td>Cria template + preenche com suas notas</td>
+            <td>Fotos, medições, assinatura</td>
+          </tr>
+          <tr>
+            <td>Especificação técnica de material</td>
+            <td>Lista características, norma de referência, critérios de aceitação</td>
+            <td>Norma vigente, condições locais</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Seção 3 — Protocolo anti-alucinação para normas -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Protocolo crítico</p>
+      <h2>Normas Técnicas e Anti-Alucinação</h2>
+      <p>
+        A IA <strong>inventa normas</strong>. Não por mal — ela gera texto plausível,
+        e números de norma (NBR 6118, NR-10, etc.) são exatamente o tipo de dado
+        que ela fabrica com confiança errada.
+      </p>
+
+      <div class="callout danger">
+        <strong>Regra absoluta:</strong> nunca assine uma ART ou entregue um documento
+        técnico com norma gerada por IA sem verificar o número manualmente.
+        A responsabilidade técnica é sua — a IA não tem CREA.
+      </div>
+
+      <h3>Os 4 passos do protocolo</h3>
+      <ol style="font-size:15px; line-height:2; color:var(--ink-soft); padding-left:20px">
+        <li>Peça à IA para citar a norma de referência</li>
+        <li>Abra o site da ABNT ou SINAPI e confirme que o número existe</li>
+        <li>Verifique se a versão está vigente (normas são revisadas)</li>
+        <li>Só então use o conteúdo no documento assinado</li>
+      </ol>
+
+      <div class="callout" style="margin-top:24px">
+        <strong>Dica prática:</strong> inclua sempre no prompt — "Se não souber a norma exata,
+        diga que não tem certeza e sugira onde consultar." Isso ativa o modo cauteloso da IA.
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 4 — Exercício: Ata de Reunião de Obra -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <div class="exercise-box">
+        <div class="exercise-box-header">
+          <span class="exercise-box-badge">EXERCÍCIO</span>
+          <h3>Estruturar Ata de Reunião de Obra com IA</h3>
+        </div>
+
+        <p style="font-size:14px; color:var(--ink-soft); margin-bottom:20px">
+          O arquivo <strong>A4_Eng_Ata_Reuniao_Obra.md</strong> contém anotações brutas de uma
+          reunião de obra da GPS. Siga os passos:
+        </p>
+
+        <ol style="font-size:14px; line-height:2; color:var(--ink-soft); padding-left:20px; margin-bottom:20px">
+          <li>Baixe o arquivo na página de <a href="../artefatos/index.html">Artefatos</a></li>
+          <li>Abra o ChatGPT ou Claude</li>
+          <li>Cole o Prompt 2 do <a href="../banco-de-prompts/index.html">Banco de Prompts</a></li>
+          <li>Substitua os campos em colchete com os dados do arquivo</li>
+          <li>Cole as anotações brutas no campo indicado</li>
+          <li>Avalie o resultado: a ata ficou completa? Todas as pendências foram capturadas?</li>
+        </ol>
+
+        <div class="callout" style="margin:0">
+          <strong>O que avaliar na saída:</strong> a IA identificou todos os responsáveis?
+          Os prazos estão corretos? Ela inventou alguma pendência que não estava nas anotações?
+          (Se sim — isso é alucinação. Remova.)
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navegação entre módulos -->
+  <nav class="module-nav site-container">
+    <a href="../m1/index.html">
+      <span class="module-nav-label">Módulo anterior</span>
+      ← M1 · De Amador a Profissional
+    </a>
+    <a href="../m3/index.html" class="next">
+      <span class="module-nav-label">Próximo módulo</span>
+      M3 · Planejamento e Orçamento →
+    </a>
+  </nav>
+
+  <!-- Footer -->
+  <footer>
+    <p>Workshop IA · GPS Engenharia · Facilitador: Rafael Lima · via IEL</p>
+  </footer>
+
+  <script src="../assets/script.js"></script>
+</body>
+</html>

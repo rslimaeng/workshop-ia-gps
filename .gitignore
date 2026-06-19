@@ -1,0 +1,6 @@
+# Material de construção (bastidores) — não publicar
+prompt-*.md
+design-system.md
+
+# macOS
+.DS_Store
