@@ -25,7 +25,7 @@
 
   <!-- Header do módulo -->
   <div class="module-header site-container">
-    <p class="eyebrow">M4 · Prompts · 55 min</p>
+    <p class="eyebrow">M4 · Prompts</p>
     <h1>Engenharia de Prompt</h1>
     <div class="module-header-meta">
       <span>Framework PCTFL</span>
@@ -503,51 +503,108 @@
     </div>
   </section>
 
-  <!-- Seção 4 — Exercício: Monte seu prompt PCTFL -->
+  <!-- Seção 4 — Exercício: Gerador PCTFL+CS+N inline -->
   <section class="section content-section reveal">
     <div class="site-container">
       <div class="exercise-box">
         <div class="exercise-box-header">
           <span class="exercise-box-badge">EXERCÍCIO</span>
-          <h3>Monte um Prompt PCTFL para sua Função</h3>
+          <h3>Monte seu Prompt PCTFL+CS+N agora</h3>
+        </div>
+        <p style="font-size:14px; color:var(--ink-soft); margin-bottom:0">
+          Escolha uma tarefa real que você fez na última semana. Preencha os 7 campos abaixo
+          — o prompt vai se montando ao lado, em tempo real. No fim, copie e teste no
+          ChatGPT ou Claude.
+        </p>
+      </div>
+
+      <div class="gerador-pctfl" id="geradorPctfl">
+        <div class="gerador-pctfl-head">
+          <div>
+            <h3>Gerador PCTFL+CS+N</h3>
+            <p>7 campos · preview ao vivo · copiar quando terminar</p>
+          </div>
+          <div class="gerador-pctfl-actions">
+            <button type="button" class="gerador-pctfl-btn" id="geradorExemplo">Carregar exemplo</button>
+            <button type="button" class="gerador-pctfl-btn" id="geradorLimpar">Limpar</button>
+          </div>
         </div>
 
-        <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px">
-          Escolha uma tarefa real do seu trabalho que você fez na última semana.
-          Monte o prompt nos 7 elementos (PCTFL+CS+N):
-        </p>
+        <div class="gerador-pctfl-grid">
+          <div class="gerador-pctfl-form">
 
-        <table>
-          <thead>
-            <tr>
-              <th>Elemento</th>
-              <th>Sua resposta</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>Papel</strong></td><td>Você é um ____</td></tr>
-            <tr><td><strong>Contexto</strong></td><td>Estou em ____, o projeto é ____, a situação é ____</td></tr>
-            <tr><td><strong>Tarefa</strong></td><td><strong style="color:var(--accent-warm)">[Verbo cirúrgico]</strong> ____ com os seguintes dados: ____</td></tr>
-            <tr><td><strong>Formato</strong></td><td>Entregue como ____ (tabela / lista / documento / e-mail)</td></tr>
-            <tr><td><strong>Limitações</strong></td><td>Não ____ · Se faltar ____, me pergunte</td></tr>
-            <tr><td><strong style="color:var(--accent-warm)">Critério de Sucesso</strong></td><td>A resposta é boa se ____ (descreva o que deve acontecer para você considerar pronto)</td></tr>
-            <tr><td><strong style="color:var(--accent-warm)">Negativo</strong></td><td>A resposta NÃO deve ____ (tom, formato ou conteúdo a evitar)</td></tr>
-          </tbody>
-        </table>
+            <div class="gerador-pctfl-field">
+              <label class="gerador-pctfl-label" for="gpP">
+                <span class="gerador-pctfl-label-letter">P</span> Papel
+                <span class="gerador-pctfl-hint">— quem a IA representa</span>
+              </label>
+              <input type="text" id="gpP" class="gerador-pctfl-input" placeholder="Ex: redator técnico especialista em engenharia civil">
+            </div>
 
-        <div class="callout" style="margin-top:20px; margin-bottom:0">
-          <strong>Depois de escrever:</strong> teste no ChatGPT ou Claude. Compare o resultado
-          com o que você obteria com um prompt simples. A diferença é o valor do método.
-          <br><br>
-          <strong>Critério de sucesso:</strong> o resultado precisa de menos de 5 minutos de
-          revisão para estar pronto pra usar. Se demorar mais, o prompt precisa de mais contexto.
+            <div class="gerador-pctfl-field">
+              <label class="gerador-pctfl-label" for="gpC">
+                <span class="gerador-pctfl-label-letter">C</span> Contexto
+                <span class="gerador-pctfl-hint">— sua situação, projeto, dados</span>
+              </label>
+              <textarea id="gpC" class="gerador-pctfl-textarea" placeholder="Ex: Estou preparando memorial descritivo de residência unifamiliar em Fortaleza/CE. Sistema elétrico. Norma NBR 5410."></textarea>
+            </div>
+
+            <div class="gerador-pctfl-field">
+              <label class="gerador-pctfl-label" for="gpT">
+                <span class="gerador-pctfl-label-letter">T</span> Tarefa
+                <span class="gerador-pctfl-hint">— verbo cirúrgico + o que fazer</span>
+              </label>
+              <textarea id="gpT" class="gerador-pctfl-textarea" placeholder="Ex: Redija o memorial descritivo com base nas especificações abaixo: [lista]"></textarea>
+            </div>
+
+            <div class="gerador-pctfl-field">
+              <label class="gerador-pctfl-label" for="gpF">
+                <span class="gerador-pctfl-label-letter">F</span> Formato
+                <span class="gerador-pctfl-hint">— como entregar a resposta</span>
+              </label>
+              <input type="text" id="gpF" class="gerador-pctfl-input" placeholder="Ex: documento técnico formal, subtítulos por sistema, máximo 2 páginas">
+            </div>
+
+            <div class="gerador-pctfl-field">
+              <label class="gerador-pctfl-label" for="gpL">
+                <span class="gerador-pctfl-label-letter">L</span> Limitações
+                <span class="gerador-pctfl-hint">— o que NÃO fazer / quando perguntar</span>
+              </label>
+              <textarea id="gpL" class="gerador-pctfl-textarea" placeholder="Ex: Não invente especificações. Se faltar informação essencial, me pergunte antes de redigir."></textarea>
+            </div>
+
+            <div class="gerador-pctfl-field cs">
+              <label class="gerador-pctfl-label" for="gpCS">
+                <span class="gerador-pctfl-label-letter">CS</span> Critério de Sucesso
+                <span class="gerador-pctfl-hint">— como você sabe que ficou bom</span>
+              </label>
+              <textarea id="gpCS" class="gerador-pctfl-textarea" placeholder="Ex: O memorial está pronto se: estrutura clara por sistema, terminologia técnica correta, menos de 5 min de revisão pra usar."></textarea>
+            </div>
+
+            <div class="gerador-pctfl-field n">
+              <label class="gerador-pctfl-label" for="gpN">
+                <span class="gerador-pctfl-label-letter">N</span> Negativo
+                <span class="gerador-pctfl-hint">— tom, formato ou conteúdo a evitar</span>
+              </label>
+              <textarea id="gpN" class="gerador-pctfl-textarea" placeholder="Ex: NÃO use linguagem comercial ou marketing. NÃO cite normas que não foram informadas."></textarea>
+            </div>
+
+          </div>
+
+          <div class="gerador-pctfl-preview-wrap">
+            <div class="gerador-pctfl-preview-label">
+              <span>Seu prompt — ao vivo</span>
+            </div>
+            <pre class="gerador-pctfl-preview" id="geradorPreview"><span class="placeholder">Comece a preencher os campos ao lado. Seu prompt vai aparecer aqui — pronto pra copiar.</span></pre>
+            <button type="button" class="gerador-pctfl-copy gerador-pctfl-disabled" id="geradorCopiar" disabled>Copiar prompt</button>
+          </div>
         </div>
       </div>
 
       <p style="margin-top:24px; font-size:14px; color:var(--ink-soft)">
-        Precisa de inspiração? Veja os 12 prompts prontos no
+        Precisa de inspiração? Veja os 30 prompts prontos no
         <a href="../banco-de-prompts/index.html">Banco de Prompts GPS</a> —
-        todos já no formato PCTFL, organizados por função.
+        organizados por função, em PCTFL (P1–P12) e PCTFL+CS+N (P13–P30).
       </p>
     </div>
   </section>
@@ -679,12 +736,13 @@
       <h2>Entregável deste módulo</h2>
       <p>Você só deve avançar quando conseguir marcar todos:</p>
 
-      <ul style="font-size:15px; line-height:2; color:var(--ink-soft); padding-left:20px; margin-top:16px">
-        <li>1 prompt PCTFL completo construído para uma tarefa real do seu trabalho</li>
-        <li>Testado no ChatGPT ou Claude e ajustado em sala</li>
-        <li>Pronto para reusar na semana que vem</li>
-        <li>Documentado no formato de Padrão Interno (Nome + Tipo + Prompt + Resultado esperado)</li>
+      <ul class="entregavel-list">
+        <li data-entregavel="1"><span class="entregavel-checkbox"></span><span class="entregavel-text">1 prompt PCTFL completo construído para uma tarefa real do seu trabalho</span></li>
+        <li data-entregavel="2"><span class="entregavel-checkbox"></span><span class="entregavel-text">Testado no ChatGPT ou Claude e ajustado em sala</span></li>
+        <li data-entregavel="3"><span class="entregavel-checkbox"></span><span class="entregavel-text">Pronto para reusar na semana que vem</span></li>
+        <li data-entregavel="4"><span class="entregavel-checkbox"></span><span class="entregavel-text">Documentado no formato de Padrão Interno (Nome + Tipo + Prompt + Resultado esperado)</span></li>
       </ul>
+      <p class="entregavel-progress">Marque conforme conclui — seu progresso fica salvo neste navegador.</p>
     </div>
   </section>
 
@@ -706,5 +764,95 @@
   </footer>
 
   <script src="../assets/script.js"></script>
+  <script>
+    // ── Gerador PCTFL+CS+N inline ──
+    (function geradorPctfl() {
+      var campos = ['P', 'C', 'T', 'F', 'L', 'CS', 'N'];
+      var labels = {
+        P: 'Papel:',
+        C: 'Contexto:',
+        T: 'Tarefa:',
+        F: 'Formato:',
+        L: 'Limitações:',
+        CS: 'Critério de Sucesso:',
+        N: 'Negativo:'
+      };
+      var inputs = {};
+      campos.forEach(function(k) { inputs[k] = document.getElementById('gp' + k); });
+      var preview = document.getElementById('geradorPreview');
+      var copiarBtn = document.getElementById('geradorCopiar');
+      var exemploBtn = document.getElementById('geradorExemplo');
+      var limparBtn = document.getElementById('geradorLimpar');
+      if (!preview || !copiarBtn) return;
+
+      function montarPrompt() {
+        var partes = [];
+        campos.forEach(function(k) {
+          var v = inputs[k] ? inputs[k].value.trim() : '';
+          if (v) partes.push(labels[k] + ' ' + v);
+        });
+        return partes.join('\n\n');
+      }
+
+      function atualizar() {
+        var prompt = montarPrompt();
+        if (!prompt) {
+          preview.innerHTML = '<span class="placeholder">Comece a preencher os campos ao lado. Seu prompt vai aparecer aqui — pronto pra copiar.</span>';
+          copiarBtn.disabled = true;
+          copiarBtn.classList.add('gerador-pctfl-disabled');
+        } else {
+          preview.textContent = prompt;
+          copiarBtn.disabled = false;
+          copiarBtn.classList.remove('gerador-pctfl-disabled');
+        }
+      }
+
+      campos.forEach(function(k) {
+        if (inputs[k]) inputs[k].addEventListener('input', atualizar);
+      });
+
+      copiarBtn.addEventListener('click', function() {
+        var prompt = montarPrompt();
+        if (!prompt) return;
+        navigator.clipboard.writeText(prompt).then(function() {
+          var original = copiarBtn.textContent;
+          copiarBtn.textContent = '✓ Copiado!';
+          copiarBtn.classList.add('copied');
+          setTimeout(function() {
+            copiarBtn.textContent = original;
+            copiarBtn.classList.remove('copied');
+          }, 2000);
+        });
+      });
+
+      var exemplo = {
+        P: 'redator técnico especialista em documentação de engenharia civil',
+        C: 'Estou preparando um memorial descritivo para um projeto residencial unifamiliar em Fortaleza/CE. Sistema elétrico. Norma de referência: NBR 5410.',
+        T: 'Redija o memorial descritivo com base nas seguintes especificações:\n- Área construída: 180 m²\n- Padrão: médio\n- Carga prevista: 25 kW\n- Quadro de distribuição: 18 circuitos\n- Cabeamento: 2,5 mm² em eletrodutos PVC rígido',
+        F: 'documento técnico formal, subtítulos por sistema, parágrafos curtos, máximo 2 páginas',
+        L: 'Não invente especificações que não foram informadas. Se faltar informação essencial, me pergunte antes de redigir. Não cite normas além da NBR 5410.',
+        CS: 'O memorial está pronto se: terminologia técnica correta, especificações exatamente como descritas acima, menos de 5 min de revisão necessária antes de assinar.',
+        N: 'NÃO use linguagem comercial ou de marketing. NÃO cite valores ou marcas comerciais. NÃO sugira alterações de projeto.'
+      };
+
+      exemploBtn.addEventListener('click', function() {
+        campos.forEach(function(k) {
+          if (inputs[k]) inputs[k].value = exemplo[k];
+        });
+        atualizar();
+        preview.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+
+      limparBtn.addEventListener('click', function() {
+        campos.forEach(function(k) {
+          if (inputs[k]) inputs[k].value = '';
+        });
+        atualizar();
+        if (inputs.P) inputs.P.focus();
+      });
+
+      atualizar();
+    })();
+  </script>
 </body>
 </html>

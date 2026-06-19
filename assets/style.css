@@ -679,3 +679,361 @@ footer p {
   .topbar-nav { gap: 16px; }
   .topbar-logo { font-size: 16px; }
 }
+
+/* ============================================================
+   PROMPT 18 — Componentes Interativos
+   ============================================================ */
+
+/* ── Botão flutuante "voltar ao topo" ─────────────────────── */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(44, 95, 112, .28);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity .25s ease, transform .25s ease, background .15s;
+  z-index: 300;
+}
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+.back-to-top:hover { background: var(--accent-dark); }
+@media (max-width: 640px) {
+  .back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 18px; }
+}
+
+/* ── Topbar: badge "módulo atual" na navegação ────────────── */
+.topbar-current {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--accent-warm-dark);
+  margin-left: 12px;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-warm);
+}
+@media (max-width: 640px) {
+  .topbar-current { display: none; }
+}
+
+/* ── Checkbox interativo dos Entregáveis ──────────────────── */
+.entregavel-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+.entregavel-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .15s;
+  margin-bottom: 6px;
+  border: 1px solid transparent;
+}
+.entregavel-list li:hover { background: var(--bg-warm); }
+.entregavel-list li.checked {
+  background: var(--bg-warm);
+  border-color: var(--border);
+}
+.entregavel-checkbox {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border-strong);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  transition: background .15s, border-color .15s;
+}
+.entregavel-list li.checked .entregavel-checkbox {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.entregavel-checkbox::after {
+  content: '';
+  width: 6px;
+  height: 11px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-1px, -1px);
+  opacity: 0;
+  transition: opacity .15s;
+}
+.entregavel-list li.checked .entregavel-checkbox::after { opacity: 1; }
+.entregavel-text {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.entregavel-list li.checked .entregavel-text {
+  color: var(--ink-muted);
+  text-decoration: line-through;
+}
+.entregavel-progress {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+.entregavel-progress strong { color: var(--accent); font-weight: 600; }
+
+/* ── Auto-quiz dos 5 Sinais (M1) ──────────────────────────── */
+.sinais-quiz {
+  margin: 24px 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg);
+}
+.sinais-quiz-row {
+  display: grid;
+  grid-template-columns: 56px 1fr 240px;
+  gap: 16px;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: background .15s;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+.sinais-quiz-row:last-of-type { border-bottom: none; }
+.sinais-quiz-row:hover { background: var(--bg-warm); }
+.sinais-quiz-row.checked { background: #fdf3ec; }
+.sinais-quiz-num {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 16px; font-weight: 700;
+  background: var(--bg-warm);
+  color: var(--ink-muted);
+  border: 1.5px solid var(--border);
+  transition: all .15s;
+}
+.sinais-quiz-row.checked .sinais-quiz-num {
+  background: var(--accent-warm);
+  color: #fff;
+  border-color: var(--accent-warm);
+}
+.sinais-quiz-sinal { font-size: 14.5px; color: var(--ink); line-height: 1.5; }
+.sinais-quiz-revela { font-size: 13px; color: var(--ink-muted); line-height: 1.5; }
+.sinais-quiz-result {
+  padding: 20px 24px;
+  background: var(--bg-warm);
+  border-top: 1px solid var(--border);
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.sinais-quiz-result strong { color: var(--ink); }
+.sinais-quiz-result-num {
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-family: var(--serif);
+  font-size: 16px;
+  background: var(--accent-warm);
+  color: #fff;
+  margin: 0 2px;
+}
+@media (max-width: 640px) {
+  .sinais-quiz-row {
+    grid-template-columns: 36px 1fr;
+    gap: 12px;
+  }
+  .sinais-quiz-revela {
+    grid-column: 2 / 3;
+    margin-top: 4px;
+  }
+}
+
+/* ── Banco de Prompts: contador dinâmico ──────────────────── */
+.banco-contador {
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin: 16px 0 8px;
+  font-weight: 500;
+}
+.banco-contador strong { color: var(--accent); font-weight: 600; }
+
+/* ── Gerador PCTFL+CS+N inline (M4) ───────────────────────── */
+.gerador-pctfl {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  margin-top: 18px;
+}
+.gerador-pctfl-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+.gerador-pctfl-head h3 {
+  font-family: var(--serif);
+  font-size: 20px;
+  margin: 0;
+  color: var(--ink);
+}
+.gerador-pctfl-head p {
+  margin: 6px 0 0;
+  font-size: 13.5px;
+  color: var(--ink-muted);
+}
+.gerador-pctfl-actions {
+  display: flex;
+  gap: 8px;
+}
+.gerador-pctfl-btn {
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-warm);
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all .15s;
+}
+.gerador-pctfl-btn:hover { background: var(--border); color: var(--ink); }
+.gerador-pctfl-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .gerador-pctfl-grid { grid-template-columns: 1fr; }
+}
+.gerador-pctfl-form { display: flex; flex-direction: column; gap: 14px; }
+.gerador-pctfl-field { display: flex; flex-direction: column; }
+.gerador-pctfl-label {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--ink-muted);
+  margin-bottom: 6px;
+}
+.gerador-pctfl-label-letter {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.gerador-pctfl-field.cs .gerador-pctfl-label-letter,
+.gerador-pctfl-field.n .gerador-pctfl-label-letter { color: var(--accent-warm); }
+.gerador-pctfl-hint {
+  font-size: 11.5px;
+  color: var(--ink-muted);
+  margin-left: 6px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.gerador-pctfl-input,
+.gerador-pctfl-textarea {
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: var(--bg);
+  outline: none;
+  transition: border-color .15s;
+  width: 100%;
+}
+.gerador-pctfl-textarea { min-height: 60px; resize: vertical; line-height: 1.5; }
+.gerador-pctfl-input:focus,
+.gerador-pctfl-textarea:focus { border-color: var(--accent); }
+.gerador-pctfl-preview-wrap {
+  position: sticky;
+  top: 80px;
+}
+.gerador-pctfl-preview-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.gerador-pctfl-preview-label span {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--ink-muted);
+}
+.gerador-pctfl-preview {
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 20px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ink);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 480px;
+  overflow-y: auto;
+  margin: 0;
+}
+.gerador-pctfl-preview .placeholder {
+  color: var(--ink-muted);
+  font-style: italic;
+}
+.gerador-pctfl-copy {
+  margin-top: 12px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 11px 22px;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background .15s;
+  width: 100%;
+}
+.gerador-pctfl-copy:hover { background: var(--accent-dark); }
+.gerador-pctfl-copy.copied { background: #4a8061; }
+.gerador-pctfl-disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}

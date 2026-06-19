@@ -116,7 +116,7 @@
 
   <!-- Header do módulo -->
   <div class="module-header site-container">
-    <p class="eyebrow">M1 · Fundamentos + Uso Seguro · 35 min</p>
+    <p class="eyebrow">M1 · Fundamentos + Uso Seguro</p>
     <h1>De Amador a Profissional</h1>
     <div class="module-header-meta">
       <span>62% da turma usa IA frequentemente</span>
@@ -158,47 +158,35 @@
       <h2>Os 5 Sinais do Usuário Amador Frequente</h2>
       <p>Marque quantos se aplicam a você agora:</p>
 
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Sinal</th>
-            <th>O que revela</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Digita um pedido genérico e aceita a primeira resposta</td>
-            <td>Sem critério de qualidade</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Não sabe explicar por que o resultado foi bom ou ruim</td>
-            <td>Uso por instinto, não por método</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Repete o mesmo prompt toda vez e tenta a sorte</td>
-            <td>Sem biblioteca pessoal</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Cola o resultado direto sem revisar</td>
-            <td>Delega a responsabilidade à máquina</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Não deu contexto — a IA não sabe quem você é nem o que você faz</td>
-            <td>Prompt sem identidade = resposta genérica</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="callout warning" style="margin-top:24px">
-        <strong>3 ou mais marcados?</strong> Você é o perfil exato desta turma — e é exatamente
-        o que vamos transformar hoje. Não existe vergonha: o padrão de uso amador é o default
-        de 95% das pessoas que usam IA sem treinamento.
+      <div class="sinais-quiz" id="sinaisQuiz" role="group" aria-label="Autodiagnóstico dos 5 sinais">
+        <div class="sinais-quiz-row" data-sinal="1" role="button" tabindex="0">
+          <span class="sinais-quiz-num">1</span>
+          <span class="sinais-quiz-sinal">Digita um pedido genérico e aceita a primeira resposta</span>
+          <span class="sinais-quiz-revela">Sem critério de qualidade</span>
+        </div>
+        <div class="sinais-quiz-row" data-sinal="2" role="button" tabindex="0">
+          <span class="sinais-quiz-num">2</span>
+          <span class="sinais-quiz-sinal">Não sabe explicar por que o resultado foi bom ou ruim</span>
+          <span class="sinais-quiz-revela">Uso por instinto, não por método</span>
+        </div>
+        <div class="sinais-quiz-row" data-sinal="3" role="button" tabindex="0">
+          <span class="sinais-quiz-num">3</span>
+          <span class="sinais-quiz-sinal">Repete o mesmo prompt toda vez e tenta a sorte</span>
+          <span class="sinais-quiz-revela">Sem biblioteca pessoal</span>
+        </div>
+        <div class="sinais-quiz-row" data-sinal="4" role="button" tabindex="0">
+          <span class="sinais-quiz-num">4</span>
+          <span class="sinais-quiz-sinal">Cola o resultado direto sem revisar</span>
+          <span class="sinais-quiz-revela">Delega a responsabilidade à máquina</span>
+        </div>
+        <div class="sinais-quiz-row" data-sinal="5" role="button" tabindex="0">
+          <span class="sinais-quiz-num">5</span>
+          <span class="sinais-quiz-sinal">Não deu contexto — a IA não sabe quem você é nem o que faz</span>
+          <span class="sinais-quiz-revela">Prompt sem identidade = resposta genérica</span>
+        </div>
+        <div class="sinais-quiz-result" id="sinaisQuizResult">
+          Clique nos sinais que se aplicam a você.
+        </div>
       </div>
     </div>
   </section>
@@ -438,12 +426,13 @@
       <h2>Entregável deste módulo</h2>
       <p>Você só deve avançar quando conseguir marcar todos:</p>
 
-      <ul style="font-size:15px; line-height:2; color:var(--ink-soft); padding-left:20px; margin-top:16px">
-        <li>Identifiquei em qual nível dos 7 estou hoje</li>
-        <li>Reconheci ao menos 1 sinal de uso amador no meu dia a dia</li>
-        <li>1 tarefa repetitiva do meu trabalho identificada e classificada: "segura para IA" ou "requer cuidado"</li>
-        <li>Consigo dar um exemplo concreto da diferença entre uso casual e uso com método</li>
+      <ul class="entregavel-list">
+        <li data-entregavel="1"><span class="entregavel-checkbox"></span><span class="entregavel-text">Identifiquei em qual nível dos 7 estou hoje</span></li>
+        <li data-entregavel="2"><span class="entregavel-checkbox"></span><span class="entregavel-text">Reconheci ao menos 1 sinal de uso amador no meu dia a dia</span></li>
+        <li data-entregavel="3"><span class="entregavel-checkbox"></span><span class="entregavel-text">1 tarefa repetitiva do meu trabalho identificada e classificada: "segura para IA" ou "requer cuidado"</span></li>
+        <li data-entregavel="4"><span class="entregavel-checkbox"></span><span class="entregavel-text">Consigo dar um exemplo concreto da diferença entre uso casual e uso com método</span></li>
       </ul>
+      <p class="entregavel-progress">Marque conforme conclui — seu progresso fica salvo neste navegador.</p>
     </div>
   </section>
 
@@ -462,6 +451,50 @@
   </footer>
 
   <script src="../assets/script.js"></script>
+  <script>
+    // ── Auto-quiz 5 Sinais ──
+    (function sinaisQuiz() {
+      var quiz = document.getElementById('sinaisQuiz');
+      if (!quiz) return;
+      var result = document.getElementById('sinaisQuizResult');
+      var rows = quiz.querySelectorAll('.sinais-quiz-row');
+
+      function diagnostico(n) {
+        if (n === 0) {
+          return 'Clique nos sinais que se aplicam a você.';
+        }
+        var bloco = '<span class="sinais-quiz-result-num">' + n + '</span> de 5 sinais marcados. ';
+        if (n <= 1) {
+          return bloco + '<strong>Sinal positivo.</strong> Você já tem método em alguma medida — o workshop vai te levar pro N5+ (integrador). Foque hoje em consolidar o que funciona em banco compartilhado.';
+        }
+        if (n === 2) {
+          return bloco + '<strong>Você está na fronteira.</strong> Tem método em parte, mas ainda confia na sorte em outras. Hoje, escolha 1 dos sinais marcados e ataque com PCTFL no M4 — esse é seu salto pra N4.';
+        }
+        if (n <= 4) {
+          return bloco + '<strong>Perfil típico da turma GPS — N3 amador frequente.</strong> Sem vergonha: é o default de 95% dos usuários sem treinamento. O workshop foi desenhado exatamente pra esse perfil. Hoje você sai com método.';
+        }
+        return bloco + '<strong>Você usa muito IA, mas sem nenhum método.</strong> Boa notícia: você é quem mais ganha hoje. Cada framework do workshop vai resolver um sinal seu. Sai daqui com banco de prompts próprio.';
+      }
+
+      function atualizar() {
+        var marcados = quiz.querySelectorAll('.sinais-quiz-row.checked').length;
+        result.innerHTML = diagnostico(marcados);
+      }
+
+      rows.forEach(function(row) {
+        row.addEventListener('click', function() {
+          row.classList.toggle('checked');
+          atualizar();
+        });
+        row.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            row.click();
+          }
+        });
+      });
+    })();
+  </script>
   <script>
     var niveisGPS = [
       {
