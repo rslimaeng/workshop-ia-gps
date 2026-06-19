@@ -8,6 +8,182 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    /* === Componente AI Native (3 pilares) === */
+    .ainative-component { margin-top: 24px; }
+    .ainative-nav {
+      display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;
+    }
+    .ainative-nav button {
+      flex: 1; min-width: 110px; height: 48px;
+      border-radius: 8px; border: 1px solid var(--border);
+      background: transparent; color: var(--ink-muted);
+      font-size: 13px; font-weight: 600; letter-spacing: .02em;
+      cursor: pointer; font-family: inherit; transition: all .12s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .ainative-nav button:hover { background: var(--bg-warm); color: var(--ink-soft); }
+    .ainative-nav button .ai-num {
+      font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700;
+    }
+    /* Cores dos pilares — ativo */
+    .ainative-nav button.ai-p { background:#f3f4f6; color:#6b7280; border-color:#d1d5db; }
+    .ainative-nav button.ai-a { background:#fdf3ec; color:#c2916b; border-color:#e8c4a8; }
+    .ainative-nav button.ai-c { background:#eef4f6; color:#2c5f70; border-color:#b0cfd8; }
+
+    /* Card */
+    .ainative-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px;
+    }
+    .ainative-card-head {
+      display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px;
+    }
+    .ainative-badge {
+      width: 56px; height: 56px; flex-shrink: 0; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 700; font-family: 'Playfair Display', serif;
+    }
+    .ainative-badge.ai-p { background:#f3f4f6; color:#6b7280; border:1px solid #d1d5db; }
+    .ainative-badge.ai-a { background:#fdf3ec; color:#c2916b; border:1px solid #e8c4a8; }
+    .ainative-badge.ai-c { background:#eef4f6; color:#2c5f70; border:1px solid #b0cfd8; }
+
+    .ainative-fase-tag {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .08em;
+      padding: 2px 8px; border-radius: 4px; margin-bottom: 6px;
+    }
+    .ainative-fase-tag.ai-p { background:#f3f4f6; color:#6b7280; border:1px solid #d1d5db; }
+    .ainative-fase-tag.ai-a { background:#fdf3ec; color:#c2916b; border:1px solid #e8c4a8; }
+    .ainative-fase-tag.ai-c { background:#eef4f6; color:#2c5f70; border:1px solid #b0cfd8; }
+
+    .ainative-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; color: var(--ink); margin: 0 0 4px;
+    }
+    .ainative-tagline { font-size: 14px; color: var(--ink-muted); line-height: 1.5; margin: 0; }
+
+    .ainative-sep { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+
+    .ainative-lbl {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .08em; color: var(--accent-warm); margin: 0 0 8px;
+    }
+    .ainative-txt { font-size: 14.5px; color: var(--ink-soft); line-height: 1.75; margin-bottom: 16px; }
+    .ainative-txt.em { color: var(--ink); }
+
+    /* Visual 1 — Pessoas: duas colunas */
+    .ainative-cols {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px;
+    }
+    .ainative-col {
+      background: var(--bg-warm); border: 1px solid var(--border);
+      border-radius: 8px; padding: 14px 16px;
+    }
+    .ainative-col.highlight {
+      background:#fdf3ec; border-color:#e8c4a8;
+    }
+    .ainative-col-lbl {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .08em; color: var(--ink-muted); margin-bottom: 8px;
+    }
+    .ainative-col.highlight .ainative-col-lbl { color:#c2916b; }
+    .ainative-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .ainative-pill {
+      font-size: 12px; padding: 3px 10px; border-radius: 4px;
+      background: var(--bg); border: 1px solid var(--border); color: var(--ink-soft);
+    }
+    .ainative-col.highlight .ainative-pill {
+      background:#fff; border-color:#e8c4a8; color:#c2916b;
+    }
+
+    /* Visual 2 — Agentes: 3 níveis */
+    .ainative-niveis {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px;
+    }
+    .ainative-nivel {
+      background: var(--bg-warm); border: 1px solid var(--border);
+      border-radius: 8px; padding: 14px;
+    }
+    .ainative-nivel.ai-c {
+      background:#eef4f6; border-color:#b0cfd8;
+    }
+    .ainative-nivel-titulo {
+      font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px;
+    }
+    .ainative-nivel.ai-c .ainative-nivel-titulo { color:#2c5f70; }
+    .ainative-nivel-desc { font-size: 12.5px; color: var(--ink-muted); line-height: 1.5; margin: 0; }
+
+    .ainative-requisitos {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px;
+    }
+    .ainative-req {
+      font-size: 12px; padding: 4px 12px; border-radius: 4px;
+      background:#fdf3ec; border: 1px solid #e8c4a8; color:#c2916b; font-weight: 500;
+    }
+
+    /* Visual 3 — Contexto: ciclo */
+    .ainative-ciclo {
+      display: flex; gap: 6px; flex-wrap: wrap; align-items: stretch; margin-bottom: 18px;
+    }
+    .ainative-passo {
+      flex: 1; min-width: 100px;
+      background:#eef4f6; border: 1px solid #b0cfd8; border-radius: 8px;
+      padding: 12px 10px; text-align: center;
+    }
+    .ainative-passo-icone { font-size: 22px; margin-bottom: 4px; }
+    .ainative-passo-titulo {
+      font-size: 12.5px; font-weight: 600; color:#2c5f70; margin-bottom: 4px;
+    }
+    .ainative-passo-desc { font-size: 11px; color: var(--ink-muted); line-height: 1.4; margin: 0; }
+    .ainative-seta {
+      display: flex; align-items: center; font-size: 14px; color: var(--ink-muted);
+    }
+
+    /* Ações concretas */
+    .ainative-acoes {
+      background: var(--bg-warm); border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0; padding: 14px 18px; margin-bottom: 16px;
+    }
+    .ainative-acoes-lbl {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .08em; color: var(--accent); margin-bottom: 8px;
+    }
+    .ainative-acoes ul {
+      margin: 0; padding-left: 18px;
+      font-size: 14px; line-height: 1.7; color: var(--ink-soft);
+    }
+    .ainative-acoes li { margin-bottom: 4px; }
+
+    /* Conexão */
+    .ainative-conexao {
+      background:#fafaf7; border: 1px dashed #c2916b;
+      border-radius: 8px; padding: 12px 16px; font-size: 13.5px;
+      color: var(--ink-soft); line-height: 1.6;
+    }
+    .ainative-conexao strong { color:#c2916b; }
+
+    /* Rodapé */
+    .ainative-foot {
+      display: flex; justify-content: flex-end; gap: 8px;
+      padding-top: 16px; margin-top: 16px; border-top: 1px solid var(--border);
+    }
+    .ainative-foot-btn {
+      padding: 7px 16px; font-size: 13px; cursor: pointer;
+      font-family: inherit; background: transparent;
+      border: 1px solid var(--border); border-radius: 6px;
+      color: var(--ink-soft); transition: all .12s;
+    }
+    .ainative-foot-btn:hover { background: var(--bg-warm); color: var(--ink); }
+    .ainative-foot-btn:disabled { opacity: .35; cursor: not-allowed; }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .ainative-cols, .ainative-niveis { grid-template-columns: 1fr; }
+      .ainative-ciclo { flex-direction: column; }
+      .ainative-seta { transform: rotate(90deg); justify-content: center; }
+    }
+  </style>
 </head>
 <body>
 
@@ -26,11 +202,11 @@
   <!-- Header do módulo -->
   <div class="module-header site-container">
     <p class="eyebrow">M5 · Estratégia · 30 min</p>
-    <h1>Plano de Ação + IA Local vs Global</h1>
+    <h1>Plano de Ação + AI Native</h1>
     <div class="module-header-meta">
       <span>O que você vai fazer na segunda-feira</span>
       <span>·</span>
-      <span>O próximo nível além do workshop</span>
+      <span>Pessoas × Agentes × Contexto</span>
     </div>
   </div>
 
@@ -138,109 +314,34 @@
     </div>
   </section>
 
-  <!-- Seção 3 — IA Local vs IA Global -->
+  <!-- Seção 3 — AI Native: O Próximo Nível (componente interativo) -->
   <section class="section content-section reveal">
     <div class="site-container">
       <p class="eyebrow">O próximo nível</p>
-      <h2>IA Local vs IA Global — O que Vem Depois</h2>
+      <h2>AI Native — De IA Local para IA Global</h2>
 
       <p>
-        Tudo que fizemos hoje é <strong>IA Local</strong>: você usa a IA, você colhe o resultado,
-        você economiza tempo. É real, é valioso, é o que a maioria das pessoas nunca fará com método.
+        Tudo que você fez hoje é <strong>IA Local</strong>: cada pessoa usando IA na sua máquina,
+        no seu ChatGPT, do seu jeito. É real, é valioso — e é o pré-requisito para o próximo nível.
       </p>
       <p>
-        Mas existe um nível além — e é importante que a liderança da GPS conheça:
-        a <strong>IA Global</strong>, onde a inteligência não fica só com o indivíduo, mas
-        passa a fazer parte da operação da empresa.
+        O próximo nível é <strong>IA Global</strong> — quando a empresa opera como uma org
+        <em>AI Native</em>. E o nome certo desse "como" tem 3 pilares que se sustentam:
       </p>
 
-      <table style="margin-top:24px">
-        <thead>
-          <tr>
-            <th></th>
-            <th>IA Local (hoje)</th>
-            <th>IA Global (próximos 12-24 meses)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Quem usa</strong></td>
-            <td>Cada pessoa individualmente</td>
-            <td>A empresa como sistema</td>
-          </tr>
-          <tr>
-            <td><strong>Onde está o conhecimento</strong></td>
-            <td>Na cabeça de cada colaborador</td>
-            <td>Em bases de dados, fluxos e documentos que a IA acessa</td>
-          </tr>
-          <tr>
-            <td><strong>Velocidade</strong></td>
-            <td>Velocidade do humano mais rápido</td>
-            <td>Velocidade da operação inteira</td>
-          </tr>
-          <tr>
-            <td><strong>Exemplo GPS</strong></td>
-            <td>Engenheiro usa IA para redigir memorial descritivo</td>
-            <td>Sistema de IA revisa automaticamente todos os memoriais contra normas ABNT</td>
-          </tr>
-          <tr>
-            <td><strong>Pré-requisito</strong></td>
-            <td>Método individual (o que aprendemos hoje)</td>
-            <td>Documentação + processos + dados organizados</td>
-          </tr>
-          <tr>
-            <td><strong>Investimento</strong></td>
-            <td>Tempo de aprendizagem (já feito)</td>
-            <td>Infraestrutura, política de dados, automação</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="callout" style="margin-top:24px">
-        <strong>Insight dos melhores times que adotaram IA:</strong>
-        "A velocidade da empresa é a velocidade do humano mais lento na cadeia de informação."
-        A IA Global quebra esse gargalo — mas só funciona se os humanos já sabem usar IA.
-        O que fizemos hoje é o pré-requisito.
+      <div class="ainative-component">
+        <nav class="ainative-nav" id="ainativeNav" aria-label="Selecione um pilar"></nav>
+        <div class="ainative-card" id="ainativeCard"></div>
       </div>
-    </div>
-  </section>
 
-  <!-- Seção 4 — Primeiro passo para IA Global -->
-  <section class="section content-section reveal">
-    <div class="site-container">
-      <p class="eyebrow">Próximos passos GPS</p>
-      <h2>O Que a GPS Pode Fazer Esta Semana</h2>
-      <p>
-        Você não precisa de infraestrutura cara para começar a caminhar para a IA Global.
-        Os primeiros passos são mais simples:
-      </p>
-
-      <ol style="font-size:15px; line-height:2; color:var(--ink-soft); padding-left:20px">
-        <li>
-          <strong>Gravar reuniões técnicas</strong> — toda reunião de obra, reunião de projeto
-          e alinhamento de time que não for gravada é conhecimento que some.
-          Ferramenta: Google Meet, Teams, ou até o celular.
-        </li>
-        <li>
-          <strong>Documentar decisões</strong> — toda decisão técnica importante deve ter
-          um registro escrito. A IA só consegue ajudar a empresa com o que está documentado.
-        </li>
-        <li>
-          <strong>Criar uma política mínima de IA</strong> — o que pode ser compartilhado com
-          ferramentas externas? Quais dados são confidenciais? Sem isso, cada pessoa decide
-          sozinha — e o risco legal é real.
-        </li>
-        <li>
-          <strong>Criar banco de prompts da empresa</strong> — não só prompts individuais,
-          mas prompts padronizados por processo GPS (memorial descritivo padrão, relatório de
-          visita padrão, proposta padrão). Isso é o começo da IA Global.
-        </li>
-      </ol>
-
-      <div class="callout" style="margin-top:24px">
-        <strong>Referência prática:</strong> o Banco de Prompts GPS que você tem acesso hoje
-        é o embrião do banco institucional. O próximo passo é a GPS customizá-lo com os
-        padrões reais de cada processo.
+      <div class="callout" style="margin-top:32px">
+        <strong>Onde isso conecta com tudo que você viu hoje:</strong>
+        <ul style="margin-top:12px; font-size:14px; line-height:1.9; color:var(--ink-soft); padding-left:20px; margin-bottom:0">
+          <li><strong>Quick Wins (seção 1 deste módulo)</strong> = IA Local em ação — cada pessoa, cada tarefa</li>
+          <li><strong>Banco de Prompts</strong> (recurso do workshop) = embrião do <em>Contexto</em> compartilhado da GPS</li>
+          <li><strong>PCTFL (M4)</strong> = a estrutura do briefing de agente — Papel + Contexto + Tarefa + Formato + Limitações</li>
+          <li><strong>7 Níveis (M1)</strong> — N1-N3 dominam <em>Pessoas</em>; N4-N5 começam a operar <em>Agentes</em>; N6-N7 constroem <em>Contexto</em> empresarial</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -311,6 +412,183 @@
   </footer>
 
   <script src="../assets/script.js"></script>
+  <script>
+    var aiNative = [
+      {
+        id:'pessoas', abbr:'1', paleta:'p',
+        fase:'Pilar 1', titulo:'Pessoas',
+        tagline:'Todos são gestores agora',
+        oQueMuda:'IA come o meio. O trabalho de execução (~80% do que você fazia) vai pra IA. Você foca nos dois extremos: o início (estratégia, contexto, direção) e o fim (revisão, julgamento, decisão). Esses dois extremos sempre foram o trabalho de verdade — agora ficam mais evidentes.',
+        visual:'colunas',
+        visualDados:{
+          ia:['Pesquisa','Rascunho','Edição','Formatação','Análise inicial'],
+          voce:['Estratégia','Gosto','Julgamento','Decisão final','Responsabilidade']
+        },
+        acoes:[
+          'Liste suas 3 tarefas mais repetitivas (você já fez isso no Banco de Desafios do M1)',
+          'Pra cada uma, separe: o que é "meio" (executar) e o que é "ponta" (julgar/decidir)',
+          'Comece pela maior dor de tempo, não pela mais legal de testar'
+        ],
+        conexao:'No M1 (7 Níveis): este é o salto de N3 (uso improvisado) para N4 (gestor de método). A IA não substitui você — ela libera você do meio para você fazer as pontas melhor.'
+      },
+      {
+        id:'agentes', abbr:'2', paleta:'a',
+        fase:'Pilar 2', titulo:'Agentes',
+        tagline:'Modelos usando ferramentas em loop',
+        oQueMuda:'Existem 3 níveis de autonomia de agente. Você não precisa pular pro último — precisa saber qual nível serve cada tarefa. E aprender a configurar um agente é literalmente o mesmo que aprender PCTFL.',
+        visual:'niveis',
+        visualDados:{
+          niveis:[
+            {titulo:'Curioso', desc:'Só chat. Pergunta, responde, fecha aba. Maioria está aqui.'},
+            {titulo:'Assistido', desc:'Agente roda, você aprova cada passo antes do próximo.'},
+            {titulo:'Autônomo', desc:'Roda dias sem supervisão. Você recebe resultado pronto pra revisar.'}
+          ],
+          requisitos:['Objetivo claro','Skills','Ferramentas','Contexto']
+        },
+        acoes:[
+          'Crie 1 assistente persistente — ChatGPT Custom GPT ou Claude Project com instruções padrão GPS',
+          'Use como base os prompts do M4 — vira um agente que "lembra" o que você ensinou',
+          'Compartilhe com 1 colega pra validar antes de espalhar pro time'
+        ],
+        conexao:'O PCTFL do M4 (Papel · Contexto · Tarefa · Formato · Limitações) é exatamente o briefing de agente. Você não aprendeu prompt hoje — aprendeu a configurar funcionário digital.'
+      },
+      {
+        id:'contexto', abbr:'3', paleta:'c',
+        fase:'Pilar 3', titulo:'Contexto',
+        tagline:'O cérebro legível da sua empresa',
+        oQueMuda:'Hoje na GPS, o conhecimento valioso está espalhado: na cabeça do engenheiro, em DMs do WhatsApp, em e-mails antigos, em pastas que ninguém abre. Contexto é organizar isso de um jeito que humano E IA conseguem ler — pastas claras, decisões documentadas, padrões salvos.',
+        visual:'ciclo',
+        visualDados:{
+          passos:[
+            {icone:'⬇', titulo:'Capturar', desc:'Reuniões, e-mails, anotações'},
+            {icone:'⚙', titulo:'Curar', desc:'Limpar, organizar, marcar'},
+            {icone:'📁', titulo:'Armazenar', desc:'Pastas + arquivos legíveis'},
+            {icone:'▶', titulo:'Executar', desc:'Agentes usam o contexto'},
+            {icone:'📊', titulo:'Sinal', desc:'Resultado volta pro sistema'}
+          ]
+        },
+        acoes:[
+          'Gravar reuniões técnicas — toda reunião de obra, alinhamento ou projeto. Google Meet, Teams ou celular',
+          'Documentar decisões por escrito — nada de "ficou combinado por WhatsApp"',
+          'Padronizar 1 documento (ata, memorial, relatório) — toda equipe usa o mesmo modelo',
+          'Banco de prompts compartilhado — o que você criou hoje vira ativo do time, não só seu'
+        ],
+        conexao:'"A velocidade da empresa é a velocidade da informação mais lenta." Se a decisão ficou só na cabeça ou num DM, ela não existe pro time. O Banco de Prompts GPS que você tem acesso hoje é o embrião desse Contexto compartilhado.'
+      }
+    ];
+
+    var curAi = 0; /* abre em Pessoas */
+
+    function buildAiNativeNav() {
+      var nav = document.getElementById('ainativeNav');
+      nav.innerHTML = '';
+      aiNative.forEach(function(p, i) {
+        var btn = document.createElement('button');
+        btn.innerHTML = '<span class="ai-num">' + p.abbr + '</span> ' + p.titulo;
+        btn.setAttribute('aria-selected', i === curAi ? 'true' : 'false');
+        if (i === curAi) btn.className = 'ai-' + p.paleta;
+        btn.addEventListener('click', function() {
+          curAi = i; buildAiNativeNav(); buildAiNativeCard();
+        });
+        nav.appendChild(btn);
+      });
+    }
+
+    function renderVisualColunas(dados) {
+      var ia = dados.ia.map(function(t) {
+        return '<span class="ainative-pill">' + t + '</span>';
+      }).join('');
+      var voce = dados.voce.map(function(t) {
+        return '<span class="ainative-pill">' + t + '</span>';
+      }).join('');
+      return '<div class="ainative-cols">'
+        + '<div class="ainative-col">'
+          + '<p class="ainative-col-lbl">IA executa</p>'
+          + '<div class="ainative-pills">' + ia + '</div>'
+        + '</div>'
+        + '<div class="ainative-col highlight">'
+          + '<p class="ainative-col-lbl">Você traz</p>'
+          + '<div class="ainative-pills">' + voce + '</div>'
+        + '</div>'
+      + '</div>';
+    }
+
+    function renderVisualNiveis(dados) {
+      var niveis = dados.niveis.map(function(n, i) {
+        var cls = i === 2 ? 'ainative-nivel ai-c' : 'ainative-nivel';
+        return '<div class="' + cls + '">'
+          + '<p class="ainative-nivel-titulo">' + n.titulo + '</p>'
+          + '<p class="ainative-nivel-desc">' + n.desc + '</p>'
+        + '</div>';
+      }).join('');
+      var reqs = dados.requisitos.map(function(r) {
+        return '<span class="ainative-req">' + r + '</span>';
+      }).join('');
+      return '<p class="ainative-lbl">Os 3 níveis de autonomia</p>'
+        + '<div class="ainative-niveis">' + niveis + '</div>'
+        + '<p class="ainative-lbl">Pra ser autônomo, o agente precisa de</p>'
+        + '<div class="ainative-requisitos">' + reqs + '</div>';
+    }
+
+    function renderVisualCiclo(dados) {
+      var passos = dados.passos.map(function(p, i) {
+        var seta = i > 0 ? '<div class="ainative-seta">→</div>' : '';
+        return seta + '<div class="ainative-passo">'
+          + '<div class="ainative-passo-icone">' + p.icone + '</div>'
+          + '<p class="ainative-passo-titulo">' + p.titulo + '</p>'
+          + '<p class="ainative-passo-desc">' + p.desc + '</p>'
+        + '</div>';
+      }).join('');
+      return '<p class="ainative-lbl">O ciclo do contexto</p>'
+        + '<div class="ainative-ciclo">' + passos + '</div>';
+    }
+
+    function buildAiNativeCard() {
+      var p = aiNative[curAi], pal = p.paleta;
+      var el = document.getElementById('ainativeCard');
+      var visual = '';
+      if (p.visual === 'colunas') visual = renderVisualColunas(p.visualDados);
+      if (p.visual === 'niveis') visual = renderVisualNiveis(p.visualDados);
+      if (p.visual === 'ciclo') visual = renderVisualCiclo(p.visualDados);
+      var acoes = p.acoes.map(function(a) {
+        return '<li>' + a + '</li>';
+      }).join('');
+      var prev = curAi > 0
+        ? '<button class="ainative-foot-btn" onclick="goAiNative(-1)">← anterior</button>' : '';
+      var nxt = curAi < 2
+        ? '<button class="ainative-foot-btn" onclick="goAiNative(1)">próximo →</button>' : '';
+      el.innerHTML =
+        '<div class="ainative-card-head">'
+          + '<div class="ainative-badge ai-' + pal + '">' + p.abbr + '</div>'
+          + '<div>'
+            + '<span class="ainative-fase-tag ai-' + pal + '">' + p.fase + '</span>'
+            + '<p class="ainative-title">' + p.titulo + '</p>'
+            + '<p class="ainative-tagline">' + p.tagline + '</p>'
+          + '</div>'
+        + '</div>'
+        + '<hr class="ainative-sep">'
+        + '<p class="ainative-lbl">O que muda</p>'
+        + '<p class="ainative-txt">' + p.oQueMuda + '</p>'
+        + visual
+        + '<div class="ainative-acoes">'
+          + '<p class="ainative-acoes-lbl">Como começar na GPS</p>'
+          + '<ul>' + acoes + '</ul>'
+        + '</div>'
+        + '<div class="ainative-conexao">'
+          + '<strong>Conexão:</strong> ' + p.conexao
+        + '</div>'
+        + '<div class="ainative-foot">' + prev + nxt + '</div>';
+    }
+
+    function goAiNative(d) {
+      curAi = Math.max(0, Math.min(2, curAi + d));
+      buildAiNativeNav();
+      buildAiNativeCard();
+    }
+
+    buildAiNativeNav();
+    buildAiNativeCard();
+  </script>
   <script>
     (function() {
       var textarea = document.getElementById('compromissoTexto');
