@@ -116,7 +116,7 @@
 
   <!-- Header do módulo -->
   <div class="module-header site-container">
-    <p class="eyebrow">M1 · Fundamentos · 35 min</p>
+    <p class="eyebrow">M1 · Fundamentos + Uso Seguro · 35 min</p>
     <h1>De Amador a Profissional</h1>
     <div class="module-header-meta">
       <span>62% da turma usa IA frequentemente</span>
@@ -203,6 +203,57 @@
     </div>
   </section>
 
+  <!-- Seção — Aquecimento: Banco de Desafios -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Aquecimento · 5 min</p>
+      <h2>Banco de Desafios</h2>
+      <p>
+        Antes de ver onde você está nos 7 Níveis, faça este exercício rápido.
+        Pense nas <strong>3 tarefas ou documentos</strong> que você faz repetidamente toda semana —
+        aquelas que mais tomam tempo ou que você executa no piloto automático.
+      </p>
+
+      <div class="callout">
+        <strong>Anote em uma folha (ou no celular):</strong>
+        <table style="margin-top:14px">
+          <thead>
+            <tr>
+              <th style="width:40px">#</th>
+              <th>Tarefa ou documento</th>
+              <th style="width:120px">Tempo hoje</th>
+              <th style="width:140px">Dá pra IA ajudar?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td style="color:var(--ink-muted)">Ex: redigir ata de reunião de obra</td>
+              <td style="color:var(--ink-muted)">—</td>
+              <td style="color:var(--ink-muted)">—</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td style="color:var(--ink-muted)">Ex: revisar memorial descritivo</td>
+              <td style="color:var(--ink-muted)">—</td>
+              <td style="color:var(--ink-muted)">—</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td style="color:var(--ink-muted)">Ex: cotação de insumos</td>
+              <td style="color:var(--ink-muted)">—</td>
+              <td style="color:var(--ink-muted)">—</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top:14px; font-size:14px; color:var(--ink-soft); margin-bottom:0">
+          Guarde essa lista — ela vai virar o ponto de partida do seu
+          <strong>Projeto Final no M4</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- Seção 3 — Os 7 Níveis de Uso de IA -->
   <section class="section content-section reveal">
     <div class="site-container">
@@ -268,6 +319,131 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </section>
+
+  <!-- Seção — Riscos Reais no Uso Corporativo -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Protocolo crítico</p>
+      <h2>Riscos Reais no Uso Corporativo</h2>
+
+      <h3>Risco 1 — Vazamento de Dados</h3>
+      <p>
+        O que você digita no ChatGPT (versão gratuita/web) <strong>pode ser usado para treinar
+        modelos</strong>. Antes de colar qualquer coisa, pense: essa informação pode aparecer
+        em uma resposta para outro usuário no futuro?
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>O que é</th>
+            <th>Por que não incluir</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nome de cliente + dados do projeto</td>
+            <td>Informação confidencial que pode vazar</td>
+          </tr>
+          <tr>
+            <td>Valores contratuais específicos</td>
+            <td>Dado financeiro sensível</td>
+          </tr>
+          <tr>
+            <td>Projetos sob NDA</td>
+            <td>Obrigação contratual de confidencialidade</td>
+          </tr>
+          <tr>
+            <td>Dados pessoais de colaboradores</td>
+            <td>LGPD</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout" style="margin-top:24px">
+        <strong>Como adaptar:</strong> anonimize antes de colar. "Projeto GPS-2026" vira
+        "Projeto A". Valores reais viram "R$ [VALOR]". O nome do cliente vira "Cliente X".
+      </div>
+
+      <h3 style="margin-top:40px">Risco 2 — Alucinação Técnica</h3>
+      <p>
+        IA pode inventar normas, artigos e especificações <strong>que não existem</strong> —
+        com total confiança. Esse é o risco que mais derruba documento técnico em revisão.
+      </p>
+
+      <div class="callout danger">
+        <strong>Regra inegociável:</strong> toda saída da IA que citar norma técnica, artigo
+        de lei, especificação de material ou valor oficial DEVE ser verificada na fonte
+        antes de uso em documento assinado.
+      </div>
+
+      <table style="margin-top:24px">
+        <thead>
+          <tr>
+            <th>Tipo de informação</th>
+            <th>Verificar onde</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Normas ABNT</td>
+            <td>Site ABNT ou acervo interno</td>
+          </tr>
+          <tr>
+            <td>Tabelas SINAPI</td>
+            <td>Caixa Econômica Federal</td>
+          </tr>
+          <tr>
+            <td>Especificações de material</td>
+            <td>Fabricante / catálogo técnico</td>
+          </tr>
+          <tr>
+            <td>Legislação</td>
+            <td>Portais oficiais (DOU, Câmara, TCU)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Seção — Boas Práticas de Uso Seguro -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Checklist</p>
+      <h2>Boas Práticas de Uso Seguro</h2>
+      <p>Para usar com tranquilidade no ambiente corporativo:</p>
+
+      <ul style="font-size:15px; line-height:2; color:var(--ink-soft); padding-left:20px; margin-top:16px">
+        <li>Nenhum dado sensível de cliente no prompt — anonimize antes</li>
+        <li>Toda especificação técnica gerada por IA é verificada na fonte antes do uso operacional</li>
+        <li>Documentos contratuais finais passam por revisão humana e assinatura do responsável técnico</li>
+        <li>Preferir versão Teams ou Enterprise quando disponível (dados não são usados para treino)</li>
+        <li>Em projetos com NDA: consultar o jurídico antes de usar IA com dados do projeto</li>
+      </ul>
+
+      <div class="callout" style="margin-top:24px">
+        <strong>Dica de produtividade segura:</strong> use a IA para a estrutura, o rascunho e
+        a revisão. Você mantém o julgamento técnico e a responsabilidade profissional.
+        A IA não tem CREA — você tem.
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção — Entregável do módulo -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Antes de seguir para o M2</p>
+      <h2>Entregável deste módulo</h2>
+      <p>Você só deve avançar quando conseguir marcar todos:</p>
+
+      <ul style="font-size:15px; line-height:2; color:var(--ink-soft); padding-left:20px; margin-top:16px">
+        <li>Identifiquei em qual nível dos 7 estou hoje</li>
+        <li>Reconheci ao menos 1 sinal de uso amador no meu dia a dia</li>
+        <li>1 tarefa repetitiva do meu trabalho identificada e classificada: "segura para IA" ou "requer cuidado"</li>
+        <li>Consigo dar um exemplo concreto da diferença entre uso casual e uso com método</li>
+      </ul>
     </div>
   </section>
 
