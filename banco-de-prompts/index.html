@@ -9,24 +9,109 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
   <style>
-    /* CSS específico do Banco de Prompts */
+    /* === Banco de Prompts — cards compactos em grid === */
     .prompts-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 16px;
       padding-bottom: 48px;
     }
-    .prompt-body pre {
-      margin: 0;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 13px;
-      line-height: 1.6;
-      color: var(--ink-soft);
+    .prompt-card {
+      display: flex; flex-direction: column;
+      padding: 22px;
     }
-    /* Garante legibilidade do botão copiar no estado "copiado" (outline + fundo escuro) */
+    .prompt-card-header { gap: 8px; }
+    .prompt-card-header > div { width: 100%; }
+    .prompt-card-header h3 {
+      font-size: 16px; line-height: 1.35; margin-bottom: 6px;
+    }
+    .prompt-card-header .btn-copy { display: none; }
+    .prompt-card-desc {
+      font-size: 13.5px; color: var(--ink-soft);
+      line-height: 1.55; margin: 10px 0 16px; flex: 1;
+    }
+    .prompt-body { display: none; }
+    .btn-ver {
+      width: 100%; text-align: center;
+      font-size: 13px; padding: 9px 16px;
+    }
     .btn-copy.copied { color: #fff; }
+
+    /* === Modal de preview (mesmo padrão de artefatos) === */
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(20, 20, 20, .55);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px; opacity: 0; pointer-events: none;
+      transition: opacity .22s ease;
+    }
+    .modal-backdrop.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--bg);
+      border-radius: 14px;
+      max-width: 720px; width: 100%; max-height: 85vh;
+      display: flex; flex-direction: column;
+      transform: translateY(16px) scale(.98);
+      transition: transform .28s ease;
+      box-shadow: 0 24px 60px rgba(0,0,0,.30);
+      position: relative; overflow: hidden;
+    }
+    .modal-backdrop.open .modal { transform: none; }
+    .modal-close {
+      position: absolute; top: 14px; right: 14px;
+      background: var(--bg-warm); border: 1px solid var(--border);
+      cursor: pointer; width: 34px; height: 34px;
+      border-radius: 50%; display: flex;
+      align-items: center; justify-content: center;
+      color: var(--ink-soft); font-size: 22px; line-height: 1;
+      transition: background .15s, color .15s;
+      z-index: 1; padding: 0;
+    }
+    .modal-close:hover { background: var(--border); color: var(--ink); }
+    .modal-head {
+      padding: 28px 28px 18px; border-bottom: 1px solid var(--border);
+    }
+    .modal-badge {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .08em;
+      background: var(--bg-warm); color: var(--accent-warm);
+      border: 1px solid var(--border);
+      padding: 4px 10px; border-radius: 4px; margin-bottom: 10px;
+    }
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; color: var(--ink); margin: 0;
+      line-height: 1.3;
+    }
+    .modal-body {
+      padding: 20px 28px; overflow-y: auto; flex: 1; min-height: 0;
+    }
+    .modal-body pre {
+      font-family: 'Menlo', 'Monaco', monospace;
+      font-size: 13px; line-height: 1.7;
+      color: var(--ink); margin: 0;
+      white-space: pre-wrap; word-wrap: break-word;
+    }
+    .modal-foot {
+      padding: 16px 28px;
+      border-top: 1px solid var(--border);
+      background: var(--bg-warm);
+      display: flex; justify-content: flex-end; gap: 12px;
+    }
+    .modal-copy-btn {
+      background: var(--accent); color: #fff; border: none;
+      padding: 10px 20px; font-size: 13px; font-weight: 600;
+      font-family: inherit; cursor: pointer; border-radius: 6px;
+      transition: background .15s;
+    }
+    .modal-copy-btn:hover { background: #1f4754; }
+    .modal-copy-btn.copied { background: #4a8061; }
+    @media (max-width: 640px) {
+      .modal { max-height: 92vh; }
+      .modal-head, .modal-foot { padding-left: 20px; padding-right: 20px; }
+      .modal-body { padding-left: 20px; padding-right: 20px; }
+    }
   </style>
 </head>
 <body>
@@ -87,6 +172,8 @@
         </div>
         <button class="btn btn-outline btn-copy" data-copy="prompt-P1" style="flex-shrink:0">Copiar</button>
       </div>
+      <p class="prompt-card-desc">Para criar um memorial descritivo do zero a partir das especificações técnicas do projeto.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P1')">Ver prompt →</button>
       <div class="prompt-body">
 <pre id="prompt-P1">Papel: Você é um redator técnico especialista em documentação de engenharia civil.
 
@@ -116,6 +203,8 @@ Limitações: Não invente especificações que não foram informadas. Se faltar
         </div>
         <button class="btn btn-outline btn-copy" data-copy="prompt-P2" style="flex-shrink:0">Copiar</button>
       </div>
+      <p class="prompt-card-desc">Para estruturar uma ata de reunião de obra a partir de anotações brutas com tabela de pendências.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P2')">Ver prompt →</button>
       <div class="prompt-body">
 <pre id="prompt-P2">Papel: Você é um assistente técnico especializado em documentação de obras.
 
@@ -149,6 +238,8 @@ Limitações: Use apenas as informações que eu forneci. Não adicione pendênc
         </div>
         <button class="btn btn-outline btn-copy" data-copy="prompt-P3" style="flex-shrink:0">Copiar</button>
       </div>
+      <p class="prompt-card-desc">Para entender em linguagem prática o que um trecho de norma técnica exige, com exemplo de aplicação.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P3')">Ver prompt →</button>
       <div class="prompt-body">
 <pre id="prompt-P3">Papel: Você é um consultor técnico especializado em normas brasileiras de construção civil.
 
@@ -182,6 +273,8 @@ sempre oriente a consultar um especialista ou o próprio órgão normativo.</pre
         </div>
         <button class="btn btn-outline btn-copy" data-copy="prompt-P4" style="flex-shrink:0">Copiar</button>
       </div>
+      <p class="prompt-card-desc">Para revisar um orçamento e identificar itens faltantes, inconsistências ou dimensionamento estranho.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P4')">Ver prompt →</button>
       <div class="prompt-body">
 <pre id="prompt-P4">Papel: Você é um especialista em orçamentos de construção civil com experiência em SINAPI.
 
@@ -214,6 +307,8 @@ Não calcule preços — apenas sinalize categorias e coerência.</pre>
         </div>
         <button class="btn btn-outline btn-copy" data-copy="prompt-P5" style="flex-shrink:0">Copiar</button>
       </div>
+      <p class="prompt-card-desc">Para gerar uma especificação técnica de material com norma de referência, padrão e justificativa.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P5')">Ver prompt →</button>
       <div class="prompt-body">
 <pre id="prompt-P5">Papel: Você é um engenheiro especialista em especificações técnicas para construção civil.
 
@@ -243,6 +338,8 @@ Limitações: Baseie-se nas normas ABNT vigentes. Se não souber a norma especí
         </div>
         <button class="btn btn-outline btn-copy" data-copy="prompt-P6" style="flex-shrink:0">Copiar</button>
       </div>
+      <p class="prompt-card-desc">Para transformar dados brutos do mês em um relatório executivo objetivo para diretoria.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P6')">Ver prompt →</button>
       <div class="prompt-body">
 <pre id="prompt-P6">Papel: Você é um analista de gestão especializado em relatórios executivos para PMEs.
 
@@ -275,6 +372,8 @@ Limitações: Use apenas os dados que eu fornecer. Se faltar dado essencial para
         </div>
         <button class="btn btn-outline btn-copy" data-copy="prompt-P7" style="flex-shrink:0">Copiar</button>
       </div>
+      <p class="prompt-card-desc">Para estruturar uma pauta de reunião clara, com tempo estimado por item e responsáveis.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P7')">Ver prompt →</button>
       <div class="prompt-body">
 <pre id="prompt-P7">Papel: Você é um facilitador de reuniões corporativas.
 
@@ -303,6 +402,8 @@ Limitações: Não exceda o tempo total de [X] minutos. Deixe sempre 5-10 min pa
         </div>
         <button class="btn btn-outline btn-copy" data-copy="prompt-P8" style="flex-shrink:0">Copiar</button>
       </div>
+      <p class="prompt-card-desc">Para analisar criticamente uma proposta de fornecedor antes de aprovar — completude, riscos e perguntas.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P8')">Ver prompt →</button>
       <div class="prompt-body">
 <pre id="prompt-P8">Papel: Você é um especialista em análise de fornecedores e contratos para construção civil.
 
@@ -332,6 +433,8 @@ Limitações: Não invente informações. Se a proposta não mencionar algo, reg
         </div>
         <button class="btn btn-outline btn-copy" data-copy="prompt-P9" style="flex-shrink:0">Copiar</button>
       </div>
+      <p class="prompt-card-desc">Para redigir um comunicado interno claro (mudança de processo, aviso, convocação) sem soar burocrático.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P9')">Ver prompt →</button>
       <div class="prompt-body">
 <pre id="prompt-P9">Papel: Você é um especialista em comunicação interna corporativa.
 
@@ -362,6 +465,8 @@ Limitações: Não adicione informações que não estejam nos pontos que listei
         </div>
         <button class="btn btn-outline btn-copy" data-copy="prompt-P10" style="flex-shrink:0">Copiar</button>
       </div>
+      <p class="prompt-card-desc">Para resumir um documento trabalhista denso (lei, acordo, parecer) em linguagem simples.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P10')">Ver prompt →</button>
       <div class="prompt-body">
 <pre id="prompt-P10">Papel: Você é um especialista em legislação trabalhista brasileira e comunicação acessível.
 
@@ -392,6 +497,8 @@ Não dê opinião jurídica — explique o que está escrito.</pre>
         </div>
         <button class="btn btn-outline btn-copy" data-copy="prompt-P11" style="flex-shrink:0">Copiar</button>
       </div>
+      <p class="prompt-card-desc">Para criar um plano prático de aprendizado de uma habilidade nova no tempo que você tem disponível.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P11')">Ver prompt →</button>
       <div class="prompt-body">
 <pre id="prompt-P11">Papel: Você é um tutor especializado em aprendizado de habilidades técnicas.
 
@@ -422,6 +529,8 @@ Não crie uma lista enorme que não cabe no prazo.</pre>
         </div>
         <button class="btn btn-outline btn-copy" data-copy="prompt-P12" style="flex-shrink:0">Copiar</button>
       </div>
+      <p class="prompt-card-desc">Para revisar um e-mail ou texto antes de enviar para gestor ou cliente — clareza, tom e completude.</p>
+      <button class="btn btn-outline btn-ver" onclick="openPromptPreview('P12')">Ver prompt →</button>
       <div class="prompt-body">
 <pre id="prompt-P12">Papel: Você é um revisor de comunicação profissional.
 
@@ -501,6 +610,49 @@ Limitações: Não mude o sentido do que estou dizendo. Se não entender a inten
     <p>Workshop IA · GPS Engenharia · Facilitador: Rafael Lima · via IEL</p>
   </footer>
 
+  <!-- Modal de preview -->
+  <div class="modal-backdrop" id="previewBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-labelledby="previewTitle" aria-modal="true">
+      <button class="modal-close" aria-label="Fechar" onclick="closePreview()">×</button>
+      <div class="modal-head">
+        <span class="modal-badge" id="previewBadge"></span>
+        <h3 class="modal-title" id="previewTitle"></h3>
+      </div>
+      <div class="modal-body">
+        <pre id="previewContent"></pre>
+      </div>
+      <div class="modal-foot">
+        <button class="modal-copy-btn" data-copy="previewContent">Copiar prompt</button>
+      </div>
+    </div>
+  </div>
+
   <script src="../assets/script.js"></script>
+  <script>
+    function openPromptPreview(id) {
+      var pre = document.getElementById('prompt-' + id);
+      if (!pre) return;
+      var card = pre.closest('.prompt-card');
+      var titulo = card.querySelector('h3').textContent.trim();
+      var funcao = card.querySelector('.prompt-card-function').textContent.trim();
+      document.getElementById('previewTitle').textContent = titulo;
+      document.getElementById('previewBadge').textContent = funcao;
+      document.getElementById('previewContent').textContent = pre.textContent.trim();
+      document.getElementById('previewBackdrop').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePreview() {
+      document.getElementById('previewBackdrop').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('previewBackdrop').addEventListener('click', function(e) {
+      if (e.target === this) closePreview();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closePreview();
+    });
+  </script>
 </body>
 </html>

@@ -22,6 +22,83 @@
       padding: 3px 8px;
       white-space: nowrap;
     }
+
+    /* === Modal de preview (compartilhado) === */
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(20, 20, 20, .55);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px; opacity: 0; pointer-events: none;
+      transition: opacity .22s ease;
+    }
+    .modal-backdrop.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--bg);
+      border-radius: 14px;
+      max-width: 720px; width: 100%; max-height: 85vh;
+      display: flex; flex-direction: column;
+      transform: translateY(16px) scale(.98);
+      transition: transform .28s ease;
+      box-shadow: 0 24px 60px rgba(0,0,0,.30);
+      position: relative; overflow: hidden;
+    }
+    .modal-backdrop.open .modal { transform: none; }
+    .modal-close {
+      position: absolute; top: 14px; right: 14px;
+      background: var(--bg-warm); border: 1px solid var(--border);
+      cursor: pointer; width: 34px; height: 34px;
+      border-radius: 50%; display: flex;
+      align-items: center; justify-content: center;
+      color: var(--ink-soft); font-size: 22px; line-height: 1;
+      transition: background .15s, color .15s;
+      z-index: 1; padding: 0;
+    }
+    .modal-close:hover { background: var(--border); color: var(--ink); }
+    .modal-head {
+      padding: 28px 28px 18px; border-bottom: 1px solid var(--border);
+    }
+    .modal-badge {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .08em;
+      background: var(--bg-warm); color: var(--accent-warm);
+      border: 1px solid var(--border);
+      padding: 4px 10px; border-radius: 4px; margin-bottom: 10px;
+    }
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; color: var(--ink); margin: 0;
+      line-height: 1.3;
+    }
+    .modal-body {
+      padding: 20px 28px; overflow-y: auto;
+      flex: 1; min-height: 0;
+    }
+    .modal-body pre {
+      font-family: 'Menlo', 'Monaco', monospace;
+      font-size: 13px; line-height: 1.7;
+      color: var(--ink); margin: 0;
+      white-space: pre-wrap; word-wrap: break-word;
+    }
+    .modal-foot {
+      padding: 16px 28px;
+      border-top: 1px solid var(--border);
+      background: var(--bg-warm);
+      display: flex; justify-content: flex-end; gap: 12px;
+    }
+    .modal-copy-btn {
+      background: var(--accent); color: #fff; border: none;
+      padding: 10px 20px; font-size: 13px; font-weight: 600;
+      font-family: inherit; cursor: pointer; border-radius: 6px;
+      transition: background .15s;
+    }
+    .modal-copy-btn:hover { background: #1f4754; }
+    .modal-copy-btn.copied { background: #4a8061; }
+    @media (max-width: 640px) {
+      .modal { max-height: 92vh; }
+      .modal-head, .modal-foot { padding-left: 20px; padding-right: 20px; }
+      .modal-body { padding-left: 20px; padding-right: 20px; }
+    }
   </style>
 </head>
 <body>
@@ -101,14 +178,15 @@
             Exercício: peça à IA para revisar, melhorar a linguagem técnica e verificar
             se há inconsistências. Use com o Prompt 1 (Redigir Memorial Descritivo).
           </p>
-          <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap">
+            <button onclick="openArtefatoPreview('memorial')"
+                    class="btn" style="font-size:13px; padding:8px 16px">
+              Ver conteúdo
+            </button>
             <a href="../assets/artefatos/A4_Eng_Memorial_Descritivo_Residencia.md"
-               download class="btn" style="font-size:13px; padding:8px 16px">
-              ↓ Baixar Documento
+               download class="btn btn-outline" style="font-size:13px; padding:8px 16px">
+              ↓ Baixar .md
             </a>
-            <span style="font-size:12px; color:var(--ink-muted)">
-              Formato Markdown · Abrir em qualquer editor de texto
-            </span>
           </div>
         </div>
       </div>
@@ -126,14 +204,15 @@
             Exercício: use a IA para estruturar a ata completa com tabela de responsáveis
             e prazos. Use com o Prompt 2 (Estruturar Ata de Reunião de Obra).
           </p>
-          <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap">
+            <button onclick="openArtefatoPreview('ata')"
+                    class="btn" style="font-size:13px; padding:8px 16px">
+              Ver conteúdo
+            </button>
             <a href="../assets/artefatos/A4_Eng_Ata_Reuniao_Obra.md"
-               download class="btn" style="font-size:13px; padding:8px 16px">
-              ↓ Baixar Documento
+               download class="btn btn-outline" style="font-size:13px; padding:8px 16px">
+              ↓ Baixar .md
             </a>
-            <span style="font-size:12px; color:var(--ink-muted)">
-              Formato Markdown · Cole o conteúdo direto no prompt
-            </span>
           </div>
         </div>
       </div>
@@ -151,14 +230,15 @@
             Exercício: use a IA para melhorar a linguagem, verificar completude e
             criar um resumo executivo. Use com o Prompt 8 (Analisar Proposta de Fornecedor).
           </p>
-          <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap">
+            <button onclick="openArtefatoPreview('proposta')"
+                    class="btn" style="font-size:13px; padding:8px 16px">
+              Ver conteúdo
+            </button>
             <a href="../assets/artefatos/A4_Adm_Proposta_Comercial_Licitacao.md"
-               download class="btn" style="font-size:13px; padding:8px 16px">
-              ↓ Baixar Documento
+               download class="btn btn-outline" style="font-size:13px; padding:8px 16px">
+              ↓ Baixar .md
             </a>
-            <span style="font-size:12px; color:var(--ink-muted)">
-              Formato Markdown · Cole o conteúdo direto no prompt
-            </span>
           </div>
         </div>
       </div>
@@ -211,6 +291,73 @@
     <p>Workshop IA · GPS Engenharia · Facilitador: Rafael Lima · via IEL</p>
   </footer>
 
+  <!-- Modal de preview -->
+  <div class="modal-backdrop" id="previewBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-labelledby="previewTitle" aria-modal="true">
+      <button class="modal-close" aria-label="Fechar" onclick="closePreview()">×</button>
+      <div class="modal-head">
+        <span class="modal-badge" id="previewBadge"></span>
+        <h3 class="modal-title" id="previewTitle"></h3>
+      </div>
+      <div class="modal-body">
+        <pre id="previewContent"></pre>
+      </div>
+      <div class="modal-foot">
+        <button class="modal-copy-btn" data-copy="previewContent">Copiar conteúdo</button>
+      </div>
+    </div>
+  </div>
+
   <script src="../assets/script.js"></script>
+  <script>
+    var artefatosMeta = {
+      ata: {
+        titulo: 'Ata de Reunião de Obra',
+        badge: 'M2 · Sala de Projetos',
+        arquivo: '../assets/artefatos/A4_Eng_Ata_Reuniao_Obra.md'
+      },
+      memorial: {
+        titulo: 'Memorial Descritivo — Residência Unifamiliar',
+        badge: 'M2 · Sala de Projetos',
+        arquivo: '../assets/artefatos/A4_Eng_Memorial_Descritivo_Residencia.md'
+      },
+      proposta: {
+        titulo: 'Proposta Comercial para Licitação',
+        badge: 'M4 · Engenharia de Prompt',
+        arquivo: '../assets/artefatos/A4_Adm_Proposta_Comercial_Licitacao.md'
+      }
+    };
+
+    function openArtefatoPreview(id) {
+      var m = artefatosMeta[id];
+      if (!m) return;
+      document.getElementById('previewTitle').textContent = m.titulo;
+      document.getElementById('previewBadge').textContent = m.badge;
+      document.getElementById('previewContent').textContent = 'Carregando…';
+      document.getElementById('previewBackdrop').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      fetch(m.arquivo)
+        .then(function(r) { return r.text(); })
+        .then(function(t) {
+          document.getElementById('previewContent').textContent = t;
+        })
+        .catch(function() {
+          document.getElementById('previewContent').textContent =
+            'Não foi possível carregar o arquivo. Use o botão "Baixar .md" como alternativa.';
+        });
+    }
+
+    function closePreview() {
+      document.getElementById('previewBackdrop').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('previewBackdrop').addEventListener('click', function(e) {
+      if (e.target === this) closePreview();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closePreview();
+    });
+  </script>
 </body>
 </html>
