@@ -1513,3 +1513,182 @@ footer p {
     font-size: 16px;
   }
 }
+
+/* ============================================
+   PROMPT 21 — M1 Seção 0 (Frente A)
+   IA Aninhada + Matriz de Consciência
+   ============================================ */
+
+/* ── Diagrama IA Aninhada (4 círculos concêntricos) ────── */
+.ia-aninhada-block {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 36px;
+  align-items: center;
+  margin: 28px 0 8px;
+}
+.ia-aninhada-svg {
+  width: 280px;
+  height: 280px;
+  display: block;
+}
+.ia-aninhada-ring {
+  fill-opacity: 1;
+  stroke-width: 2;
+  transition: stroke-width .2s, fill-opacity .2s;
+  cursor: pointer;
+}
+.ia-aninhada-ring.r1 { fill: #f3f8fa; stroke: #c8d6dc; }
+.ia-aninhada-ring.r2 { fill: #e1edf1; stroke: #a0bdc6; }
+.ia-aninhada-ring.r3 { fill: #c8dde3; stroke: #6c9ba9; }
+.ia-aninhada-ring.r4 { fill: #2c5f70; stroke: #1d4250; }
+.ia-aninhada-ring:hover { stroke-width: 4; }
+.ia-aninhada-label {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  text-anchor: middle;
+  pointer-events: none;
+  letter-spacing: 0.04em;
+}
+.ia-aninhada-label.dark { fill: var(--ink); }
+.ia-aninhada-label.light { fill: #fff; }
+.ia-aninhada-sub {
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 500;
+  text-anchor: middle;
+  pointer-events: none;
+  fill: var(--ink-muted);
+  letter-spacing: 0.02em;
+}
+
+/* Pulso suave no centro IA GEN */
+@keyframes iagenPulse {
+  0%, 100% { stroke-width: 3; opacity: 1; }
+  50% { stroke-width: 5; opacity: .92; }
+}
+.ia-aninhada-ring.r4 { animation: iagenPulse 2.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .ia-aninhada-ring.r4 { animation: none; }
+}
+
+.ia-aninhada-text { display: flex; flex-direction: column; }
+.ia-aninhada-frase {
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 0 0 18px;
+  border-left: 3px solid var(--accent-warm);
+  padding-left: 18px;
+}
+.ia-aninhada-frase strong { font-weight: 700; }
+.ia-aninhada-implicacoes {
+  list-style: decimal;
+  padding-left: 22px;
+  margin: 0;
+}
+.ia-aninhada-implicacoes li {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+.ia-aninhada-implicacoes strong { color: var(--ink); }
+
+/* Mobile IA Aninhada */
+@media (max-width: 720px) {
+  .ia-aninhada-block {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    justify-items: center;
+  }
+  .ia-aninhada-svg { width: 240px; height: 240px; }
+  .ia-aninhada-text { width: 100%; }
+  .ia-aninhada-frase { font-size: 18px; }
+}
+
+/* ── Matriz de Consciência (3 círculos concêntricos) ────── */
+.matriz-consciencia-block {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 36px;
+  align-items: center;
+  margin: 28px 0 8px;
+}
+.matriz-consciencia-svg {
+  width: 320px;
+  height: 320px;
+  display: block;
+}
+.matriz-consciencia-ring {
+  stroke-width: 2;
+}
+.matriz-consciencia-ring.z1 { fill: #e8e4dc; stroke: #8f8678; }
+.matriz-consciencia-ring.z2 { fill: #f4dcc8; stroke: #c2916b; }
+.matriz-consciencia-ring.z3 { fill: #c8e0e5; stroke: var(--accent); }
+.matriz-consciencia-label {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  text-anchor: middle;
+  fill: var(--ink);
+  letter-spacing: 0.03em;
+}
+.matriz-consciencia-label.muted { fill: var(--ink-soft); }
+
+.matriz-text { display: flex; flex-direction: column; }
+.matriz-wysiati-title {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+.matriz-wysiati-en {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin: 0 0 14px;
+}
+.matriz-wysiati-frase {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  margin: 0 0 18px;
+}
+.matriz-zonas-tabela { width: 100%; border-collapse: collapse; }
+.matriz-zonas-tabela th,
+.matriz-zonas-tabela td {
+  font-size: 13px;
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.matriz-zonas-tabela th {
+  background: var(--bg-warm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+.matriz-zonas-tabela td:first-child {
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+/* Mobile Matriz */
+@media (max-width: 720px) {
+  .matriz-consciencia-block {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    justify-items: center;
+  }
+  .matriz-consciencia-svg { width: 280px; height: 280px; }
+  .matriz-text { width: 100%; }
+}
