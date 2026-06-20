@@ -135,18 +135,21 @@
       </p>
 
       <div class="ia-aninhada-block">
-        <svg class="ia-aninhada-svg" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" aria-label="Diagrama IA aninhada: IA contém Machine Learning, que contém Deep Learning, que contém IA Generativa">
-          <circle id="ring-r1" class="ia-aninhada-ring r1" cx="140" cy="140" r="135" data-ring="r1"/>
-          <circle id="ring-r2" class="ia-aninhada-ring r2" cx="140" cy="140" r="105" data-ring="r2"/>
-          <circle id="ring-r3" class="ia-aninhada-ring r3" cx="140" cy="140" r="75" data-ring="r3"/>
-          <circle id="ring-r4" class="ia-aninhada-ring r4" cx="140" cy="140" r="45" data-ring="r4"/>
-          <!-- Labels -->
-          <text class="ia-aninhada-label dark" x="140" y="26">IA</text>
-          <text class="ia-aninhada-label dark" x="140" y="59">MACHINE LEARNING</text>
-          <text class="ia-aninhada-label dark" x="140" y="92">DEEP LEARNING</text>
-          <text class="ia-aninhada-label light" x="140" y="138">IA GEN</text>
-          <text class="ia-aninhada-label light" x="140" y="155" style="font-size:9px; opacity:.85">você está aqui</text>
-        </svg>
+        <div class="ia-layers" role="group" aria-label="Hierarquia da IA">
+          <div id="layer-r1" class="ia-layer l1" data-ring="r1">
+            <span class="ia-layer-name">Inteligência Artificial</span>
+            <div id="layer-r2" class="ia-layer l2" data-ring="r2">
+              <span class="ia-layer-name">Machine Learning</span>
+              <div id="layer-r3" class="ia-layer l3" data-ring="r3">
+                <span class="ia-layer-name">Deep Learning</span>
+                <div id="layer-r4" class="ia-layer l4" data-ring="r4">
+                  <span class="ia-layer-name">IA Generativa</span>
+                  <span class="ia-layer-sub">você está aqui</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div id="ia-aninhada-text" class="ia-aninhada-text">
           <p id="ia-aninhada-frase" class="ia-aninhada-frase">
@@ -178,7 +181,7 @@
           <circle class="matriz-consciencia-ring z2" cx="160" cy="160" r="100"/>
           <circle class="matriz-consciencia-ring z3" cx="160" cy="160" r="50"/>
           <!-- Labels dentro dos anéis -->
-          <text class="matriz-consciencia-label muted" x="160" y="28">NÃO SEI QUE NÃO SEI</text>
+          <text class="matriz-consciencia-label muted" x="160" y="42">NÃO SEI QUE NÃO SEI</text>
           <text class="matriz-consciencia-label" x="160" y="78">SEI QUE NÃO SEI</text>
           <text class="matriz-consciencia-label" x="160" y="165">SEI QUE SEI</text>
         </svg>
@@ -849,10 +852,9 @@
         }, 200);
 
         rings.forEach(function (r) {
-          var el = document.getElementById('ring-' + r);
+          var el = document.getElementById('layer-' + r);
           if (!el) return;
           el.classList.toggle('active', r === ring);
-          el.classList.toggle('dimmed', r !== ring);
         });
 
         var hint = document.getElementById('ia-aninhada-hint');
@@ -860,10 +862,10 @@
       }
 
       rings.forEach(function (r) {
-        var el = document.getElementById('ring-' + r);
+        var el = document.getElementById('layer-' + r);
         if (!el) return;
-        el.addEventListener('mouseenter', function () { activate(r); });
-        el.addEventListener('click', function () { activate(r); });
+        el.addEventListener('mouseenter', function (e) { e.stopPropagation(); activate(r); });
+        el.addEventListener('click', function (e) { e.stopPropagation(); activate(r); });
       });
     })();
   </script>

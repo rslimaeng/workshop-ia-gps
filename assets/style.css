@@ -1524,7 +1524,7 @@ footer p {
   display: grid;
   grid-template-columns: 360px 1fr;
   gap: 40px;
-  align-items: center;
+  align-items: start;
   margin: 28px 0 8px;
 }
 .ia-aninhada-svg {
@@ -1552,6 +1552,41 @@ footer p {
   font-style: italic;
   margin: 14px 0 0;
   letter-spacing: 0.01em;
+}
+/* IA Aninhada — caixas CSS */
+.ia-layers { display: block; }
+.ia-layer {
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: box-shadow .15s;
+  position: relative;
+}
+.ia-layer .ia-layer { margin-top: 10px; }
+.ia-layer.l1 { background: #f3f8fa; border: 2px solid #c8d6dc; }
+.ia-layer.l2 { background: #e1edf1; border: 2px solid #a0bdc6; }
+.ia-layer.l3 { background: #c8dde3; border: 2px solid #6c9ba9; }
+.ia-layer.l4 { background: #2c5f70; border: 2px solid #1d4250; }
+.ia-layer.active { box-shadow: 0 0 0 3px rgba(44,95,112,.4); }
+.ia-layer-name {
+  display: block;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  pointer-events: none;
+}
+.ia-layer.l4 .ia-layer-name { color: #fff; }
+.ia-layer-sub {
+  display: block;
+  font-family: var(--sans);
+  font-size: 10px;
+  color: rgba(255,255,255,0.65);
+  font-style: italic;
+  margin-top: 2px;
+  pointer-events: none;
 }
 .ia-aninhada-label {
   font-family: var(--sans);
