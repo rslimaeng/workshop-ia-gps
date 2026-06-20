@@ -8,6 +8,46 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    /* IPO diagram */
+    .ipo-flow {
+      display: flex;
+      align-items: stretch;
+      margin: 24px 0;
+    }
+    .ipo-box {
+      flex: 1;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      border: 1px solid var(--border);
+    }
+    .ipo-input  { background: var(--bg-warm); border-radius: 8px 0 0 8px; }
+    .ipo-output { background: var(--bg-warm); border-radius: 0 8px 8px 0; }
+    .ipo-process { background: var(--bg); border-left: none; border-right: none; }
+    .ipo-box-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--accent);
+    }
+    .ipo-box-desc { font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.4; }
+    .ipo-box-list {
+      font-size: 12.5px; color: var(--ink-soft);
+      padding-left: 16px; margin: 4px 0 0; line-height: 1.75;
+    }
+    .ipo-sep {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: var(--ink-muted); padding: 0 10px; flex-shrink: 0;
+      background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    @media (max-width: 600px) {
+      .ipo-flow { flex-direction: column; }
+      .ipo-box  { border: 1px solid var(--border); border-radius: 0 !important; border-bottom: none; }
+      .ipo-input  { border-radius: 8px 8px 0 0 !important; }
+      .ipo-output { border-radius: 0 0 8px 8px !important; border-bottom: 1px solid var(--border); }
+      .ipo-sep { border: none; border-left: 1px solid var(--border); border-right: 1px solid var(--border); padding: 6px 0; }
+    }
+  </style>
 </head>
 <body>
 
@@ -360,6 +400,60 @@ Negativo: NÃO use títulos genéricos como "Resultados" ou
     </div>
   </section>
 
+  <!-- Seção — Framework IPO: processo adaptado com IA -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Processos · A raiz do output genérico</p>
+      <h2>Quando o Processo Não Muda, o Output Parece IA</h2>
+      <p>
+        No M2 vimos que IA roda sobre trilhos — e trilhos vagos produzem respostas genéricas.
+        Há um nível mais profundo: <strong>se o processo que você executa todo dia não foi
+        redesenhado para trabalhar com IA, o output vai carregar a marca da ferramenta, não
+        da GPS.</strong> A revisão OIA resolve a narrativa. O IPO resolve a raiz.
+      </p>
+      <p style="margin-top:12px; color:var(--ink-soft)">
+        O Framework IPO (Input → Processo → Output) abre a caixa preta de um processo
+        recorrente e o reconstrói com critérios claros — o que a IA precisa para executar
+        com consistência e entregar no seu jeito, não no jeito genérico.
+      </p>
+
+      <div class="ipo-flow" style="margin-top:28px">
+        <div class="ipo-box ipo-input">
+          <span class="ipo-box-label">Input</span>
+          <span class="ipo-box-desc">O que aciona o processo</span>
+          <span style="font-size:12.5px; color:var(--ink-soft)">dado, documento ou solicitação que chega</span>
+        </div>
+        <div class="ipo-sep">→</div>
+        <div class="ipo-box ipo-process">
+          <span class="ipo-box-label">Processo</span>
+          <span class="ipo-box-desc">4–7 passos com verbo + critério</span>
+          <span style="font-size:12.5px; color:var(--ink-soft)">a caixa preta aberta — cada passo é uma instrução</span>
+        </div>
+        <div class="ipo-sep">→</div>
+        <div class="ipo-box ipo-output">
+          <span class="ipo-box-label">Output</span>
+          <span class="ipo-box-desc">Formato e destino exatos</span>
+          <span style="font-size:12.5px; color:var(--ink-soft)">o resultado pronto — para quem e em qual formato</span>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:20px">
+        <button class="btn" onclick="openIpoModal()" style="font-size:13px; padding:8px 16px">
+          Ver diagrama completo →
+        </button>
+        <span style="font-size:13px; color:var(--ink-muted)">
+          6 campos · erros comuns · conexão com M2 e M5
+        </span>
+      </div>
+
+      <div class="callout" style="margin-top:24px">
+        <strong>Próximo passo prático:</strong> mapeie um processo recorrente da GPS em IPO
+        usando o <button class="btn-inline-link" onclick="openM3Preview('prompt','P30')">P30 — Mapeamento IPO de Processo</button>.
+        O resultado vira o briefing do seu Assistente Persistente no M5.
+      </div>
+    </div>
+  </section>
+
   <!-- Seção 3.5 — Onde a IA já entregou (dado Anthropic) -->
   <section class="section content-section reveal">
     <div class="site-container">
@@ -492,6 +586,160 @@ Negativo: NÃO use títulos genéricos como "Resultados" ou
     <p>Workshop IA · GPS Engenharia · Facilitador: Rafael Lima · via IEL</p>
   </footer>
 
+  <!-- Modal IPO — diagrama visual -->
+  <div class="modal-backdrop" id="ipoModalBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-labelledby="ipoModalTitle" aria-modal="true">
+      <button class="modal-close" aria-label="Fechar" onclick="closeIpoModal()">×</button>
+      <div class="modal-head">
+        <span class="modal-badge">M3 · Processos</span>
+        <h3 class="modal-title" id="ipoModalTitle">Framework IPO — Input · Processo · Output</h3>
+      </div>
+      <div class="modal-body" style="padding-bottom:16px">
+
+        <p style="font-size:14px; color:var(--ink-soft); line-height:1.65; margin:16px 0 22px">
+          Abre a caixa preta de um processo recorrente e o reconstrói com instruções que
+          a IA executa com consistência. Conecta com os trilhos do M2 — e prepara o terreno
+          para o Assistente Persistente do M5.
+        </p>
+
+        <!-- Fluxo visual -->
+        <div class="ipo-flow" style="margin:0 0 10px">
+          <div class="ipo-box ipo-input">
+            <span class="ipo-box-label">Input</span>
+            <span class="ipo-box-desc">O que aciona o processo</span>
+            <ul class="ipo-box-list">
+              <li>Dado que chega (formulário, e-mail, planilha)</li>
+              <li>Formato exato dos dados de entrada</li>
+              <li>Quem aciona e com qual frequência</li>
+            </ul>
+          </div>
+          <div class="ipo-sep">→</div>
+          <div class="ipo-box ipo-process">
+            <span class="ipo-box-label">Processo</span>
+            <span class="ipo-box-desc">4–7 passos com verbo + critério</span>
+            <ul class="ipo-box-list">
+              <li>Cada passo: <em>verbo de ação + critério de decisão</em></li>
+              <li>Ex: "Se valor ≤ R$2k → aprovar; se > R$2k → encaminhar"</li>
+              <li>Passo vago = instrução que a IA vai inventar</li>
+            </ul>
+          </div>
+          <div class="ipo-sep">→</div>
+          <div class="ipo-box ipo-output">
+            <span class="ipo-box-label">Output</span>
+            <span class="ipo-box-desc">Formato e destino exatos</span>
+            <ul class="ipo-box-list">
+              <li>Formato final entregue (e-mail, planilha, doc)</li>
+              <li>Destinatário definido</li>
+              <li>Critério de qualidade do resultado</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Exceção -->
+        <div style="background:var(--bg-warm); border:1px solid var(--border); border-radius:6px; padding:12px 16px; margin-bottom:22px; font-size:13px; color:var(--ink-soft); line-height:1.6">
+          <strong style="color:var(--ink)">+ Exceção / Erro</strong> — O que fazer quando algo faltar ou sair do fluxo normal.
+          Um processo sem regra de fallback vai travar ou inventar na primeira situação inesperada.
+          <span style="color:var(--ink)">Ex: "se campo vazio → solicitar reenvio", "se sem resposta em 24h → escalar".</span>
+        </div>
+
+        <!-- Vago vs Concreto -->
+        <p style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-muted); margin:0 0 10px">O princípio crítico</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:22px">
+          <div style="background:var(--bg-warm); border:1px solid var(--border); border-radius:6px; padding:14px">
+            <p style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-muted); margin:0 0 6px">❌ Intenção vaga</p>
+            <p style="font-size:14px; font-style:italic; color:var(--ink); margin:0 0 6px">"Verificar orçamento"</p>
+            <p style="font-size:12.5px; color:var(--ink-soft); margin:0">A IA não sabe o critério — vai inventar um razoável e o output vai parecer genérico.</p>
+          </div>
+          <div style="background:#eef6f0; border:1px solid #b8dfc5; border-radius:6px; padding:14px">
+            <p style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:#2d6a4f; margin:0 0 6px">✓ Instrução com critério</p>
+            <p style="font-size:14px; color:var(--ink); margin:0 0 6px">"Se valor ≤ alçada → aprovar; se > alçada → encaminhar ao Gestor com justificativa"</p>
+            <p style="font-size:12.5px; color:var(--ink-soft); margin:0">A IA executa sem ambiguidade — o output carrega o critério da GPS, não um genérico.</p>
+          </div>
+        </div>
+
+        <!-- Os 6 campos -->
+        <p style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-muted); margin:0 0 10px">Os 6 campos da tabela IPO</p>
+        <table style="font-size:13px; margin-bottom:22px">
+          <thead>
+            <tr>
+              <th style="width:20%">Campo</th>
+              <th>O que colocar</th>
+              <th>Erro comum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Área</strong></td>
+              <td>Nome específico do processo</td>
+              <td>Só o setor ("Administrativo") sem nomear o processo</td>
+            </tr>
+            <tr>
+              <td><strong>Input</strong></td>
+              <td>O que aciona e o formato exato dos dados</td>
+              <td>"Uma solicitação" sem detalhar o formato</td>
+            </tr>
+            <tr>
+              <td><strong>Processo</strong></td>
+              <td>4–7 passos com verbo + critério de decisão</td>
+              <td>Passos vagos como "aprovar" sem o critério</td>
+            </tr>
+            <tr>
+              <td><strong>Output</strong></td>
+              <td>Formato final e destinatário exatos</td>
+              <td>"Resposta" sem definir formato ou destino</td>
+            </tr>
+            <tr>
+              <td><strong>Exceção</strong></td>
+              <td>Regra de fallback para situações fora do padrão</td>
+              <td>Deixar vazio — o resultado vai inventar ou travar</td>
+            </tr>
+            <tr>
+              <td><strong>Recursos</strong></td>
+              <td>Dados, arquivos ou acessos necessários</td>
+              <td>Listar sistemas sem API ou acesso disponível</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Conexões com módulos -->
+        <p style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-muted); margin:0 0 10px">Conexão com os módulos</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px">
+          <div class="callout" style="margin:0; font-size:13px">
+            <strong>↩ M2 — Trilhos:</strong> o IPO é o método para redesenhar os trilhos processo a processo. Trilho genérico = output genérico, independente do prompt.
+          </div>
+          <div class="callout" style="margin:0; font-size:13px">
+            <strong>↪ M5 — Assistente:</strong> o IPO preenchido vira o briefing do Assistente Persistente. Quanto mais preciso, menos cara-de-IA no output final.
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-foot">
+        <button class="modal-copy-btn" data-copy="ipo-p30-text">Copiar P30 — Mapeamento IPO</button>
+      </div>
+    </div>
+  </div>
+  <pre id="ipo-p30-text" style="display:none">Papel: Você é um consultor de processos especializado em sistematização de tarefas repetitivas para automação ou criação de assistentes especializados.
+
+Contexto: Eu (gestor na GPS Engenharia) tenho um processo que executo recorrentemente: [descreva — ex: análise semanal de obras, fechamento mensal de medições, briefing de fornecedores]. Quero mapear no formato IPO para depois transformar em Assistente Persistente.
+
+Descrição do processo:
+[passos que executo hoje, ferramentas que uso, quanto tempo gasto, frequência]
+
+Tarefa: Mapeie o processo em IPO completo:
+- INPUTS: o que precisa estar disponível antes de começar (dados, arquivos, contexto)
+- PROCESS: passos sequenciais (com critério de "pronto" em cada um)
+- OUTPUTS: o que sai pronto para usar (formato, destinatário, critério de qualidade)
+
+Termine com 3 perguntas para definir qual parte vale automatizar com Assistente (Autopiloto), qual vale Colaboração e qual deve continuar Manual.
+
+Formato: 3 seções (Inputs / Process / Outputs) seguidas das 3 perguntas. Cada passo do Process em 1 linha clara.
+
+Limitações: Use apenas a descrição. Não invente passos que não foram mencionados. Se um passo estiver vago, peça detalhe antes de mapear.
+
+Critério de Sucesso: posso pegar o output e usar diretamente como Instrução de Sistema para um Claude Project ou Custom GPT na semana seguinte.
+
+Negativo: NÃO listar "etapa 1: planejar" sem conteúdo. NÃO confundir Input com Output. NÃO recomendar automatizar tudo — manter Manual o que exige julgamento.</pre>
+
   <!-- Modal de preview — prompts (inline, sem navegação) -->
   <div class="modal-backdrop" id="m3PreviewBackdrop" aria-hidden="true">
     <div class="modal" role="dialog" aria-labelledby="m3PreviewTitle" aria-modal="true">
@@ -517,6 +765,11 @@ Negativo: NÃO use títulos genéricos como "Resultados" ou
         titulo: 'P4 — Revisar Orçamento / Verificar Itens Faltantes',
         badge: 'Banco de Prompts · Engenharia',
         texto: 'Papel: Você é um especialista em orçamentos de construção civil com experiência em SINAPI.\n\nContexto: Estou elaborando um orçamento para [tipo de obra: residencial / comercial / reforma].\nA obra está localizada em Fortaleza/CE. Já tenho os seguintes itens na planilha:\n\n[liste ou cole os itens que você já tem]\n\nTarefa:\n1. Analise se os itens estão coerentes entre si\n2. Aponte possíveis itens faltantes típicos para esse tipo de obra\n3. Identifique qualquer inconsistência ou item que parece mal dimensionado\n\nFormato:\n- Lista de verificação: ✓ OK / ⚠️ Verificar / ✗ Faltando\n- Breve justificativa para cada apontamento\n- Sugestão dos itens mais críticos que precisam ser conferidos\n\nLimitações: Você não tem acesso a quantitativos detalhados. Baseie-se nos itens que eu forneci.\nNão calcule preços — apenas sinalize categorias e coerência.'
+      },
+      P30: {
+        titulo: 'P30 — Mapeamento IPO de Processo',
+        badge: 'Banco de Prompts · Liderança / Gestão',
+        texto: 'Papel: Você é um consultor de processos especializado em sistematização de tarefas repetitivas para automação ou criação de assistentes especializados.\n\nContexto: Eu (gestor na GPS Engenharia) tenho um processo que executo recorrentemente: [descreva — ex: análise semanal de obras, fechamento mensal de medições, briefing de fornecedores]. Quero mapear no formato IPO para depois transformar em Assistente Persistente.\n\nDescrição do processo:\n[passos que executo hoje, ferramentas que uso, quanto tempo gasto, frequência]\n\nTarefa: Mapeie o processo em IPO completo:\n- INPUTS: o que precisa estar disponível antes de começar (dados, arquivos, contexto)\n- PROCESS: passos sequenciais (com critério de "pronto" em cada um)\n- OUTPUTS: o que sai pronto para usar (formato, destinatário, critério de qualidade)\n\nTermine com 3 perguntas para definir qual parte vale automatizar com Assistente (Autopiloto), qual vale Colaboração e qual deve continuar Manual.\n\nFormato: 3 seções (Inputs / Process / Outputs) seguidas das 3 perguntas. Cada passo do Process em 1 linha clara.\n\nLimitações: Use apenas a descrição. Não invente passos que não foram mencionados. Se um passo estiver vago, peça detalhe antes de mapear.\n\nCritério de Sucesso: posso pegar o output e usar diretamente como Instrução de Sistema para um Claude Project ou Custom GPT na semana seguinte.\n\nNegativo: NÃO listar "etapa 1: planejar" sem conteúdo. NÃO confundir Input com Output. NÃO recomendar automatizar tudo — manter Manual o que exige julgamento.'
       }
     };
 
@@ -539,13 +792,30 @@ Negativo: NÃO use títulos genéricos como "Resultados" ou
       document.body.style.overflow = '';
     };
 
+    window.openIpoModal = function () {
+      var b = document.getElementById('ipoModalBackdrop');
+      b.classList.add('open');
+      b.removeAttribute('aria-hidden');
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closeIpoModal = function () {
+      var b = document.getElementById('ipoModalBackdrop');
+      b.classList.remove('open');
+      b.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
     document.getElementById('m3PreviewBackdrop').addEventListener('click', function (e) {
       if (e.target === this) window.closeM3Preview();
     });
+    document.getElementById('ipoModalBackdrop').addEventListener('click', function (e) {
+      if (e.target === this) window.closeIpoModal();
+    });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && document.getElementById('m3PreviewBackdrop').classList.contains('open')) {
-        window.closeM3Preview();
-      }
+      if (e.key !== 'Escape') return;
+      if (document.getElementById('m3PreviewBackdrop').classList.contains('open')) window.closeM3Preview();
+      if (document.getElementById('ipoModalBackdrop').classList.contains('open')) window.closeIpoModal();
     });
   }());
   </script>
