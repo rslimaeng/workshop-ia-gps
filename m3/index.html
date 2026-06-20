@@ -373,34 +373,34 @@ Negativo: NÃO use títulos genéricos como "Resultados" ou
 
       <div class="hbar-graph" style="margin-top:24px">
         <p class="hbar-graph-title">Onde a IA cumpriu o que prometeu</p>
-        <p class="hbar-graph-source">Top 6 categorias · Anthropic 81k Interviews · 2025</p>
+        <p class="hbar-graph-source">Top 6 categorias · Anthropic 81k Entrevistas · 2025</p>
         <div class="hbar-row">
-          <span class="hbar-label">Productivity</span>
+          <span class="hbar-label">Produtividade</span>
           <div class="hbar-track"><div class="hbar-fill" style="width:100%"></div></div>
           <span class="hbar-pct">32,0%</span>
         </div>
         <div class="hbar-row">
-          <span class="hbar-label">AI hasn't delivered</span>
+          <span class="hbar-label">IA ainda não entregou</span>
           <div class="hbar-track"><div class="hbar-fill muted" style="width:59%"></div></div>
           <span class="hbar-pct">18,9%</span>
         </div>
         <div class="hbar-row">
-          <span class="hbar-label">Cognitive partnership</span>
+          <span class="hbar-label">Parceria cognitiva</span>
           <div class="hbar-track"><div class="hbar-fill" style="width:54%"></div></div>
           <span class="hbar-pct">17,2%</span>
         </div>
         <div class="hbar-row">
-          <span class="hbar-label">Learning</span>
+          <span class="hbar-label">Aprendizado</span>
           <div class="hbar-track"><div class="hbar-fill" style="width:31%"></div></div>
           <span class="hbar-pct">9,9%</span>
         </div>
         <div class="hbar-row">
-          <span class="hbar-label">Technical accessibility</span>
+          <span class="hbar-label">Acessibilidade técnica</span>
           <div class="hbar-track"><div class="hbar-fill" style="width:27%"></div></div>
           <span class="hbar-pct">8,7%</span>
         </div>
         <div class="hbar-row">
-          <span class="hbar-label">Research synthesis</span>
+          <span class="hbar-label">Síntese de pesquisa</span>
           <div class="hbar-track"><div class="hbar-fill" style="width:22%"></div></div>
           <span class="hbar-pct">7,2%</span>
         </div>
@@ -429,10 +429,10 @@ Negativo: NÃO use títulos genéricos como "Resultados" ou
         </p>
 
         <ol style="font-size:14px; line-height:2; color:var(--ink-soft); padding-left:20px; margin-bottom:20px">
-          <li>Baixe o arquivo CSV na página de <a href="../artefatos/index.html">Artefatos</a></li>
+          <li>Baixe o arquivo CSV: <a href="../assets/artefatos/A3_Eng_Orcamento_Simplificado.csv" download class="btn-inline-link">A3_Eng_Orcamento_Simplificado.csv</a></li>
           <li>Abra no Excel ou Google Sheets e copie os dados como texto</li>
           <li>Abra o ChatGPT ou Claude</li>
-          <li>Cole o Prompt 4 do <a href="../banco-de-prompts/index.html">Banco de Prompts</a> (Revisar Orçamento)</li>
+          <li>Cole o <button class="btn-inline-link" onclick="openM3Preview('prompt','P4')">Prompt 4 do Banco de Prompts</button> (Revisar Orçamento)</li>
           <li>Cole os dados da planilha no campo indicado no prompt</li>
           <li>Avalie: quais itens a IA identificou como faltantes ou inconsistentes?</li>
         </ol>
@@ -492,6 +492,62 @@ Negativo: NÃO use títulos genéricos como "Resultados" ou
     <p>Workshop IA · GPS Engenharia · Facilitador: Rafael Lima · via IEL</p>
   </footer>
 
+  <!-- Modal de preview — prompts (inline, sem navegação) -->
+  <div class="modal-backdrop" id="m3PreviewBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-labelledby="m3PreviewTitle" aria-modal="true">
+      <button class="modal-close" aria-label="Fechar" onclick="closeM3Preview()">×</button>
+      <div class="modal-head">
+        <span class="modal-badge" id="m3PreviewBadge"></span>
+        <h3 class="modal-title" id="m3PreviewTitle"></h3>
+      </div>
+      <div class="modal-body">
+        <pre id="m3PreviewContent"></pre>
+      </div>
+      <div class="modal-foot">
+        <button class="modal-copy-btn" data-copy="m3PreviewContent">Copiar</button>
+      </div>
+    </div>
+  </div>
+
   <script src="../assets/script.js"></script>
+  <script>
+  (function () {
+    var promptsMeta = {
+      P4: {
+        titulo: 'P4 — Revisar Orçamento / Verificar Itens Faltantes',
+        badge: 'Banco de Prompts · Engenharia',
+        texto: 'Papel: Você é um especialista em orçamentos de construção civil com experiência em SINAPI.\n\nContexto: Estou elaborando um orçamento para [tipo de obra: residencial / comercial / reforma].\nA obra está localizada em Fortaleza/CE. Já tenho os seguintes itens na planilha:\n\n[liste ou cole os itens que você já tem]\n\nTarefa:\n1. Analise se os itens estão coerentes entre si\n2. Aponte possíveis itens faltantes típicos para esse tipo de obra\n3. Identifique qualquer inconsistência ou item que parece mal dimensionado\n\nFormato:\n- Lista de verificação: ✓ OK / ⚠️ Verificar / ✗ Faltando\n- Breve justificativa para cada apontamento\n- Sugestão dos itens mais críticos que precisam ser conferidos\n\nLimitações: Você não tem acesso a quantitativos detalhados. Baseie-se nos itens que eu forneci.\nNão calcule preços — apenas sinalize categorias e coerência.'
+      }
+    };
+
+    window.openM3Preview = function (type, id) {
+      var m = promptsMeta[id];
+      if (!m) return;
+      var backdrop = document.getElementById('m3PreviewBackdrop');
+      document.getElementById('m3PreviewTitle').textContent   = m.titulo;
+      document.getElementById('m3PreviewBadge').textContent   = m.badge;
+      document.getElementById('m3PreviewContent').textContent = m.texto;
+      backdrop.classList.add('open');
+      backdrop.removeAttribute('aria-hidden');
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closeM3Preview = function () {
+      var backdrop = document.getElementById('m3PreviewBackdrop');
+      backdrop.classList.remove('open');
+      backdrop.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    document.getElementById('m3PreviewBackdrop').addEventListener('click', function (e) {
+      if (e.target === this) window.closeM3Preview();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && document.getElementById('m3PreviewBackdrop').classList.contains('open')) {
+        window.closeM3Preview();
+      }
+    });
+  }());
+  </script>
 </body>
 </html>
