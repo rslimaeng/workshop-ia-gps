@@ -200,3 +200,12 @@ initFilter();
   });
   atualizarProgresso();
 })();
+
+// Accordion — 2 Propósitos (M2)
+(function () {
+  document.querySelectorAll('.proposito-acc-trigger').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btn.closest('.proposito-acc-item').classList.toggle('open');
+    });
+  });
+}());

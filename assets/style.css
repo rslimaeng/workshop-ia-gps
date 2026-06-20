@@ -2107,3 +2107,144 @@ footer p {
   margin-right: 4px;
   font-family: var(--mono);
 }
+
+/* ============================================
+   PROMPT 26 — M2 Accordion + 3 Modos + Trilhos
+   ============================================ */
+
+/* ── Accordion: 2 Propósitos ────── */
+.proposito-accordion {
+  margin: 24px 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.proposito-acc-item {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.proposito-acc-item.open {
+  box-shadow: 0 4px 18px rgba(31,29,26,.08);
+}
+.proposito-acc-item.delegacao  { border-left: 4px solid var(--accent); }
+.proposito-acc-item.estruturacao { border-left: 4px solid var(--accent-warm); }
+
+.proposito-acc-trigger {
+  width: 100%;
+  background: var(--bg-card);
+  border: none;
+  cursor: pointer;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+  font-family: inherit;
+}
+.proposito-acc-trigger:hover { background: var(--bg-warm); }
+
+.proposito-acc-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #fff;
+  flex-shrink: 0;
+}
+.delegacao .proposito-acc-icon  { background: var(--accent); }
+.estruturacao .proposito-acc-icon { background: var(--accent-warm); }
+
+.proposito-acc-titles { flex: 1; }
+.proposito-acc-title {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 2px;
+  line-height: 1.2;
+}
+.proposito-acc-summary {
+  font-size: 12.5px;
+  color: var(--ink-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+.proposito-acc-chevron {
+  font-size: 16px;
+  color: var(--ink-muted);
+  transition: transform .25s;
+  flex-shrink: 0;
+  user-select: none;
+}
+.proposito-acc-item.open .proposito-acc-chevron { transform: rotate(180deg); }
+
+.proposito-acc-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .32s ease;
+}
+.proposito-acc-item.open .proposito-acc-body { max-height: 540px; }
+
+.proposito-acc-content {
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+/* ── 3 Modos: seção visual antes da tabela ────── */
+.modos-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  margin: 22px 0 28px;
+}
+.modo-intro-card {
+  border-radius: 10px;
+  padding: 18px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+.modo-intro-card.auto   { border-top: 3px solid #2a7a4f; }
+.modo-intro-card.colab  { border-top: 3px solid #b45309; }
+.modo-intro-card.manual { border-top: 3px solid #c41c1c; }
+.modo-intro-badge { margin-bottom: 10px; }
+.modo-intro-def {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 6px;
+  line-height: 1.3;
+}
+.modo-intro-when {
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin: 0 0 10px;
+  line-height: 1.45;
+}
+.modo-intro-exs {
+  margin: 0;
+  padding-left: 14px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+
+/* ── Bignum compacto — B.2 Trilhos (reduz foco nos números) ────── */
+.bignum-impacto.compacto .bignum-impacto-de   { font-size: 36px; }
+.bignum-impacto.compacto .bignum-impacto-para { font-size: 52px; }
+.bignum-impacto.compacto .bignum-impacto-frase { font-size: 15px; }
+
+@media (max-width: 720px) {
+  .modos-intro-grid { grid-template-columns: 1fr; gap: 12px; }
+  .bignum-impacto.compacto .bignum-impacto-de   { font-size: 28px; }
+  .bignum-impacto.compacto .bignum-impacto-para { font-size: 40px; }
+}
