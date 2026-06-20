@@ -445,9 +445,9 @@
         </p>
 
         <ol style="font-size:14px; line-height:2; color:var(--ink-soft); padding-left:20px; margin-bottom:20px">
-          <li>Baixe o arquivo na página de <a href="../artefatos/index.html">Artefatos</a></li>
+          <li>Veja o arquivo de <button class="btn-inline-link" onclick="openM2Preview('artefato','ata')">Artefatos</button> (ou baixe direto pelo modal)</li>
           <li>Abra o ChatGPT ou Claude</li>
-          <li>Cole o Prompt 2 do <a href="../banco-de-prompts/index.html">Banco de Prompts</a></li>
+          <li>Cole o <button class="btn-inline-link" onclick="openM2Preview('prompt','P2')">Prompt 2 do Banco de Prompts</button></li>
           <li>Substitua os campos em colchete com os dados do arquivo</li>
           <li>Cole as anotações brutas no campo indicado</li>
           <li>Avalie o resultado: a ata ficou completa? Todas as pendências foram capturadas?</li>
@@ -511,7 +511,7 @@ Limitações: Não invente especificações que não foram informadas. Se faltar
 informação essencial, me pergunte antes de redigir.</pre>
 
         <ol style="font-size:14px; line-height:2; color:var(--ink-soft); padding-left:20px; margin-bottom:20px">
-          <li>Baixe o memorial de referência na página de <a href="../artefatos/index.html">Artefatos</a></li>
+          <li>Veja o <button class="btn-inline-link" onclick="openM2Preview('artefato','memorial')">memorial de referência</button> (ou baixe direto pelo modal)</li>
           <li>Pense em um projeto real (anonimizado): nome, área, padrão, especificações principais</li>
           <li>Cole o prompt acima no ChatGPT ou Claude e substitua os colchetes pelos seus dados</li>
           <li>Compare o rascunho gerado com o memorial de referência — quanto tempo a IA economizou?</li>
@@ -558,6 +558,95 @@ informação essencial, me pergunte antes de redigir.</pre>
     <p>Workshop IA · GPS Engenharia · Facilitador: Rafael Lima · via IEL</p>
   </footer>
 
+  <!-- Modal de preview — artefatos + prompts (inline, sem navegação) -->
+  <div class="modal-backdrop" id="m2PreviewBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-labelledby="m2PreviewTitle" aria-modal="true">
+      <button class="modal-close" aria-label="Fechar" onclick="closeM2Preview()">×</button>
+      <div class="modal-head">
+        <span class="modal-badge" id="m2PreviewBadge"></span>
+        <h3 class="modal-title" id="m2PreviewTitle"></h3>
+      </div>
+      <div class="modal-body">
+        <pre id="m2PreviewContent"></pre>
+      </div>
+      <div class="modal-foot">
+        <a id="m2PreviewDownload" href="#" download class="btn btn-outline" style="font-size:13px;padding:8px 16px;display:none">↓ Baixar .md</a>
+        <button class="modal-copy-btn" data-copy="m2PreviewContent">Copiar</button>
+      </div>
+    </div>
+  </div>
+
   <script src="../assets/script.js"></script>
+  <script>
+  (function () {
+    var artefatosMeta = {
+      ata: {
+        titulo: 'Ata de Reunião de Obra',
+        badge: 'M2 · Artefato de Exercício',
+        arquivo: '../assets/artefatos/A4_Eng_Ata_Reuniao_Obra.md',
+        download: '../assets/artefatos/A4_Eng_Ata_Reuniao_Obra.md'
+      },
+      memorial: {
+        titulo: 'Memorial Descritivo — Residência Unifamiliar',
+        badge: 'M2 · Artefato de Exercício',
+        arquivo: '../assets/artefatos/A4_Eng_Memorial_Descritivo_Residencia.md',
+        download: '../assets/artefatos/A4_Eng_Memorial_Descritivo_Residencia.md'
+      }
+    };
+
+    var promptsMeta = {
+      P2: {
+        titulo: 'P2 — Estruturar Ata de Reunião de Obra',
+        badge: 'Banco de Prompts · Engenharia',
+        texto: 'Papel: Você é um assistente técnico especializado em documentação de obras.\n\nContexto: Realizei uma reunião de obra na data [data] com os seguintes participantes:\n[nomes e funções]. A obra fica em [endereço ou nome do projeto].\n\nTarefa: Com base nas minhas anotações abaixo, estruture uma ata de reunião de obra\ncom: data, participantes, assuntos tratados, pendências identificadas, decisões tomadas,\nresponsáveis por cada ação e prazo.\n\nMinhas anotações brutas:\n[cole aqui suas anotações da reunião, mesmo que bagunçadas]\n\nFormato:\n- Cabeçalho com data, obra, participantes\n- Seção "Assuntos tratados" (em tópicos)\n- Tabela de pendências: Pendência | Responsável | Prazo | Status\n- Seção "Próxima reunião" (data prevista se houver)\nTom: formal e objetivo, sem texto desnecessário.\n\nLimitações: Use apenas as informações que eu forneci. Não adicione pendências ou decisões que não estejam nas anotações.'
+      }
+    };
+
+    window.openM2Preview = function (type, id) {
+      var m = type === 'artefato' ? artefatosMeta[id] : promptsMeta[id];
+      if (!m) return;
+      var backdrop = document.getElementById('m2PreviewBackdrop');
+      var dlBtn    = document.getElementById('m2PreviewDownload');
+      document.getElementById('m2PreviewTitle').textContent   = m.titulo;
+      document.getElementById('m2PreviewBadge').textContent   = m.badge;
+      document.getElementById('m2PreviewContent').textContent = 'Carregando…';
+      backdrop.classList.add('open');
+      backdrop.removeAttribute('aria-hidden');
+      document.body.style.overflow = 'hidden';
+
+      if (type === 'artefato') {
+        dlBtn.href = m.download;
+        dlBtn.setAttribute('download', m.download.split('/').pop());
+        dlBtn.style.display = '';
+        fetch(m.arquivo)
+          .then(function (r) { return r.text(); })
+          .then(function (t) { document.getElementById('m2PreviewContent').textContent = t; })
+          .catch(function () {
+            document.getElementById('m2PreviewContent').textContent =
+              'Não foi possível carregar o arquivo. Use o botão "↓ Baixar .md" como alternativa.';
+          });
+      } else {
+        dlBtn.style.display = 'none';
+        document.getElementById('m2PreviewContent').textContent = m.texto;
+      }
+    };
+
+    window.closeM2Preview = function () {
+      var backdrop = document.getElementById('m2PreviewBackdrop');
+      backdrop.classList.remove('open');
+      backdrop.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    document.getElementById('m2PreviewBackdrop').addEventListener('click', function (e) {
+      if (e.target === this) window.closeM2Preview();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && document.getElementById('m2PreviewBackdrop').classList.contains('open')) {
+        window.closeM2Preview();
+      }
+    });
+  }());
+  </script>
 </body>
 </html>
