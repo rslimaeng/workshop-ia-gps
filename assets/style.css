@@ -1907,3 +1907,168 @@ footer p {
   .bignum-impacto-para { font-size: 48px; }
   .bignum-impacto-frase { font-size: 16px; }
 }
+
+/* ============================================
+   PROMPT 23 — M5 As 3 Fases da Relação com IA (Frente C)
+   Timeline crescente + Tabela cruzada
+   ============================================ */
+
+/* ── Timeline 3 Fases Crescentes ────── */
+.fases-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  position: relative;
+  margin: 32px 0 24px;
+}
+
+/* Linha conectora horizontal com gradient evolutivo */
+.fases-timeline::before {
+  content: "";
+  position: absolute;
+  top: 32px;
+  left: 12%;
+  right: 12%;
+  height: 3px;
+  background: linear-gradient(90deg, #8f8678 0%, var(--accent-warm) 50%, var(--accent-dark) 100%);
+  z-index: 0;
+  border-radius: 2px;
+}
+
+.fase-card {
+  position: relative;
+  z-index: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 56px 22px 24px;
+  text-align: left;
+  transition: transform .2s, box-shadow .2s;
+}
+.fase-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(31, 29, 26, 0.08);
+}
+.fase-card.f1 { border-top: 4px solid #8f8678; }
+.fase-card.f2 { border-top: 4px solid var(--accent-warm); }
+.fase-card.f3 { border-top: 4px solid var(--accent-dark); }
+
+/* Marcador numérico grande no topo */
+.fase-num {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(31, 29, 26, 0.12);
+}
+.fase-card.f1 .fase-num { background: #8f8678; }
+.fase-card.f2 .fase-num { background: var(--accent-warm); }
+.fase-card.f3 .fase-num { background: var(--accent-dark); }
+
+.fase-nome {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 14px;
+  text-align: center;
+  line-height: 1.3;
+}
+.fase-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 12px;
+}
+.fase-row-lbl {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ink-muted);
+}
+.fase-row-val {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.fase-row-val strong { color: var(--ink); }
+.fase-papel {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.fase-card.f1 .fase-papel { color: #6b6358; }
+.fase-card.f2 .fase-papel { color: var(--accent-warm-dark); }
+.fase-card.f3 .fase-papel { color: var(--accent-dark); }
+
+/* Mobile */
+@media (max-width: 720px) {
+  .fases-timeline {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    margin: 24px 0 18px;
+  }
+  .fases-timeline::before {
+    left: 32px;
+    top: 0;
+    bottom: 0;
+    right: auto;
+    width: 3px;
+    height: auto;
+    background: linear-gradient(180deg, #8f8678 0%, var(--accent-warm) 50%, var(--accent-dark) 100%);
+  }
+  .fase-card {
+    padding: 24px 20px 20px 92px;
+  }
+  .fase-num {
+    position: absolute;
+    top: 18px;
+    left: 0;
+    transform: none;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+  .fase-nome {
+    text-align: left;
+    font-size: 17px;
+  }
+}
+
+/* ── Tabela cruzada 7 Níveis × 3 Fases ────── */
+.fases-x-niveis {
+  margin: 24px 0 8px;
+}
+.fases-x-niveis th:first-child,
+.fases-x-niveis td:first-child {
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.fases-x-niveis tbody tr:nth-child(1) td:first-child { color: #6b6358; }
+.fases-x-niveis tbody tr:nth-child(2) td:first-child { color: var(--accent-warm-dark); }
+.fases-x-niveis tbody tr:nth-child(3) td:first-child { color: var(--accent-dark); }
+.fases-x-niveis .niveis-pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  color: var(--ink-soft);
+  margin-right: 4px;
+  font-family: var(--mono);
+}
