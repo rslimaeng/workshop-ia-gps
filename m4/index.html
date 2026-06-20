@@ -54,11 +54,11 @@
         A engenharia de prompt é a habilidade de escrever a entrada certa.
       </p>
 
-      <div class="bignum-grid" style="grid-template-columns:1fr; max-width:540px; margin:28px 0">
+      <div class="bignum-grid" style="grid-template-columns:1fr; max-width:540px; margin:28px auto">
         <div class="bignum" style="text-align:center">
           <p class="bignum-value" style="font-size:56px">26,7%</p>
           <p class="bignum-label">Maior preocupação global com IA</p>
-          <p class="bignum-desc" style="font-size:14px"><strong>Unreliability</strong> (inconsistência e alucinação) é o que mais preocupa as 81 mil pessoas entrevistadas pela Anthropic. <strong>É exatamente o que o PCTFL+CS+N resolve.</strong></p>
+          <p class="bignum-desc" style="font-size:14px"><strong>Inconfiabilidade</strong> (inconsistência e alucinação) é o que mais preocupa as 81 mil pessoas entrevistadas pela Anthropic. <strong>É exatamente o que o PCTFL+CS+N resolve.</strong></p>
         </div>
       </div>
 
@@ -617,6 +617,40 @@
     </div>
   </section>
 
+  <!-- Seção — Metaprompt (deixe a IA montar o prompt) -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Atalho avançado</p>
+      <h2>Metaprompt — Deixe a IA Montar o Prompt</h2>
+      <p>
+        Depois que você entende o padrão de como pedir (papel, contexto, tarefa, critério…),
+        existe um atalho poderoso: <strong>pedir para a própria IA construir o prompt pra você</strong>.
+        Em vez de preencher cada campo na mão, você descreve seu objetivo e deixa a IA — que já
+        conhece a estrutura — montar o prompt ideal. Isso é um <strong>metaprompt</strong>:
+        um prompt que gera prompts.
+      </p>
+
+      <div class="metaprompt-box">
+        <p class="metaprompt-box-label">Modelo de metaprompt</p>
+        <p class="metaprompt-quote">Você é um especialista em Engenharia de Prompt. Vou te dizer meu objetivo, e você vai criar o prompt perfeito para mim usando o framework PCTFL+CS+N (Papel, Contexto, Tarefa, Formato, Limitações, Critério de Sucesso, Negativo).
+
+Antes de escrever o prompt final, <span class="ph">me faça as perguntas que faltam</span> para preencher cada elemento.
+
+Meu objetivo é: <span class="ph">[descreva o que você quer]</span>.</p>
+      </div>
+
+      <div class="callout cool" style="margin-top:18px">
+        <strong>Por que funciona:</strong> a IA conhece a estrutura PCTFL melhor que ninguém — ela só
+        precisa do seu objetivo e do seu contexto. Você sai de "preencher 7 campos" para "responder
+        algumas perguntas" — e ainda aprende observando como ela monta o prompt.
+        <br><br>
+        <strong>Quando usar cada um:</strong> o <strong>gerador acima</strong> é ótimo para aprender a estrutura e
+        para tarefas que você repete. O <strong>metaprompt</strong> brilha quando o pedido é novo ou complexo
+        e você quer um primeiro rascunho rápido.
+      </div>
+    </div>
+  </section>
+
   <!-- Seção — Padrões Internos de Uso -->
   <section class="section content-section reveal">
     <div class="site-container">
@@ -688,40 +722,70 @@
         isolado e operar com contexto persistente.
       </p>
 
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; margin-top:32px">
+      <div class="assist-carousel" id="assistCarousel">
+        <div class="assist-carousel-viewport" id="assistViewport">
+          <div class="assist-carousel-track" id="assistTrack">
 
-        <div style="background:var(--bg-warm); border:1px solid var(--border); border-radius:12px; padding:24px">
-          <p style="font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--accent); margin:0 0 8px">
-            Caminho 1
-          </p>
-          <h3 style="margin:0 0 16px">No Claude (gratuito)</h3>
-          <ol style="font-size:14px; line-height:1.8; color:var(--ink-soft); padding-left:20px; margin:0 0 16px">
-            <li>Abra Claude → menu lateral → <strong>Projects</strong> → <strong>New Project</strong></li>
-            <li>Em <strong>Project Instructions</strong>, cole o contexto da GPS e o padrão que você criou neste M4</li>
-            <li>Teste numa nova conversa: a IA já sabe quem você é, sem reexplicar</li>
-          </ol>
-          <p style="font-size:13px; color:var(--ink-muted); font-style:italic; margin:0; padding:12px; background:var(--bg); border-radius:6px; border-left:3px solid var(--accent)">
-            "Sou engenheiro na GPS Engenharia, Fortaleza/CE. Trabalhamos com projetos
-            residenciais, comerciais e licitações municipais. Tom padrão: técnico e objetivo."
-          </p>
+            <!-- Slide 1 — Claude -->
+            <div class="assist-slide">
+              <div class="assist-card c1">
+                <p class="assist-card-eyebrow">Caminho 1 · Claude</p>
+                <h3>No Claude (gratuito)</h3>
+                <ol>
+                  <li>Abra Claude → menu lateral → <strong>Projects</strong> → <strong>New Project</strong></li>
+                  <li>Em <strong>Project Instructions</strong>, cole o contexto da GPS e o padrão que você criou neste M4</li>
+                  <li>Teste numa nova conversa: a IA já sabe quem você é, sem reexplicar</li>
+                </ol>
+                <p class="assist-card-note">
+                  "Sou engenheiro na GPS Engenharia, Fortaleza/CE. Trabalhamos com projetos
+                  residenciais, comerciais e licitações municipais. Tom padrão: técnico e objetivo."
+                </p>
+              </div>
+            </div>
+
+            <!-- Slide 2 — ChatGPT -->
+            <div class="assist-slide">
+              <div class="assist-card c2">
+                <p class="assist-card-eyebrow">Caminho 2 · ChatGPT</p>
+                <h3>No ChatGPT (gratuito)</h3>
+                <ol>
+                  <li>Menu → <strong>Personalizar ChatGPT</strong> → <strong>Instruções personalizadas</strong></li>
+                  <li>Em <em>"O que devo saber sobre você"</em>: cole o contexto da sua função na GPS</li>
+                  <li>Em <em>"Como deve responder"</em>: cole o padrão de formato que funcionou neste M4</li>
+                </ol>
+                <p class="assist-card-note">
+                  Pronto. Toda conversa nova já começa com o ChatGPT sabendo seu papel, seu
+                  contexto técnico e o tom que você espera.
+                </p>
+              </div>
+            </div>
+
+            <!-- Slide 3 — Gemini -->
+            <div class="assist-slide">
+              <div class="assist-card c3">
+                <p class="assist-card-eyebrow">Caminho 3 · Gemini</p>
+                <h3>No Gemini (gratuito)</h3>
+                <ol>
+                  <li>Abra o Gemini → <strong>Configurações</strong> → <strong>Gems</strong> → <strong>Criar um novo Gem</strong></li>
+                  <li>Em <strong>Instruções</strong>, cole o contexto da GPS e o padrão que você criou neste M4</li>
+                  <li>Salve e teste: o Gem já entra na conversa sabendo seu papel e seu contexto</li>
+                </ol>
+                <p class="assist-card-note">
+                  Os <strong>Gems</strong> são os assistentes persistentes do Gemini — o equivalente
+                  aos Projects do Claude e às Instruções personalizadas do ChatGPT.
+                </p>
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        <div style="background:var(--bg-warm); border:1px solid var(--border); border-radius:12px; padding:24px">
-          <p style="font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--accent-warm); margin:0 0 8px">
-            Caminho 2
-          </p>
-          <h3 style="margin:0 0 16px">No ChatGPT (gratuito)</h3>
-          <ol style="font-size:14px; line-height:1.8; color:var(--ink-soft); padding-left:20px; margin:0 0 16px">
-            <li>Menu → <strong>Personalizar ChatGPT</strong> → <strong>Instruções personalizadas</strong></li>
-            <li>Em <em>"O que devo saber sobre você"</em>: cole o contexto da sua função na GPS</li>
-            <li>Em <em>"Como deve responder"</em>: cole o padrão de formato que funcionou neste M4</li>
-          </ol>
-          <p style="font-size:13px; color:var(--ink-muted); margin:0; padding:12px; background:var(--bg); border-radius:6px; border-left:3px solid var(--accent-warm)">
-            Pronto. Toda conversa nova já começa com o ChatGPT sabendo seu papel, seu
-            contexto técnico e o tom que você espera.
-          </p>
+        <div class="assist-carousel-controls">
+          <button class="assist-carousel-arrow" id="assistPrev" type="button" aria-label="Assistente anterior">‹</button>
+          <div class="assist-carousel-dots" id="assistDots"></div>
+          <button class="assist-carousel-arrow" id="assistNext" type="button" aria-label="Próximo assistente">›</button>
         </div>
-
+        <p class="assist-carousel-hint">Clique nas setas, nas bolinhas — ou arraste para o lado</p>
       </div>
 
       <div class="callout" style="margin-top:32px">
@@ -733,6 +797,86 @@
         para o <strong>N5 (Integrador)</strong> — você passa a operar com assistentes
         especializados, não com prompts isolados. Quando você compartilhar esse assistente
         com o time, entra no território do <strong>N6 (Construtor)</strong>.
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção — Como criar um bom assistente (4 passos) -->
+  <section class="section content-section reveal">
+    <div class="site-container">
+      <p class="eyebrow">Guia prático</p>
+      <h2>Como Criar um Bom Assistente</h2>
+      <p>
+        Criar o assistente é fácil. Criar um assistente <strong>que funciona</strong> segue 4 passos.
+        Guarde esta sequência — é o que separa um robô genérico de um parceiro confiável de trabalho.
+      </p>
+
+      <div class="assist-steps">
+
+        <div class="assist-step s1">
+          <div class="assist-step-num">1</div>
+          <div>
+            <p class="assist-step-title">Defina a Missão</p>
+            <div class="assist-step-body">
+              <p>Pergunte-se: <strong>qual é o problema nº 1 que este assistente vai resolver?</strong> Um bom assistente tem uma missão clara e focada — não tenta fazer tudo.</p>
+              <p><span class="assist-step-tag evite">Evite</span> "Um assistente para ajudar o RH" (vago demais)</p>
+              <p><span class="assist-step-tag prefira">Prefira</span> "Um assistente que responde dúvidas dos colaboradores sobre férias e benefícios, com base nos documentos oficiais"</p>
+              <ul>
+                <li><strong>Compras:</strong> validar se um novo fornecedor atende aos critérios de homologação.</li>
+                <li><strong>Manutenção:</strong> dar o procedimento de troubleshooting da falha X no equipamento Y, com base no manual.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="assist-step s2">
+          <div class="assist-step-num">2</div>
+          <div>
+            <p class="assist-step-title">Colete o Conhecimento</p>
+            <div class="assist-step-body">
+              <p>O assistente só sabe o que você ensinar. A qualidade da base de conhecimento determina a qualidade das respostas.</p>
+              <ul>
+                <li><strong>Comece pequeno:</strong> 3 a 5 documentos essenciais e de alta qualidade (POPs, manuais, políticas, FAQs).</li>
+                <li><strong>Qualidade &gt; quantidade:</strong> 3 documentos precisos e atualizados valem mais que 50 desatualizados ou contraditórios.</li>
+                <li><strong>Formatos:</strong> texto selecionável (.md, .txt, .pdf) — nunca imagem ou PDF escaneado.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="assist-step s3">
+          <div class="assist-step-num">3</div>
+          <div>
+            <p class="assist-step-title">Construa as Instruções (o "cérebro")</p>
+            <div class="assist-step-body">
+              <p>A etapa mais importante. As instruções — também chamadas de <strong>System Prompt</strong> — são o manual de comportamento: personalidade, regras e limites do assistente.</p>
+              <p>Aqui você usa exatamente o <strong>PCTFL+CS+N</strong> que aprendeu neste módulo. É a mesma estrutura — só que agora ela vira o briefing fixo do seu assistente, não um prompt avulso.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="assist-step s4">
+          <div class="assist-step-num">4</div>
+          <div>
+            <p class="assist-step-title">Teste, Refine e Itere</p>
+            <div class="assist-step-body">
+              <p>Nenhum assistente nasce pronto. Depois de criar, comece a testar:</p>
+              <ul>
+                <li><strong>Perguntas fáceis:</strong> ele acha o óbvio nos documentos?</li>
+                <li><strong>Perguntas difíceis:</strong> teste os limites do conhecimento dele.</li>
+                <li><strong>Tente "quebrá-lo":</strong> peça pra revelar as instruções ou fazer algo que não deveria — isso testa as regras de segurança.</li>
+                <li><strong>Colete feedback:</strong> peça pra um colega usar e anote as dificuldades.</li>
+              </ul>
+              <p>Com base nos testes, volte ao Passo 3 e refine. Trate o System Prompt como um <strong>documento vivo</strong>, que evolui com o tempo.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="callout" style="margin-top:18px">
+        <strong>Resumo:</strong> Missão clara → Conhecimento curado → Instruções em PCTFL → Teste e refine.
+        É um ciclo: cada rodada de teste melhora o Passo 3.
       </div>
     </div>
   </section>
@@ -860,6 +1004,66 @@
       });
 
       atualizar();
+    })();
+
+    // ── Carrossel de Assistentes (Claude / ChatGPT / Gemini) ──
+    (function assistCarousel() {
+      var track = document.getElementById('assistTrack');
+      var viewport = document.getElementById('assistViewport');
+      var prev = document.getElementById('assistPrev');
+      var next = document.getElementById('assistNext');
+      var dotsWrap = document.getElementById('assistDots');
+      if (!track || !viewport || !prev || !next || !dotsWrap) return;
+
+      var slides = track.children;
+      var total = slides.length;
+      var index = 0;
+      var dots = [];
+
+      for (var i = 0; i < total; i++) {
+        var d = document.createElement('button');
+        d.type = 'button';
+        d.className = 'assist-carousel-dot';
+        d.setAttribute('aria-label', 'Ir para o assistente ' + (i + 1));
+        (function (n) { d.addEventListener('click', function () { goTo(n); }); })(i);
+        dotsWrap.appendChild(d);
+        dots.push(d);
+      }
+
+      function render() {
+        track.style.transform = 'translateX(' + (-index * 100) + '%)';
+        for (var i = 0; i < total; i++) dots[i].classList.toggle('active', i === index);
+        prev.disabled = index === 0;
+        next.disabled = index === total - 1;
+      }
+      function goTo(n) { index = Math.max(0, Math.min(total - 1, n)); render(); }
+
+      prev.addEventListener('click', function () { goTo(index - 1); });
+      next.addEventListener('click', function () { goTo(index + 1); });
+
+      // arrastar / swipe (pointer events cobrem mouse e toque)
+      var startX = 0, dragging = false, delta = 0;
+      viewport.addEventListener('pointerdown', function (e) {
+        dragging = true; startX = e.clientX; delta = 0;
+        track.classList.add('dragging');
+      });
+      window.addEventListener('pointermove', function (e) {
+        if (!dragging) return;
+        delta = e.clientX - startX;
+        track.style.transform = 'translateX(calc(' + (-index * 100) + '% + ' + delta + 'px))';
+      });
+      window.addEventListener('pointerup', function () {
+        if (!dragging) return;
+        dragging = false;
+        track.classList.remove('dragging');
+        var threshold = viewport.offsetWidth * 0.15;
+        if (delta < -threshold) goTo(index + 1);
+        else if (delta > threshold) goTo(index - 1);
+        else render();
+      });
+      viewport.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+      render();
     })();
   </script>
 </body>
